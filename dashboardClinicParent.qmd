@@ -1,0 +1,430 @@
+---
+title: "CLINIC DASHBOARD PARENT - NOT FOR VISUALIZATION"
+author: "taylor@childpovertyactionlab.org"
+author-title: "Contact"
+date: last-modified
+published-title: "Last updated"
+date-format: MMMM D, YYYY h:mm A z	
+format: html
+editor: source
+---
+
+<!--
+NOTE: THIS SCRIPT IS NOT FOR DISPLAY! This is a parent function used for
+ preprocessing that calls the template "dashboardClinicTemplate.qmd"
+
+This script is the parent for generating clinic dashboards
+ 1. Pulls in data across WIC and CPAL sources
+ 2. Preprocesses this data agency-wide using Py into one df
+ 3. Iterates over clinic names and procedurally generates quarto docs for each
+ 
+TO USE:
+ - click "Run" dropdown arrow in the top right of this panel
+ - select "Restart R and run all chunks" from menu
+-->
+
+```{r setup, echo=FALSE, output=FALSE}
+library(tidyverse)
+library(googlesheets4)
+library(tsutils)
+library(plotly)
+library(reticulate)
+library(readxl)
+library(glue)
+library(stringr)
+library(waffle)
+library(yaml)
+
+gs4_auth(email = "taylor@childpovertyactionlab.org")
+use_python("C:/Users/twcro/Documents/Environment/Scripts/python.exe", required = TRUE)
+
+# palette for visualizations
+palette_a <- c(
+  phase1 = 'rgba(80, 203, 134, 0.5)',
+  phase2 = 'rgba(0, 201, 194, 0.5)',
+  phase3 = 'rgba(0, 191, 234, 0.5)',
+  phase4 = 'rgba(107, 175, 241, 0.5)',
+  phase5 = 'rgba(175, 157, 218, 0.5)'
+)
+palette <- c(
+  phase1 = 'rgba(80, 203, 134, 1)',
+  phase2 = 'rgba(0, 201, 194, 1)',
+  phase3 = 'rgba(0, 191, 234, 1)',
+  phase4 = 'rgba(107, 175, 241, 1)',
+  phase5 = 'rgba(175, 157, 218, 1)'
+)
+
+bold_color <- function(text, color) {
+  paste0("<b style='color:", color, "'>", text, "</b>")
+}
+
+# high performance threshold for POEs (90%)
+threshold = 0.9
+
+# fail threshold (50%)
+fail = 0.5
+
+
+# dynamic text prep
+oxford_comma <- function(x) {
+  if (length(x) > 2) {
+    paste(paste(x[-length(x)], collapse=", "), "and", x[length(x)])
+  } else {
+    paste(x, collapse=" and ")
+  }
+}
+```
+
+
+<!--
+Master list of clinics
+-->
+
+```{r clinic_map, echo=FALSE, output=FALSE}
+##  MAPPING CLINIC METADATA
+clinic_map <- read_sheet(
+  "https://docs.google.com/spreadsheets/d/1pCkVgjP4VLtNDwIHYbCm7wcYOtFqaAZu2znO-N7eXK8/", 
+  range = "Clinic Attributes") %>% 
+  rename(Manager = Quadrant) %>%
+  mutate(Clinic = str_replace(Clinic, c("Hwy"), c("Highway"))) %>%
+  select(1,3,4) %>%
+  select(-Manager, Manager)
+
+```
+
+
+<!--
+Importing data
+ 1. Staff data coming from monthly assignment sheets
+ 2. POE data in order of phases coming from google sheets
+-->
+
+```{r imports, echo=FALSE, output=FALSE}
+
+
+##  IMPORT STAFF DATA FROM EXCEL  #############################################
+current_year = as.integer(format(Sys.Date(), "%Y"))
+current_month = as.integer(format(Sys.Date(), "%m"))
+
+directory = "C:/Users/twcro/Documents/CPAL/_WICdashboardClinic/data/staffData"
+
+generate_file_path <- function(year, month) {
+  file.path(directory, sprintf("WIC_assignmentSheet_%d_%02d.xlsm", year, month))
+}
+
+find_valid_file <- function(year, month) {
+  file_path <- generate_file_path(year, month)
+  
+  while (!file.exists(file_path)) {
+    month <- month - 1
+    if (month < 1) {
+      month <- 12
+      year <- year - 1
+    }
+    file_path <- generate_file_path(year, month)
+  }
+  
+  return(file_path)
+}
+
+file_path <- find_valid_file(current_year, current_month)
+
+staff.clinics <- read_excel(path = file_path, sheet = "Clinics", skip = 2) %>%
+  na.omit() %>%
+  mutate(Location = str_replace_all(Location, 
+                                  c("Buckner" = "John West/Buckner",
+                                    "Abrams" = "Abrams Road",
+                                    "MLK" = "MLK Center")))
+
+roles <- c("clerk" = "CSR, CSW, IBCLC, BFPC, clerk, CSR (virtual)",
+           "certifier" = "nutritionist, WCS, WCS trainee, certifier, WCS/LC",
+           "supervisor" = "clinic supervisor, supervisor, warehouse supervisor")
+
+LC <- c("BFPC",	"IBCLC")
+temp <- c("In training", "Temp", "Part-time", "On leave")
+
+staff <- read_excel(path = file_path, sheet = "Staff", skip = 0) %>%
+  mutate(Location = str_replace_all(Location, 
+                                  c("Buckner" = "John West/Buckner",
+                                    "Abrams" = "Abrams Road",
+                                    "MLK" = "MLK Center"))) %>%
+  filter(Site != 0) %>%
+  mutate(Role = case_when(
+    Position %in% strsplit(roles[["clerk"]], ", ")[[1]] ~ "clerk",
+    Position %in% strsplit(roles[["certifier"]], ", ")[[1]] ~ "certifier",
+    Position %in% strsplit(roles[["supervisor"]], ", ")[[1]] ~ "supervisor",
+    TRUE ~ NA_character_
+  )) %>%
+  select(Role, Position, everything())
+
+##  IMPORT CSAT DATA FROM GOOGLE SHEETS  #######################################
+CSAT <- read_sheet(
+  "https://docs.google.com/spreadsheets/d/1pCkVgjP4VLtNDwIHYbCm7wcYOtFqaAZu2znO-N7eXK8/",
+  range = "Clinic Database") %>%
+  select(c(1:4,11:13,21:23)) %>%
+  mutate(Clinic = str_replace_all(Clinic, 
+                                  c("Hwy" = "Highway"
+                                    )))
+
+py$importedCSAT <- r_to_py(CSAT)
+
+##  IMPORT POE DATA FROM GOOGLE SHEETS  ########################################
+
+## GROUPED DF BASED ON JEFF'S CATEGORIES
+POE <- read_sheet(
+  "https://docs.google.com/spreadsheets/d/1pCkVgjP4VLtNDwIHYbCm7wcYOtFqaAZu2znO-N7eXK8/",
+  range = "POE Criteria")
+
+phase1 <- "https://docs.google.com/spreadsheets/d/1HqkmoaV7CZSAZOIPEBQ8Ez6u9FYqrJ0nCm4eav2MLN0/"
+phase2 <- "https://docs.google.com/spreadsheets/d/1m_iTiQLBrShk6VLddW8VzePtJUwN1BSbQp-32O9NhQc/"
+
+
+##  IMPORT PHASE1 (booleans only, with timestamp)
+phase1.clinics <- read_sheet(ss=phase1, range = "CPAL POE") %>% 
+  drop_na(2) %>% 
+  rename_at("Select clinic location:",~"Clinic") %>%
+  rename_at("Submitted At",~"Date") %>%
+  mutate(Clinic = str_replace_all(Clinic, 
+                                  c("Northwesy" = "Northwest",
+                                    "Hwy" = "Highway",
+                                    "Buckner" = "John West/Buckner"))) %>%
+  select(c(1,2,4,7,9,11,13,16,18,20,22,24,27,29,31,33,35,37,39,43,45)) %>%
+  mutate(Date = as.Date(Date, format = "%Y-%m-%d"),
+         across(2:20, ~ ifelse(. == "YES", 1, 0)))
+
+
+##  IMPORT PHASE2 (clinic-level, excluding room-by-room)
+phase2.clinics <- read_sheet(ss = phase2, range = "Clinic Evaluations") %>% 
+  drop_na(2) %>% 
+  rename_at("Date of Visit",~"Date") %>%
+  mutate(Clinic = str_replace_all(Clinic, 
+                                  c("Northwesy" = "Northwest",
+                                    "Hwy" = "Highway",
+                                    "John West/Buckner" = "Buckner"))) %>%
+  select(c(2,3,4,5,6,7,8,9)) %>%
+  mutate(Date = as.Date(Date, format = "%Y-%m-%d"))
+
+
+
+##  IMPORT PHASE2 (room-level, FSD only)
+phase2.rooms <- read_sheet(ss = phase2, range = "Room Evaluations") %>%
+  drop_na(2) %>% 
+  rename_at("Month",~"Date") %>%
+  rename_at("Room #",~"Room") %>%
+  mutate(across(c(`Clinic`,`Room`), factor)) %>%
+  filter(`Room Purpose` == "FSD") %>%
+  mutate(Clinic = str_replace_all(Clinic, 
+                                  c("Northwesy" = "Northwest",
+                                    "Hwy" = "Highway",
+                                    "Buckner" = "John West/Buckner"))) %>%
+  select(c(1,2,3,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21)) %>%
+  mutate(Date = as.Date(Date, format = "%Y-%m-%d"))
+
+
+
+###  INSERT NEW PHASES HERE  ###
+
+
+##  DF LIST
+py$phase1_clinics <- r_to_py(phase1.clinics)
+py$phase2_clinics <- r_to_py(phase2.clinics)
+py$phase2_rooms <- r_to_py(phase2.rooms)
+```
+
+
+<!--
+Processes POE averages over time with decay function in Py
+-->
+
+```{python moving_average, echo=FALSE, output=FALSE}
+import pandas as pd
+import numpy as np
+
+def decay(t, t_half=15):
+    return 1 / ((t / t_half) + 1)
+
+def ma_read(df):
+    criteria = [i for i in df.columns.values if i not in ('Clinic', 'Date', 'Room')]
+
+    def ma_calc(group):
+        result_list = []
+        group = group.sort_values(by='Date')
+        for date in group['Date'].unique():
+            row = {'Date': date}
+            for criterion in criteria:
+                deltas_time = (date - group['Date']).dt.days
+                weights = np.where(deltas_time < 0, 0, decay(deltas_time))
+                clean_criterion = np.nan_to_num(group[criterion])
+                moving_average = np.average(clean_criterion, weights=weights)
+                row[criterion] = moving_average
+            result_list.append(row)
+        result = pd.DataFrame(result_list)
+        return result
+
+    if 'Room' in df.columns:
+        df_room_ma = df.groupby(['Clinic', 'Room']).apply(ma_calc).reset_index().drop(columns='level_2')
+
+        unique_clinics = df_room_ma['Clinic'].unique().tolist()
+        new_dfs = []
+        for clinic in unique_clinics:
+            filtered_df = df_room_ma[df_room_ma['Clinic'] == clinic]
+            all_dates = filtered_df['Date'].unique()
+            all_rooms = filtered_df['Room'].unique()
+            combinations = [(date, room) for date in all_dates for room in all_rooms]
+            existing_combinations = filtered_df[['Date', 'Room']].values.tolist()
+            existing_combinations = [(np.datetime64(date), room) for date, room in existing_combinations]
+            missing_combinations = [combo for combo in combinations if combo not in existing_combinations]
+            missing_df = pd.DataFrame(missing_combinations, columns=['Date', 'Room'])
+            missing_df['Clinic'] = clinic
+            filtered_df = pd.concat([filtered_df, missing_df])
+            new_dfs.append(filtered_df)
+
+        df_room_ma = pd.concat(new_dfs)
+        df_room_ma = df_room_ma.sort_values(['Clinic', 'Room', 'Date']).reset_index(drop=True).groupby('Room').ffill()
+        df_ma = df_room_ma.groupby(['Clinic', 'Date']).mean()
+    else:
+        df_ma = df.groupby('Clinic').apply(ma_calc).reset_index().set_index(['Clinic', 'Date']).drop(columns='level_1')
+        
+    today = pd.Timestamp.today()
+    unique_clinics = df_ma.index.get_level_values('Clinic').unique()
+    new_rows = pd.DataFrame([(clinic, today) for clinic in unique_clinics], 
+                                columns=['Clinic', 'Date']).set_index(['Clinic', 'Date'])
+    df_ma = pd.concat([df_ma, new_rows]).sort_index()
+
+    return df_ma
+```
+
+
+<!--
+...cont'd, putting it together into a combined df
+-->
+
+```{python combined_df, echo=FALSE, output=FALSE}
+import pandas as pd
+import numpy as np
+
+global df_combined
+
+dataframes = [phase1_clinics, phase2_clinics, phase2_rooms]
+
+to_combine = [ma_read(df) for df in dataframes]
+
+# combine dfs
+df_combined = pd.concat(to_combine, ignore_index=False).groupby('Clinic').ffill().reset_index().sort_values(
+    ['Clinic', 'Date']).reset_index(drop=True)
+
+# date to string for conversion back to R
+df_combined['Date'] = df_combined['Date'].astype(str)
+```
+<!--
+CSAT predictions
+-->
+
+```{python CSATpred, echo=FALSE, output=FALSE}
+import pandas as pd
+import numpy as np
+from statsmodels.tsa.vector_ar.var_model import VAR
+from sklearn.metrics import mean_squared_error
+from dateutil.relativedelta import relativedelta
+
+CSAT = importedCSAT.dropna()
+CSAT['Date'] = pd.to_datetime(CSAT['Date'])
+CSAT = CSAT.set_index('Date')
+CSAT['CSAT'] = CSAT['CSAT'].fillna(CSAT['CSAT'].shift().where(CSAT['CSAT (n)'] == 0))
+
+# empty dataframe to store predictions
+forecast_df = pd.DataFrame()
+
+# unique clinics
+clinics = CSAT['Clinic'].unique()
+
+# iterate over each clinic
+for clinic in clinics:
+    df_1 = CSAT[CSAT['Clinic']==clinic]
+
+    # check if there's enough data
+    if len(df_1) > 10:
+        # train-test split
+        n_obs = 9 
+        df_train, df_test = df_1[0:-n_obs], df_1[-n_obs:]
+
+        # apply VAR model
+        model = VAR(df_train[['CSAT', 'CSAT (n)']])
+        model_fit = model.fit()
+
+        # forecast 6 months for the clinic
+        pred = model_fit.forecast(df_train[['CSAT', 'CSAT (n)']].values[-model_fit.k_ar:], steps=6)
+        pred_df = pd.DataFrame(pred, columns=['CSAT', 'CSAT (n)'])
+
+        # add date index to pred_df
+        last_date = df_1.index[-1]
+        prediction_dates = pd.date_range(start=last_date + relativedelta(months=1), periods=6, freq='MS')
+        pred_df['Date'] = prediction_dates
+        pred_df = pred_df.set_index('Date')
+
+        # add clinic column
+        pred_df['Clinic'] = clinic
+
+        # append predictions to forecast_df
+        forecast_df = pd.concat([forecast_df, pred_df])
+
+forecast_df = forecast_df.reset_index()
+
+```
+
+<!--
+Migrate back to R to prepare export to template
+-->
+
+```{r py-to-r, echo=FALSE, output=FALSE}
+##  MIGRATE DF FROM PY, CREATE DF FOR ONLY FAMILIESWAITING, AND CREATE 'DF.PHASE'
+df <- py$df_combined %>% 
+  group_by(Clinic) %>%
+  fill(-(1:2), .direction = "down")
+df$Date <- as.Date(df$Date)
+
+CSAT.predict <- py$forecast_df
+CSAT.predict$Date <- as.Date(CSAT.predict$Date)
+```
+
+
+<!--
+RENDER FROM TEMPLATE
+-->
+
+
+```{r generate}
+
+saves <- c("clinic_map", "staff.clinics", "df", "POE", "staff", "CSAT", "CSAT.predict")
+for (var in saves) {
+  save(list = var, file = paste0("C:/Users/twcro/Documents/CPAL/_WICdashboardClinic/data/scriptData/", var, ".RData"))
+}
+
+navbar_links <- ""
+
+
+for(clinic_name in clinic_map$Clinic){
+  output_name <- gsub("\\W", "_", clinic_name)  # replace any non-alphanumeric characters with underscore
+  navbar_links <- paste0(navbar_links, 
+                         "    - text: \"", clinic_name, 
+                         "\"\n      href: ", output_name, ".html\n")
+  quarto::quarto_render(
+    input = "dashboardClinicTemplate.qmd",
+    output_file = paste0(output_name, ".html"),
+    execute_params = list(clinic_name = clinic_name)
+  )
+}
+
+# for(manager_name in unique(clinic_map$Manager)){
+#   output_name <- gsub("\\W", "_manager", manager_name)  # replace any non-alphanumeric characters with underscore
+#   navbar_links <- paste0(navbar_links,
+#                          "    - text: \"", clinic_name,
+#                          "\"\n      href: ", output_name, ".html\n")
+#   quarto::quarto_render(
+#     input = "dashboardManagerTemplate.qmd",
+#     output_file = paste0(output_name, ".html"),
+#     execute_params = list(manager_name = manager_name)
+#   )
+# }
+
+```

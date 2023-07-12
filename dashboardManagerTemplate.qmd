@@ -1,0 +1,468 @@
+---
+title: "Manager dashboard: `r params$manager_name`'s clinics"
+title-block-banner: TRUE
+fig-width: 7
+fig-height: 5
+warning: FALSE
+error: TRUE
+echo: FALSE
+message: FALSE
+params:
+  manager_name: ""
+date: last-modified
+published-title: "Last updated"
+date-format: MMMM D, YYYY h:mm A z	
+format: 
+  html:
+    toc: true
+editor: source
+---
+
+
+<!--
+
+## DASHBOARD TEMPLATE ##
+
+This template for clinic dashboards is in the following order:
+ 1. Dynamic text generations
+ 2. Visualization generations
+ 3. Layout of dashboard using variables from generations
+ 
+-->
+
+```{r setup, echo=FALSE, output=FALSE}
+manager_name = params$manager_name
+clinic_names <- clinic_map %>%
+  filter(Manager == manager_name) %>%
+  select(Location) %>%
+  pull()
+
+files <- list.files(path = "C:/Users/twcro/Documents/CPAL/_WICdashboardClinic/data/scriptData/", pattern = "\\.RData$")
+
+# load each file
+for (file in files) {
+  load(paste0("C:/Users/twcro/Documents/CPAL/_WICdashboardClinic/data/scriptData/", file))
+}
+
+library(tidyverse)
+library(googlesheets4)
+library(tsutils)
+library(plotly)
+library(readxl)
+library(glue)
+library(stringr)
+library(waffle)
+
+# palette for visualizations
+palette_a <- c(
+  phase1 = 'rgba(80, 203, 134, 0.5)',
+  phase2 = 'rgba(0, 201, 194, 0.5)',
+  phase3 = 'rgba(0, 191, 234, 0.5)',
+  phase4 = 'rgba(107, 175, 241, 0.5)',
+  phase5 = 'rgba(175, 157, 218, 0.5)'
+)
+palette <- c(
+  phase1 = 'rgba(80, 203, 134, 1)',
+  phase2 = 'rgba(0, 201, 194, 1)',
+  phase3 = 'rgba(0, 191, 234, 1)',
+  phase4 = 'rgba(107, 175, 241, 1)',
+  phase5 = 'rgba(175, 157, 218, 1)'
+)
+
+bold_color <- function(text, color) {
+  paste0("<b style='color:", color, "'>", text, "</b>")
+}
+
+# high performance threshold for POEs (90%)
+threshold = 0.9
+
+# fail threshold (50%)
+fail = 0.5
+
+# maximum acceptable num. families in waiting room at once
+maxFamiliesWaiting = 8
+
+# dynamic text prep
+oxford_comma <- function(x) {
+  if (length(x) > 2) {
+    paste(paste(x[-length(x)], collapse=", "), "and", x[length(x)])
+  } else {
+    paste(x, collapse=" and ")
+  }
+}
+```
+
+<!--
+Set aside numbers of families waiting, specify phases
+-->
+
+```{r preprocess, echo=FALSE, output=FALSE}
+df.familiesWaiting <- df %>% 
+  dplyr::select(Clinic, Date, `# of Families Waiting`) %>%
+  rename(familiesWaiting = `# of Families Waiting`) %>%
+  drop_na()
+
+df <- df %>%
+  mutate(`# of Families Waiting` = 1 / exp(`# of Families Waiting` / maxFamiliesWaiting))
+
+df.phase <- df %>%
+  group_by(Clinic) %>%
+  replace(is.na(.), 0) %>% 
+  pivot_longer( cols = -c(1:2), names_to = "variable", values_to = "score") %>%
+  left_join(POE, by = "variable") %>%
+  group_by(Clinic, Date, phase) %>%
+  summarise(score = mean(score, na.rm = TRUE)) %>%
+  pivot_wider(names_from = phase, values_from = score) %>%
+  rename_with(~ifelse(grepl("^\\d+$", .), paste0("phase", .), .), -c(Clinic, Date))
+```
+
+
+<!--
+Summarize POE data from individual criteria into categories and even wider themes
+-->
+
+```{r categories, echo=FALSE, output=FALSE}
+
+df.grouped.long <- df %>%
+  pivot_longer(
+    cols = -c(Clinic, Date), 
+    names_to = "variable", 
+    values_to = "value"
+  ) %>%
+  merge(POE, by = "variable") %>%
+  group_by(Clinic, Date, category) %>%
+  summarise(Value = mean(value, na.rm = TRUE), .groups = "drop")
+  
+df.grouped <- df.grouped.long %>% 
+  pivot_wider(
+    names_from = category, 
+    values_from = Value
+  )
+
+##  THEMES DF
+df.themes.long <- df %>%
+  pivot_longer(
+    cols = -c(Clinic, Date), 
+    names_to = "variable", 
+    values_to = "value"
+  ) %>%
+  merge(POE, by = "variable") %>%
+  group_by(Clinic, Date, theme) %>%
+  summarise(Value = mean(value, na.rm = TRUE), .groups = "drop")
+  
+df.themes <- df.themes.long %>% 
+  pivot_wider(
+    names_from = theme, 
+    values_from = Value
+  )
+
+```
+
+
+<!--
+Snapshot of only the most recent data to see current fulfillment
+-->
+
+```{r snapshot, echo=FALSE, output=FALSE}
+##  DETAILED RECENT SNAPSHOT
+df.recent <- df %>%
+  group_by(Clinic) %>%
+  slice(which.max(Date)) %>%
+  select(-c("Date")) %>%
+  list(clinic_map) %>% 
+  reduce(left_join, by = "Clinic") %>%
+  relocate(any_of(c("ID", "Manager")), .after = Clinic)
+
+
+##  GROUPED RECENT SNAPSHOT
+df.recent.grouped <- df.grouped %>%
+  group_by(Clinic) %>%
+  slice(which.max(Date)) %>%
+  select(-c("Date")) %>%
+  list(clinic_map) %>% 
+  reduce(left_join, by = "Clinic") %>%
+  relocate(any_of(c("ID", "Manager")), .after = Clinic)
+
+##  THEMED RECENT SNAPSHOT
+df.recent.themes <- df.themes %>%
+  group_by(Clinic) %>%
+  slice(which.max(Date)) %>%
+  select(-c("Date")) %>%
+  list(clinic_map) %>% 
+  reduce(left_join, by = "Clinic") %>%
+  relocate(any_of(c("ID", "Manager")), .after = Clinic)
+
+### long form of themes for radar charts later
+df.recent.themes.long <- df.recent.themes %>%
+  pivot_longer(cols = starts_with(c("Hospitality", "Communication", "Layout", "Efficiency", "Safety")),
+               names_to = "Theme",
+               values_to = "Value")
+
+```
+
+
+<!--
+AGENCY-WIDE PREPROCESSING STOPS HERE -- BELOW ARE GENERATIONS
+-->
+
+
+<!--
+Generate dynamic text that: 
+ - separates into themes
+ - determines strengths based on 'threshold'
+ - determines fails based on 'fail'
+ PRODUCT: "phase_text"
+-->
+
+```{r phasetext, echo=FALSE, output=FALSE}
+df.phase.clinic <- df.phase %>%
+  # ungroup() %>%
+  # mutate_if(is.numeric, ~./(ncol(.) - 2)) %>%
+  filter(Clinic == clinic_name)
+
+phase_eval <- df.phase.clinic %>%
+  filter(Date == max(df.phase.clinic$Date)) %>%
+  ungroup() %>% select(-c(Clinic, Date)) %>% 
+  gather(key = "phase", value = "metric") %>%
+  mutate(phase = gsub("(phase)(\\d+)", "Phase \\2", phase),
+         evaluation = if_else(metric > threshold,
+                              "fulfilled",
+                              "not_fulfilled"))
+
+# create grouped phase strings
+phase_eval.strong <- paste(phase_eval %>% filter(evaluation == "fulfilled") %>% pull(phase), collapse = ", ")
+phase_eval.weak <- paste(phase_eval %>% filter(evaluation == "not_fulfilled") %>% pull(phase), collapse = ", ")
+
+# Use your oxford_comma function to make it look better
+phase_eval.strong <- oxford_comma(strsplit(phase_eval.strong, ", ")[[1]])
+phase_eval.weak <- oxford_comma(strsplit(phase_eval.weak, ", ")[[1]])
+
+phase_text <- paste(if (nchar(phase_eval.strong) > 0) 
+                             paste0("Nice job getting ", phase_eval.strong, " fulfillment above ", sprintf("%.f%%", threshold*100), "!"),
+                           if (nchar(phase_eval.weak) > 0) 
+                             paste0("Work on getting ", phase_eval.weak, " targets up."))
+```
+
+
+<!--
+Generate dynamic text that:
+ - counts how many POE fails there are by phase
+ - if there are 5 or fewer, lists them all
+ - if there are more than 5, picks 5 at random to serve as monthly targets
+ PRODUCT: "improvement_text"
+-->
+
+```{r improvement_targets, echo=FALSE, output=FALSE}
+df.recent.long <- df.recent %>%
+  pivot_longer(cols = -c(1:2,length(.)),
+               names_to = "variable",
+               values_to = "Value") %>%
+  merge(POE, by = "variable") %>%
+  select(Clinic, Value, improvement_phrase, phase)
+
+df.clinic_fails <- df.recent.long %>%
+  filter(Clinic == clinic_name, Value < fail)
+
+fail_count <- df.clinic_fails %>%
+  count(phase) %>%
+  mutate(name = paste0("Phase ", phase),
+         color = palette[paste0("phase", phase)],
+         message = paste(n, "items in", map2(name, color, bold_color))) %>%
+  pull(message)
+
+fail_count_string <- paste(fail_count, collapse = ", ")
+
+if(length(fail_count) > 1) {
+  fail_count_string <- stringr::str_replace(fail_count_string, "\\,(?=[^,]*$)", " and")
+}
+
+improves <- df.clinic_fails %>% 
+  { if(nrow(.) > 5) 
+      slice_sample(., n = 5)
+    else 
+      .
+  } %>% pull(improvement_phrase)
+
+improvement_text <- glue(
+  "{clinic_name} has {knitr::asis_output(fail_count_string)} that need improvement. 
+  
+  Here are some goals to focus on:
+  
+   - {improves[1]}
+   - {improves[2]}
+   - {improves[3]}
+   - {improves[4]}
+   - {improves[5]}
+  "
+)
+
+```
+
+
+<!--
+Generate dynamic text that:
+ - summarizes recent performance by theme
+ - separates strengths and fails
+ PRODUCT: "performance_text"
+-->
+
+```{r themes, echo=FALSE, output=FALSE}
+df.recent.themes.long.filtered <- df.recent.themes.long %>% filter(Clinic == clinic_name)
+
+performance_text <- paste(
+  if_else(length(strong_themes <- df.recent.themes.long.filtered %>% filter(Value > threshold) %>% pull(Theme) %>% tolower()) > 0,
+    paste0(clinic_name, " is strong in ", oxford_comma(strong_themes), "."),
+    ""),
+  if_else(length(weak_themes <- df.recent.themes.long.filtered %>% filter(Value < fail) %>% pull(Theme) %>% tolower()) > 0,
+    paste0("Focus on improving clinic ", oxford_comma(weak_themes), "."),
+    "There aren't any particularly weak areas—keep up the good work!")
+)
+
+```
+
+<!--
+Generate dynamic text that:
+ - calculates vacancies by role
+ - suggests staff hirings
+ PRODUCT: "vacancy_text"
+-->
+
+```{r vacancies, echo=FALSE, output=FALSE}
+summarize_role <- function(df, clinic_name, role) {
+  df %>%
+    filter(Location == clinic_name, Role == role) %>%
+    summarize(
+      Vacancies = sum(Vacant == "TRUE", na.rm = TRUE),
+      Temps = sum(`In training` == "TRUE" | `Temp` == "TRUE" | `Part-time` == "TRUE" | `On leave` == "TRUE", na.rm = TRUE),
+      `WCS trainees` = sum(`WCS trainee` == "TRUE", na.rm = TRUE),
+      Active = n() - Vacancies - Temps - `WCS trainees`,
+      Role = role
+    )
+}
+
+roles <- c("clerk", "certifier", "supervisor")
+count_df <- purrr::map_dfr(roles, summarize_role, df = staff, clinic_name = clinic_name)
+
+create_vacancy_sentence <- function(df) {
+  if (!any(df$Vacancies > 0)) {
+    return("There are no vacancies right now. Nice job!")
+  }
+  
+  vacancy_df <- df %>%
+    filter(Vacancies > 0) %>%
+    mutate(
+      RolePlural = ifelse(Vacancies > 1, paste0(Role, "s"), Role),
+      RoleSentence = paste(Vacancies, RolePlural, "and")
+    ) %>%
+    summarise(vacancy_sentence = stringr::str_c(RoleSentence, collapse = " ")) %>%
+    mutate(vacancy_sentence = stringr::str_remove(vacancy_sentence, " and$"))
+    
+  vacancy_sentence <- stringr::str_glue("Consider hiring {vacancy_df$vacancy_sentence} to meet staffing needs.")
+  
+  return(vacancy_sentence)
+}
+
+vacancy_text <- create_vacancy_sentence(count_df)
+```
+
+<!--
+Generate radar chart that:
+ - compares POE themes by fulfillment
+ PRODUCT: "POEradar"
+-->
+
+```{r POEradar, echo=FALSE, output=FALSE}
+POEradar <- plot_ly(df.recent.themes.long.filtered, 
+                    r = ~Value, 
+                    theta = ~Theme, 
+                    type = 'scatterpolar', 
+                    mode = "markers", 
+                    fill = 'toself', 
+                    hoverinfo = "none") %>%
+  layout(
+    title = "",
+    polar = list(
+      radialaxis = list(
+        visible = F,
+        range = c(0,1)
+      )
+    ),
+    showlegend = F
+  )
+```
+
+
+<!--
+Generate area-under-the-line chart that:
+ - shows POE fulfillment by phase over time
+ PRODUCT: "POEarea"
+-->
+
+```{r POEarea, echo=FALSE, output=FALSE}
+POEarea <- plot_ly(df.phase.clinic, 
+                hoverinfo = "none",
+                x = ~Date, 
+                y = ~phase1, 
+                name = "Phase 1", 
+                type = 'scatter', 
+                mode = 'none',
+                fill = 'tozeroy',
+                fillcolor = palette_a['phase1']) %>%
+  add_trace(y = ~phase2, 
+            name = "Phase 2", 
+            fill = 'tozeroy',
+            fillcolor = palette_a['phase2']) %>%
+  layout(title = "",
+         xaxis = list(title = "Date"),
+         yaxis = list(title = "Fulfillment",
+                      tickformat = "0%",
+                      range = c(0, 1))) %>%
+  add_segments(
+    x = min(df.phase.clinic$Date),
+    xend = max(df.phase.clinic$Date),
+    y = 0.9,
+    yend = 0.9,
+    line = list(dash = "dash"),
+    inherit = FALSE,
+    showlegend = FALSE
+  )
+```
+
+
+```{r barchart, echo=FALSE, output=FALSE}
+staff_barchart <- plot_ly(count_df, x = ~Role, y = ~Active, name = "Active", marker=list(color="rgba(1,163,104,0.9)"), type = 'bar', hoverinfo = "none") %>%
+  # add_trace(y = ~`WCS trainees`, name = "WCS trainee", marker=list(color="#FF69B4")) %>%
+  add_trace(y = ~Temps, name = "Temporary/inactive", marker=list(color="rgba(92,147,116,0.6)")) %>%
+  add_trace(y = ~Vacancies, name = "Vacant", marker=list(color="rgba((128,128,128,0.3))")) %>%
+  layout(xaxis = list(title = clinic_name,
+                      categoryorder = "array",
+                      categoryarray = c("clerk", "certifier", "supervisor")),
+         yaxis = list(title = 'Count',
+                      gridwidth = 2), 
+         barmode = 'stack')
+
+```
+
+<!--
+DASHBOARD LAYOUT TEMPLATE STARTS HERE
+-->
+
+# `r clinic_name`
+
+## Points of Excellence
+
+#### `r improvement_text`
+
+#### `r performance_text`
+
+`r POEradar`
+
+#### `r phase_text`
+
+`r POEarea`
+
+## Staffing
+
+#### `r vacancy_text`
+
+`r staff_barchart`
