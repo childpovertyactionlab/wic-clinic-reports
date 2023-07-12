@@ -3,6 +3,7 @@ title: "Clinic dashboard: `r params$clinic_name`"
 title-block-banner: TRUE
 fig-width: 7
 fig-height: 5
+fig-dpi: 300
 warning: FALSE
 error: TRUE
 echo: FALSE
@@ -33,11 +34,11 @@ This template for clinic dashboards is in the following order:
 ```{r setup, echo=FALSE, output=FALSE}
 clinic_name = params$clinic_name
 
-files <- list.files(path = "C:/Users/twcro/Documents/CPAL/_WICdashboardClinic/data/scriptData/", pattern = "\\.RData$")
+files <- list.files(path = "C:/Users/twcro/Documents/GitHub/_WICdashboardClinic/data/scriptData/", pattern = "\\.RData$")
 
 # load each file
 for (file in files) {
-  load(paste0("C:/Users/twcro/Documents/CPAL/_WICdashboardClinic/data/scriptData/", file))
+  load(paste0("C:/Users/twcro/Documents/GitHub/_WICdashboardClinic/data/scriptData/", file))
 }
 
 library(tidyverse)
@@ -50,6 +51,13 @@ library(stringr)
 library(waffle)
 library(forecast)
 library(tsibble)
+library(cpaltemplates)
+
+## make sure poppins is installed locally
+poppins_import()
+
+set_cpal_defaults()
+
 
 # palette for visualizations
 palette_a <- c(
@@ -524,10 +532,9 @@ CSAT.clinic.predict <- CSAT.predict %>%
   mutate(pred = TRUE)
   
 CSAT.charting <- CSAT.clinic.recent %>%
+  mutate(Date = as.Date(Date)) %>%
   arrange(Date) %>%
   bind_rows(CSAT.clinic.predict)
-CSAT.charting <- CSAT.charting %>% mutate(pred.fill = ifelse(pred, NA, "black"))
-
 
 
 
@@ -628,38 +635,27 @@ DASHBOARD LAYOUT TEMPLATE STARTS HERE
 
 ```{r qualchartprint, include=TRUE}
 ggplot(CSAT.charting, aes(x = Date)) +
-  geom_line(aes(y = LA_avg), linetype = "dotted", color = "black", linewidth = 1.25) +
-  geom_segment(data = subset(CSAT.charting, pred == TRUE),
-               aes(xend = lead(Date), y = LA_avg, yend = lead(LA_avg)), 
-               linetype = "dotted", color = "black", linewidth = 1.25) +
-  geom_line(aes(y = Average), color = "blue", linewidth = 1.25) +
+  geom_smooth(aes(y = LA_avg), linetype = "dashed", color = "#2f2f2f", linewidth = 1.1) +
+  geom_smooth(aes(y = Average), linewidth = 1.1, color = "#008097") +
   geom_segment(aes(xend = Date, 
                    y = Average + delta,
                    yend = Average,
-                   color = delta > 0),
-               size = 1.5,
+                   color = delta),
+               size = 0.5,
                linetype = "dotted",
-               show.legend = FALSE) +
-  geom_segment(aes(xend = Date, 
-                 y = Average + delta,
-                 yend = Average,
-                 color = delta > 0),
-             size = 1.5,
-             linetype = "dotted",
+               show.legend = FALSE,) +
+  geom_point(aes(x = Date, 
+                 y = Average + delta),
+             size = 5,
+             color = "#ffffff",
              show.legend = FALSE) +
   geom_point(aes(x = Date, 
                  y = Average + delta,
-                 color = delta > 0),
+                 color = delta),
              size = 4,
              show.legend = FALSE) +
-  scale_color_manual(values = c("red", "green")) +
   ylim(6, 7) +
-  theme_minimal() +
-  theme(plot.background = element_rect(fill = "transparent", colour = NA),
-        panel.grid.major = element_blank(), 
-        panel.grid.minor = element_blank(), 
-        panel.background = element_rect(fill = "transparent", colour = NA)) +
   labs(x = "Month", y = "CSAT Score", color = "CSAT above/below average") +
-  scale_x_date(date_breaks = '1 month', date_labels = '%b')
+  scale_color_gradientn(colors = cpaltemplates::palette_cpal_diverging)
 
 ```

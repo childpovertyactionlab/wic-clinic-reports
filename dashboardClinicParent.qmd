@@ -106,7 +106,7 @@ Importing data
 current_year = as.integer(format(Sys.Date(), "%Y"))
 current_month = as.integer(format(Sys.Date(), "%m"))
 
-directory = "C:/Users/twcro/Documents/CPAL/_WICdashboardClinic/data/staffData"
+directory = "C:/Users/twcro/Documents/GitHub/_WICdashboardClinic/data/staffData"
 
 generate_file_path <- function(year, month) {
   file.path(directory, sprintf("WIC_assignmentSheet_%d_%02d.xlsm", year, month))
@@ -397,7 +397,7 @@ RENDER FROM TEMPLATE
 
 saves <- c("clinic_map", "staff.clinics", "df", "POE", "staff", "CSAT", "CSAT.predict")
 for (var in saves) {
-  save(list = var, file = paste0("C:/Users/twcro/Documents/CPAL/_WICdashboardClinic/data/scriptData/", var, ".RData"))
+  save(list = var, file = paste0("C:/Users/twcro/Documents/GitHub/_WICdashboardClinic/data/scriptData/", var, ".RData"))
 }
 
 navbar_links <- ""
