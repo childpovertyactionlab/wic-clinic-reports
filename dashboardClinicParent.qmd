@@ -169,8 +169,6 @@ CSAT <- read_sheet(
 py$importedCSAT <- r_to_py(CSAT)
 
 ##  IMPORT POE DATA FROM GOOGLE SHEETS  ########################################
-
-## GROUPED DF BASED ON JEFF'S CATEGORIES
 POE <- read_sheet(
   "https://docs.google.com/spreadsheets/d/1pCkVgjP4VLtNDwIHYbCm7wcYOtFqaAZu2znO-N7eXK8/",
   range = "POE Criteria")
@@ -186,8 +184,7 @@ phase1.clinics <- read_sheet(ss=phase1, range = "CPAL POE") %>%
   rename_at("Submitted At",~"Date") %>%
   mutate(Clinic = str_replace_all(Clinic, 
                                   c("Northwesy" = "Northwest",
-                                    "Hwy" = "Highway",
-                                    "Buckner" = "John West/Buckner"))) %>%
+                                    "Hwy" = "Highway"))) %>%
   select(c(1,2,4,7,9,11,13,16,18,20,22,24,27,29,31,33,35,37,39,43,45)) %>%
   mutate(Date = as.Date(Date, format = "%Y-%m-%d"),
          across(2:20, ~ ifelse(. == "YES", 1, 0)))
@@ -200,7 +197,7 @@ phase2.clinics <- read_sheet(ss = phase2, range = "Clinic Evaluations") %>%
   mutate(Clinic = str_replace_all(Clinic, 
                                   c("Northwesy" = "Northwest",
                                     "Hwy" = "Highway",
-                                    "John West/Buckner" = "Buckner"))) %>%
+                                    "Buckner" = "John West/Buckner"))) %>%
   select(c(2,3,4,5,6,7,8,9)) %>%
   mutate(Date = as.Date(Date, format = "%Y-%m-%d"))
 
@@ -400,6 +397,21 @@ for (var in saves) {
   save(list = var, file = paste0("C:/Users/twcro/Documents/GitHub/_WICdashboardClinic/data/scriptData/", var, ".RData"))
 }
 
+quarto::quarto_render(
+    input = "dashboardClinics.qmd",
+    output_file = "clinics.html",
+    )
+
+for (goal_category in c("theme", "phase")) {
+  output_name <- gsub("\\W", "_", goal_category)
+  
+  quarto::quarto_render(
+    input = "dashboardGoals.qmd",
+    output_file = paste0(output_name, "s.html"),
+    execute_params = list(goal_category = goal_category)
+  )
+}
+
 navbar_links <- ""
 
 
@@ -426,5 +438,9 @@ for(clinic_name in clinic_map$Clinic){
 #     execute_params = list(manager_name = manager_name)
 #   )
 # }
+
+
+# to-do list
+# - page explaining themes and phases
 
 ```

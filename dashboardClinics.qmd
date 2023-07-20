@@ -1,0 +1,202 @@
+---
+title: "WIC Clinic Dashboard"
+title-block-banner: TRUE
+fig-width: 7
+fig-height: 5
+fig-dpi: 300
+warning: FALSE
+error: TRUE
+echo: FALSE
+message: FALSE
+params:
+  goal_category: "theme"
+format: 
+  html:
+    toc: false
+editor: source
+---
+
+```{=html}
+<!--
+
+## DASHBOARD TEMPLATE ##
+
+This template for clinic dashboards is in the following order:
+ 1. Dynamic text generations
+ 2. Visualization generations
+ 3. Layout of dashboard using variables from generations
+ 
+-->
+```
+```{r setup, echo=FALSE, output=FALSE}
+goal_category = params$goal_category
+
+
+files <- list.files(path = "C:/Users/twcro/Documents/GitHub/_WICdashboardClinic/data/scriptData/", pattern = "\\.RData$")
+
+# load each file
+for (file in files) {
+  load(paste0("C:/Users/twcro/Documents/GitHub/_WICdashboardClinic/data/scriptData/", file))
+}
+
+library(tidyverse)
+library(googlesheets4)
+library(tsutils)
+library(plotly)
+library(readxl)
+library(glue)
+library(stringr)
+library(waffle)
+library(forecast)
+library(tsibble)
+library(cpaltemplates)
+library(flexdashboard)
+library(shiny)
+library(DT)
+library(crosstalk)
+
+## make sure poppins is installed locally
+poppins_import()
+
+set_cpal_defaults()
+
+bold_color <- function(text, color) {
+  paste0("<b style='color:", color, "'>", text, "</b>")
+}
+
+
+manager_groups <- clinic_map %>%
+  group_by(Manager) %>%
+  summarise(Clinics = list(Clinic))
+```
+
+# Clinics
+
+```{=html}
+<!--
+Print clinics under headers
+-->
+```
+```{r clinic1, echo=FALSE, output=TRUE, results='asis'}
+#| column: screen-inset-shaded
+#| layout-nrow: !expr nrow(manager_groups) %/% 3
+
+# for (i in 1:nrow(manager_groups)) {
+#   current_manager <- manager_groups$Manager[i]
+#   current_clinics <- manager_groups$Clinics[[i]]
+# 
+#   df <- data.frame(Clinics = current_clinics)
+# 
+#   print(knitr::kable(df, col.names = NULL, caption = current_manager))
+#   cat('\n\n<!-- -->\n\n')
+# }
+
+  #   - text: "Ana's clinics"
+          #     menu:
+          #       - href: Ana_clinics.html
+          #         text: "**Ana's clinics**"
+          #       - href: Abrams_Road.html
+          #         text: "Abrams Road"
+          #       - href: John_West_Buckner.html
+          #         text: "John West/Buckner"
+          #       - href: West_Garland.html
+          #         text: "West Garland"
+          #   - text: "Chandra's clinics"
+          #     menu:
+          #       - href: Chandra_clinics.html
+          #         text: "**Chandra's clinics**"
+          #       - href: Duncanville.html
+          #         text: "Duncanville"
+          #       - href: Ledbetter.html
+          #         text: "Ledbetter"
+          #       - href: Westmoreland.html
+          #         text: "Westmoreland"
+          #   - text: "Dani's clinics"
+          #     menu:
+          #       - href: Dani_clinics.html
+          #         text: "**Dani's clinics**"
+          #       - href: Grand_Prairie.html
+          #         text: "Grand Prairie"
+          #       - href: Irving.html
+          #         text: "Irving"
+          #       - href: Medical_District.html
+          #         text: "Medical District (LC)"
+          #       - href: Northwest_Highway.html
+          #         text: "Northwest Highway"
+          #   - text: "Heather's clinics"
+          #     menu:
+          #       - href: Heather_clinics.html
+          #         text: "**Heather's clinics**"
+          #       - href: Fruitdale.html
+          #         text: "Fruitdale"
+          #       - href: Highland_Hills.html
+          #         text: "Highland Hills"
+          #       - href: Lake_June.html
+          #         text: "Lake June"
+          #       - href: MLK_Center.html
+          #         text: "MLK Center"
+          #   - text: "Na'Cole's clinics"
+          #     menu:
+          #       - href: Na'Cole_clinics.html
+          #         text: "**Na'Cole's clinics**"
+          #       - href: East_Garland.html
+          #         text: "East Garland"
+          #       - href: North_Dallas.html
+          #         text: "North Dallas"
+```
+
+::: columns
+::: {.column width="33%"}
+## [Ana](Ana_clinics.html)
+
+[Abrams Road](Abrams_Road.html)
+
+[John West/Buckner](John_West_Buckner.html)
+
+[West Garland](West_Garland.html)
+:::
+
+::: {.column width="33%"}
+## [Chandra](Chandra_clinics.html)
+
+[Duncanville](Duncanville.html)
+
+[Ledbetter](Ledbetter.html)
+
+[Westmoreland](Westmoreland.html)
+:::
+
+::: {.column width="33%"}
+## [Dani](Dani_clinics.html)
+
+[Grand Prairie](Grand_Prairie.html)
+
+[Irving](Irving.html)
+
+[Medical District (LC)](Medical_District.html)
+
+[Northwest Highway](Northwest_Highway.html)
+:::
+:::
+
+::: columns
+::: {.column width="33%"}
+## [Heather](Heather_clinics.html)
+
+[Fruitdale](Fruitdale.html)
+
+[Highland Hills](Highland_Hills.html)
+
+[Lake June](Lake_June.html)
+
+[MLK Center](MLK_Center.html)
+:::
+
+::: {.column width="33%"}
+## [Na'Cole](Na'Cole_clinics.html)
+
+[East Garland](.html)
+
+[North Dallas (Spring Valley)](North_Dallas.html)
+:::
+:::

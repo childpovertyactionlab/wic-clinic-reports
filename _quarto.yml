@@ -1,16 +1,20 @@
 project:
   type: website
   output-dir: "docs"
-  title: "WIC clinic dashboards"
+  title: ""
 format:
   html:
     theme: www/web_report.scss
     toc: true
-    toc-depth: 4
+    toc-depth: 2
     anchor-sections: false
 website:
   favicon: www/images/CPAL_favicon.ico
   description: Description of this web report.
+  search:
+    location: navbar
+    type: textbox
+    limit: 4
 #  site-url:
 #  repo-url:
 #  google-analytics:
@@ -23,9 +27,66 @@ website:
         - icon: house-door-fill
           text: "Home"
           href: web_report.html
+        - icon: bi-building-fill
+          text: "Clinics"
+          href: clinics.html
+          # menu:
+          #   - text: "Ana's clinics"
+          #     menu:
+          #       - href: Ana_clinics.html
+          #         text: "**Ana's clinics**"
+          #       - href: Abrams_Road.html
+          #         text: "Abrams Road"
+          #       - href: John_West_Buckner.html
+          #         text: "John West/Buckner"
+          #       - href: West_Garland.html
+          #         text: "West Garland"
+          #   - text: "Chandra's clinics"
+          #     menu:
+          #       - href: Chandra_clinics.html
+          #         text: "**Chandra's clinics**"
+          #       - href: Duncanville.html
+          #         text: "Duncanville"
+          #       - href: Ledbetter.html
+          #         text: "Ledbetter"
+          #       - href: Westmoreland.html
+          #         text: "Westmoreland"
+          #   - text: "Dani's clinics"
+          #     menu:
+          #       - href: Dani_clinics.html
+          #         text: "**Dani's clinics**"
+          #       - href: Grand_Prairie.html
+          #         text: "Grand Prairie"
+          #       - href: Irving.html
+          #         text: "Irving"
+          #       - href: Medical_District.html
+          #         text: "Medical District (LC)"
+          #       - href: Northwest_Highway.html
+          #         text: "Northwest Highway"
+          #   - text: "Heather's clinics"
+          #     menu:
+          #       - href: Heather_clinics.html
+          #         text: "**Heather's clinics**"
+          #       - href: Fruitdale.html
+          #         text: "Fruitdale"
+          #       - href: Highland_Hills.html
+          #         text: "Highland Hills"
+          #       - href: Lake_June.html
+          #         text: "Lake June"
+          #       - href: MLK_Center.html
+          #         text: "MLK Center"
+          #   - text: "Na'Cole's clinics"
+          #     menu:
+          #       - href: Na'Cole_clinics.html
+          #         text: "**Na'Cole's clinics**"
+          #       - href: East_Garland.html
+          #         text: "East Garland"
+          #       - href: North_Dallas.html
+          #         text: "North Dallas"
         - icon: github
           text: "Github"
           href: "https://github.com/childpovertyactionlab/"
+
   page-footer:
     center: ©2023 <b>[The Child Poverty Action Lab](https://childpovertyactionlab.org/).</b>
     background: "#008097"

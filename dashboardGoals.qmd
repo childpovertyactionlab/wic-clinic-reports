@@ -1,0 +1,85 @@
+---
+title: "WIC Clinic Dashboard"
+title-block-banner: TRUE
+fig-width: 7
+fig-height: 5
+fig-dpi: 300
+warning: FALSE
+error: TRUE
+echo: FALSE
+message: FALSE
+params:
+  goal_category: "theme"
+format: 
+  html:
+    toc: false
+editor: source
+---
+
+
+<!--
+
+## DASHBOARD TEMPLATE ##
+
+This template for clinic dashboards is in the following order:
+ 1. Dynamic text generations
+ 2. Visualization generations
+ 3. Layout of dashboard using variables from generations
+ 
+-->
+
+```{r setup, echo=FALSE, output=FALSE}
+goal_category = params$goal_category
+
+
+files <- list.files(path = "C:/Users/twcro/Documents/GitHub/_WICdashboardClinic/data/scriptData/", pattern = "\\.RData$")
+
+# load each file
+for (file in files) {
+  load(paste0("C:/Users/twcro/Documents/GitHub/_WICdashboardClinic/data/scriptData/", file))
+}
+
+library(tidyverse)
+library(googlesheets4)
+library(tsutils)
+library(plotly)
+library(readxl)
+library(glue)
+library(stringr)
+library(waffle)
+library(forecast)
+library(tsibble)
+library(cpaltemplates)
+library(flexdashboard)
+library(shiny)
+library(DT)
+library(crosstalk)
+
+## make sure poppins is installed locally
+poppins_import()
+
+set_cpal_defaults()
+
+bold_color <- function(text, color) {
+  paste0("<b style='color:", color, "'>", text, "</b>")
+}
+```
+
+# Clinic themes
+
+<!--
+Print theme phrases
+-->
+
+```{r group, echo=FALSE, output=TRUE}
+grouped_POE <- POE %>% 
+  group_by(!!sym(goal_category)) %>% 
+  summarise(refined_phrases = list(refined_phrase))
+
+for (i in 1:nrow(grouped_POE)) {
+  print(knitr::asis_output(paste0("## ", grouped_POE[[1]][i])))
+  cat('\n\n<!-- -->\n\n')
+  print(knitr::asis_output(paste(grouped_POE$refined_phrases[[i]], collapse = "\n")))
+  cat('\n\n<!-- -->\n\n')
+}
+```

@@ -112,7 +112,7 @@ Importing data
 current_year = as.integer(format(Sys.Date(), "%Y"))
 current_month = as.integer(format(Sys.Date(), "%m"))
 
-directory = "C:/Users/twcro/Documents/CPAL/_WICdashboardClinic/data/staffData"
+directory = "C:/Users/twcro/Documents/GitHub/_WICdashboardClinic/data/staffData"
 
 generate_file_path <- function(year, month) {
   file.path(directory, sprintf("WIC_assignmentSheet_%d_%02d.xlsm", year, month))
@@ -175,8 +175,6 @@ CSAT <- read_sheet(
 py$importedCSAT <- r_to_py(CSAT)
 
 ##  IMPORT POE DATA FROM GOOGLE SHEETS  ########################################
-
-## GROUPED DF BASED ON JEFF'S CATEGORIES
 POE <- read_sheet(
   "https://docs.google.com/spreadsheets/d/1pCkVgjP4VLtNDwIHYbCm7wcYOtFqaAZu2znO-N7eXK8/",
   range = "POE Criteria")
@@ -192,8 +190,7 @@ phase1.clinics <- read_sheet(ss=phase1, range = "CPAL POE") %>%
   rename_at("Submitted At",~"Date") %>%
   mutate(Clinic = str_replace_all(Clinic, 
                                   c("Northwesy" = "Northwest",
-                                    "Hwy" = "Highway",
-                                    "Buckner" = "John West/Buckner"))) %>%
+                                    "Hwy" = "Highway"))) %>%
   select(c(1,2,4,7,9,11,13,16,18,20,22,24,27,29,31,33,35,37,39,43,45)) %>%
   mutate(Date = as.Date(Date, format = "%Y-%m-%d"),
          across(2:20, ~ ifelse(. == "YES", 1, 0)))
@@ -206,7 +203,7 @@ phase2.clinics <- read_sheet(ss = phase2, range = "Clinic Evaluations") %>%
   mutate(Clinic = str_replace_all(Clinic, 
                                   c("Northwesy" = "Northwest",
                                     "Hwy" = "Highway",
-                                    "John West/Buckner" = "Buckner"))) %>%
+                                    "Buckner" = "John West/Buckner"))) %>%
   select(c(2,3,4,5,6,7,8,9)) %>%
   mutate(Date = as.Date(Date, format = "%Y-%m-%d"))
 
@@ -413,7 +410,17 @@ RENDER FROM TEMPLATE
 
 saves <- c("clinic_map", "staff.clinics", "df", "POE", "staff", "CSAT", "CSAT.predict")
 for (var in saves) {
-  save(list = var, file = paste0("C:/Users/twcro/Documents/CPAL/_WICdashboardClinic/data/scriptData/", var, ".RData"))
+  save(list = var, file = paste0("C:/Users/twcro/Documents/GitHub/_WICdashboardClinic/data/scriptData/", var, ".RData"))
+}
+
+for (goal_category in c("theme", "phase")) {
+  output_name <- gsub("\\W", "_", goal_category)
+  
+  quarto::quarto_render(
+    input = "dashboardGoals.qmd",
+    output_file = paste0(output_name, "s.html"),
+    execute_params = list(goal_category = goal_category)
+  )
 }
 
 navbar_links <- ""
@@ -431,17 +438,21 @@ for(clinic_name in clinic_map$Clinic){
   )
 }
 
-for(manager_name in unique(clinic_map$Manager)){
-  output_name <- gsub("\\W", "_manager", manager_name)  # replace any non-alphanumeric characters with underscore
-  navbar_links <- paste0(navbar_links,
-                         "    - text: \"", clinic_name,
-                         "\"\n      href: ", output_name, ".html\n")
-  quarto::quarto_render(
-    input = "dashboardManagerTemplate.qmd",
-    output_file = paste0(output_name, ".html"),
-    execute_params = list(manager_name = manager_name)
-  )
-}
+# for(manager_name in unique(clinic_map$Manager)){
+#   output_name <- gsub("\\W", "_manager", manager_name)  # replace any non-alphanumeric characters with underscore
+#   navbar_links <- paste0(navbar_links,
+#                          "    - text: \"", clinic_name,
+#                          "\"\n      href: ", output_name, ".html\n")
+#   quarto::quarto_render(
+#     input = "dashboardManagerTemplate.qmd",
+#     output_file = paste0(output_name, ".html"),
+#     execute_params = list(manager_name = manager_name)
+#   )
+# }
+
+
+# to-do list
+# - page explaining themes and phases
 
 ```
 

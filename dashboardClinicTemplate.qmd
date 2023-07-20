@@ -1,5 +1,5 @@
 ---
-title: "Clinic dashboard: `r params$clinic_name`"
+title: "WIC Clinic Dashboard"
 title-block-banner: TRUE
 fig-width: 7
 fig-height: 5
@@ -10,15 +10,15 @@ echo: FALSE
 message: FALSE
 params:
   clinic_name: "Abrams Road"
-date: last-modified
-published-title: "Last updated"
-date-format: MMMM D, YYYY h:mm A z	
 format: 
   html:
     toc: true
+    toc-title: On this page
+    toc-location: left
+    toc-depth: 3
+    toc-expand: 2
 editor: source
 ---
-
 
 <!--
 
@@ -122,7 +122,6 @@ df.phase <- df %>%
   rename_with(~ifelse(grepl("^\\d+$", .), paste0("phase", .), .), -c(Clinic, Date))
 ```
 
-
 <!--
 Summarize POE data from individual criteria into categories and even wider themes
 -->
@@ -163,7 +162,6 @@ df.themes <- df.themes.long %>%
   )
 
 ```
-
 
 <!--
 Snapshot of only the most recent data to see current fulfillment
@@ -206,11 +204,9 @@ df.recent.themes.long <- df.recent.themes %>%
 
 ```
 
-
 <!--
 AGENCY-WIDE PREPROCESSING STOPS HERE -- BELOW ARE GENERATIONS
 -->
-
 
 <!--
 Generate dynamic text that: 
@@ -249,7 +245,6 @@ phase_text <- paste(if (nchar(phase_eval.strong) > 0)
                              paste0("Work on getting ", phase_eval.weak, " targets up."))
 ```
 
-
 <!--
 Generate dynamic text that:
  - counts how many POE fails there are by phase
@@ -272,8 +267,8 @@ df.clinic_fails <- df.recent.long %>%
 fail_count <- df.clinic_fails %>%
   count(phase) %>%
   mutate(name = paste0("Phase ", phase),
-         color = palette[paste0("phase", phase)],
-         message = paste(n, "items in", map2(name, color, bold_color))) %>%
+         color = palette_cpal_main[paste0("phase", phase)],
+         message = glue_col("{n} items in <b style='color:{color}'>{name}</b>")) %>%
   pull(message)
 
 fail_count_string <- paste(fail_count, collapse = ", ")
@@ -289,7 +284,7 @@ improves <- df.clinic_fails %>%
       .
   } %>% pull(improvement_phrase)
 
-improvement_text <- glue(
+improvement_text <- knitr::asis_output(glue(
   "{clinic_name} has {knitr::asis_output(fail_count_string)} that need improvement. 
   
   Here are some goals to focus on:
@@ -300,10 +295,9 @@ improvement_text <- glue(
    - {improves[4]}
    - {improves[5]}
   "
-)
+))
 
 ```
-
 
 <!--
 Generate dynamic text that:
@@ -374,10 +368,10 @@ vacancy_text <- create_vacancy_sentence(count_df)
 <!--
 Generate dynamic text that:
  - qualtrics
- PRODUCT: "qualtext"
+ PRODUCT: "CSATtext"
 -->
 
-```{r qualtext, echo=FALSE, output=FALSE}
+```{r CSATtext, echo=FALSE, output=FALSE}
 # CSAT.filtered <- CSAT %>%
 #   filter(Clinic == clinic_name, !is.na(CSAT), !is.na(`CSAT (n)`)) %>%
 #   mutate(YearMonth = format(Date, "%Y-%m")) %>%
@@ -385,7 +379,7 @@ Generate dynamic text that:
 #   arrange(desc(YearMonth)) %>%
 #   slice_head(n = 2)
 
-qualtext <- ""
+CSATtext <- ""
 
 ```
 
@@ -402,19 +396,31 @@ POEradar <- plot_ly(df.recent.themes.long.filtered,
                     type = 'scatterpolar', 
                     mode = "markers", 
                     fill = 'toself', 
-                    hoverinfo = "none") %>%
+                    hoverinfo = "none",
+                    marker = list(color = "#008097"),
+                    fillcolor = "rgba(0,128,151,0.5)") %>%
   layout(
     title = "",
     plot_bgcolor = "rgba(0,0,0,0)",
     paper_bgcolor = "rgba(0,0,0,0)",
     polar = list(
       radialaxis = list(
-        visible = F,
-        range = c(0,1)
+        visible = T,
+        showticklabels = F,
+        range = c(0,1),
+        linecolor = "rgba(0,0,0,0)",
+        tickcolor = "rgba(0,0,0,0)"
+      ),
+       angularaxis = list(
+        showticklabels = T
       )
     ),
     showlegend = F
-  )
+  ) %>% 
+  config(displayModeBar = F)
+
+# make scaling obvious
+# bold theme names
 ```
 
 <!--
@@ -424,19 +430,24 @@ Generate area-under-the-line chart that:
 -->
 
 ```{r POEarea, echo=FALSE, output=FALSE}
+phase_cols <- grep("^phase", names(df.phase.clinic), value = TRUE)
+
 POEarea <- plot_ly(df.phase.clinic, 
                 hoverinfo = "none",
                 x = ~Date, 
-                y = ~phase1, 
-                name = "Phase 1", 
                 type = 'scatter', 
-                mode = 'none',
-                fill = 'tozeroy',
-                fillcolor = palette_a['phase1']) %>%
-  add_trace(y = ~phase2, 
-            name = "Phase 2", 
-            fill = 'tozeroy',
-            fillcolor = palette_a['phase2']) %>%
+                mode = 'none')
+
+for(i in seq_along(phase_cols)) {
+  legend_name = sub("phase", "Phase ", phase_cols[i])
+  POEarea <- POEarea %>%
+    add_trace(y = as.formula(paste0("~`", phase_cols[i], "`")),
+              name = legend_name, 
+              fill = 'tozeroy',
+              fillcolor = palette_cpal_main[phase_cols[i]])
+}
+
+POEarea <- POEarea %>%
   layout(title = "",
          plot_bgcolor = "rgba(0,0,0,0)",
          paper_bgcolor = "rgba(0,0,0,0)",
@@ -452,7 +463,8 @@ POEarea <- plot_ly(df.phase.clinic,
     line = list(dash = "dash"),
     inherit = FALSE,
     showlegend = FALSE
-  )
+  ) %>% 
+  config(displayModeBar = F)
 ```
 
 <!--
@@ -463,22 +475,39 @@ Generate stacked bar chart that:
 -->
 
 ```{r staffchart, echo=FALSE, output=FALSE}
-staffchart <- plot_ly(count_df, x = ~Role, y = ~Active, name = "Active", marker=list(color="rgba(1,163,104,0.9)"), type = 'bar', hoverinfo = "none") %>%
+staffchart <- plot_ly(count_df, 
+                      x = ~Active, 
+                      y = ~Role, 
+                      name = "Active", 
+                      marker=list(color=cpaltemplates::palette_cpal_teal[6]), 
+                      type = 'bar', 
+                      hoverinfo = "none", 
+                      orientation = 'h') %>%
   # add_trace(y = ~`WCS trainees`, name = "WCS trainee", marker=list(color="#FF69B4")) %>%
-  add_trace(y = ~Temps, name = "Temporary/inactive", marker=list(color="rgba(92,147,116,0.6)")) %>%
-  add_trace(y = ~Vacancies, name = "Vacant", marker=list(color="rgba((128,128,128,0.3))")) %>%
+  add_trace(x = ~Temps,
+            y = ~Role,
+            name = "Temporary/inactive", 
+            marker=list(color=cpaltemplates::palette_cpal_teal[4])) %>%
+  add_trace(x = ~Vacancies,
+            y = ~Role,
+            name = "Vacant", 
+            marker=list(color=cpaltemplates::palette_cpal_teal[2])) %>%
   layout(plot_bgcolor = "rgba(0,0,0,0)",
          paper_bgcolor = "rgba(0,0,0,0)",
-         xaxis = list(title = "",
+         yaxis = list(title = "",
                       categoryorder = "array",
-                      categoryarray = c("clerk", "certifier", "supervisor")),
-         yaxis = list(title = 'Count',
-                      gridwidth = 2), 
-         barmode = 'stack')
+                      categoryarray = c("clerk", "certifier", "supervisor")
+                      ),
+         xaxis = list(title = 'Count',
+                      gridwidth = 2,
+                      dtick = 1), 
+         barmode = 'stack') %>% 
+  config(displayModeBar = F)
 
 ```
 
 <!--
+---CURRENTLY DEPRECATED---
 Generate line chart that:
  - qualtrics
  PRODUCT: "qual_chart"
@@ -575,18 +604,18 @@ CSAT.charting <- CSAT.clinic.recent %>%
 #                         textangle = -90
 #                        )
 
-# qual_chart <- ggplotly(
+# ggplotly(
 #   ggplot(CSAT.charting, aes(x = Date)) +
 #   geom_line(aes(y = LA_avg), linetype = "dotted", color = "black", linewidth = 1.25) +
 #   geom_line(aes(y = Average), color = "blue", linewidth = 1.25) +
-#   geom_segment(aes(xend = Date, 
+#   geom_segment(aes(xend = Date,
 #                  y = Average + delta,
 #                  yend = Average,
 #                  color = delta > 0),
 #              size = 1.5,
 #              linetype = "dotted",
 #              show.legend = FALSE) +
-#   geom_point(aes(x = Date, 
+#   geom_point(aes(x = Date,
 #                  y = Average + delta,
 #                  color = delta > 0),
 #              size = 4,
@@ -597,7 +626,7 @@ CSAT.charting <- CSAT.clinic.recent %>%
 #   labs(x = "Month", y = "CSAT Score", color = "CSAT above/below average")
 # )
 
-# qualchart2 <- ggplot(CSAT.clinic.recent, aes(x = Date)) +
+# ggplot(CSAT.clinic.recent, aes(x = Date)) +
 #   geom_line(aes(y = LA_avg), linetype = "dotted", color = "black", size = 1.5) +
 #   geom_line(aes(y = Average), color = "blue", size= 1.5) +
 #   geom_line(aes(y = CSAT, group = 1, color = ifelse(CSAT > lag(CSAT), "green", "red")), size = 1.5) +
@@ -606,24 +635,70 @@ CSAT.charting <- CSAT.clinic.recent %>%
 #   theme_minimal() +
 #   labs(x = "Month", y = "CSAT Score", color = "CSAT above/below average")
 
+# ggplot(CSAT.charting, aes(x = Date)) +
+#   geom_smooth(aes(y = LA_avg, group = 1, color = ifelse(LA_avg > lag(LA_avg), "#008097", "#E98816")), linetype = "dashed", linewidth = 1.1) +
+#   geom_smooth(aes(y = Average), linewidth = 1.1, color = "#008097") +
+#   geom_segment(aes(xend = Date, 
+#                    y = Average + delta,
+#                    yend = Average,
+#                    color = delta),
+#                size = 0.5,
+#                linetype = "dotted",
+#                show.legend = FALSE,) +
+#   geom_point(aes(x = Date, 
+#                  y = Average + delta,
+#                  size = 5 * CSAT_n/max(CSAT_n)),
+#              color = "#ffffff",
+#              show.legend = FALSE) +
+#   geom_point(aes(x = Date, 
+#                  y = Average + delta,
+#                  color = delta,
+#                  size = 4 * CSAT_n/max(CSAT_n)),
+#              show.legend = FALSE) +
+#   ylim(6, 7) +
+#   labs(x = "Month", y = "CSAT Score", color = "CSAT above/below average") +
+#   scale_color_gradientn(colors = cpaltemplates::palette_cpal_diverging) +
+#   theme(panel.background = element_rect(fill = "transparent", color = NA)) +
+#   guides(color = "none")
+
 ```
 
-
 <!--
+################################################################################
 DASHBOARD LAYOUT TEMPLATE STARTS HERE
 -->
 
-## Points of excellence
+```{=html}
+<div class="d-flex align-items-center">
+    <div style="display: inline-block; border: 1px solid #2f2f2f; border-radius: 5px; padding: 10px; font-size: 2em; font-weight: bold; color: #2f2f2f; font-family: 'Poppins', sans-serif;">
+        <i class="bi bi-building-fill mr-2"></i>
+        `r params$clinic_name`
+    </div>
+</div>
+```
+## Goals
 
 #### `r improvement_text`
 
-#### `r performance_text`
-
-`r POEradar`
-
+::: column-body-outset
+::: {.column width="'50%'"}
 #### `r phase_text`
 
 `r POEarea`
+:::
+
+::: {.column width="'50%'"}
+#### `r performance_text`
+
+`r POEradar`
+:::
+
+::: callout-tip
+#### Phases and themes
+
+Read more about the goals that go into [phases](phases.html) and [themes](themes.html).
+:::
+:::
 
 ## Staffing
 
@@ -633,29 +708,4 @@ DASHBOARD LAYOUT TEMPLATE STARTS HERE
 
 ## Customer satisfaction
 
-```{r qualchartprint, include=TRUE}
-ggplot(CSAT.charting, aes(x = Date)) +
-  geom_smooth(aes(y = LA_avg), linetype = "dashed", color = "#2f2f2f", linewidth = 1.1) +
-  geom_smooth(aes(y = Average), linewidth = 1.1, color = "#008097") +
-  geom_segment(aes(xend = Date, 
-                   y = Average + delta,
-                   yend = Average,
-                   color = delta),
-               size = 0.5,
-               linetype = "dotted",
-               show.legend = FALSE,) +
-  geom_point(aes(x = Date, 
-                 y = Average + delta),
-             size = 5,
-             color = "#ffffff",
-             show.legend = FALSE) +
-  geom_point(aes(x = Date, 
-                 y = Average + delta,
-                 color = delta),
-             size = 4,
-             show.legend = FALSE) +
-  ylim(6, 7) +
-  labs(x = "Month", y = "CSAT Score", color = "CSAT above/below average") +
-  scale_color_gradientn(colors = cpaltemplates::palette_cpal_diverging)
-
-```
+`r CSATtext`
