@@ -70,7 +70,7 @@ manager_groups <- clinic_map %>%
   summarise(Clinics = list(Clinic))
 ```
 
-# Clinics
+# Home
 
 ```{=html}
 <!--
@@ -147,7 +147,7 @@ Print clinics under headers
 
 ::: columns
 ::: {.column width="33%"}
-## [Ana](Ana_clinics.html)
+## <i class="bi bi-person-fill mr-2"></i> [Ana](Ana_clinics.html)
 
 [Abrams Road](Abrams_Road.html)
 
@@ -157,7 +157,7 @@ Print clinics under headers
 :::
 
 ::: {.column width="33%"}
-## [Chandra](Chandra_clinics.html)
+## <i class="bi bi-person-fill mr-2"></i> [Chandra](Chandra_clinics.html)
 
 [Duncanville](Duncanville.html)
 
@@ -167,7 +167,7 @@ Print clinics under headers
 :::
 
 ::: {.column width="33%"}
-## [Dani](Dani_clinics.html)
+## <i class="bi bi-person-fill mr-2"></i> [Cheryl](Cheryl_clinics.html)
 
 [Grand Prairie](Grand_Prairie.html)
 
@@ -181,7 +181,7 @@ Print clinics under headers
 
 ::: columns
 ::: {.column width="33%"}
-## [Heather](Heather_clinics.html)
+## <i class="bi bi-person-fill mr-2"></i> [Heather](Heather_clinics.html)
 
 [Fruitdale](Fruitdale.html)
 
@@ -193,7 +193,7 @@ Print clinics under headers
 :::
 
 ::: {.column width="33%"}
-## [Na'Cole](Na'Cole_clinics.html)
+## <i class="bi bi-person-fill mr-2"></i> [Na'Cole](Na'Cole_clinics.html)
 
 [East Garland](.html)
 

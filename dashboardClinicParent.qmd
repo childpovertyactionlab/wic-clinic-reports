@@ -9,6 +9,7 @@ format: html
 editor: source
 ---
 
+```{=html}
 <!--
 NOTE: THIS SCRIPT IS NOT FOR DISPLAY! This is a parent function used for
  preprocessing that calls the template "dashboardClinicTemplate.qmd"
@@ -22,7 +23,7 @@ TO USE:
  - click "Run" dropdown arrow in the top right of this panel
  - select "Restart R and run all chunks" from menu
 -->
-
+```
 ```{r setup, echo=FALSE, output=FALSE}
 library(tidyverse)
 library(googlesheets4)
@@ -75,11 +76,11 @@ oxford_comma <- function(x) {
 }
 ```
 
-
+```{=html}
 <!--
 Master list of clinics
 -->
-
+```
 ```{r clinic_map, echo=FALSE, output=FALSE}
 ##  MAPPING CLINIC METADATA
 clinic_map <- read_sheet(
@@ -92,13 +93,13 @@ clinic_map <- read_sheet(
 
 ```
 
-
+```{=html}
 <!--
 Importing data
  1. Staff data coming from monthly assignment sheets
  2. POE data in order of phases coming from google sheets
 -->
-
+```
 ```{r imports, echo=FALSE, output=FALSE}
 
 
@@ -228,11 +229,11 @@ py$phase2_clinics <- r_to_py(phase2.clinics)
 py$phase2_rooms <- r_to_py(phase2.rooms)
 ```
 
-
+```{=html}
 <!--
 Processes POE averages over time with decay function in Py
 -->
-
+```
 ```{python moving_average, echo=FALSE, output=FALSE}
 import pandas as pd
 import numpy as np
@@ -291,11 +292,11 @@ def ma_read(df):
     return df_ma
 ```
 
-
+```{=html}
 <!--
 ...cont'd, putting it together into a combined df
 -->
-
+```
 ```{python combined_df, echo=FALSE, output=FALSE}
 import pandas as pd
 import numpy as np
@@ -313,10 +314,12 @@ df_combined = pd.concat(to_combine, ignore_index=False).groupby('Clinic').ffill(
 # date to string for conversion back to R
 df_combined['Date'] = df_combined['Date'].astype(str)
 ```
+
+```{=html}
 <!--
 CSAT predictions
 -->
-
+```
 ```{python CSATpred, echo=FALSE, output=FALSE}
 import pandas as pd
 import numpy as np
@@ -337,7 +340,7 @@ clinics = CSAT['Clinic'].unique()
 
 # iterate over each clinic
 for clinic in clinics:
-    df_1 = CSAT[CSAT['Clinic']==clinic]
+    df_1 = CSAT[(CSAT['Clinic']==clinic) & (CSAT['CSAT (n)'] > 0)]
 
     # check if there's enough data
     if len(df_1) > 10:
@@ -369,10 +372,11 @@ forecast_df = forecast_df.reset_index()
 
 ```
 
+```{=html}
 <!--
 Migrate back to R to prepare export to template
 -->
-
+```
 ```{r py-to-r, echo=FALSE, output=FALSE}
 ##  MIGRATE DF FROM PY, CREATE DF FOR ONLY FAMILIESWAITING, AND CREATE 'DF.PHASE'
 df <- py$df_combined %>% 
@@ -384,12 +388,11 @@ CSAT.predict <- py$forecast_df
 CSAT.predict$Date <- as.Date(CSAT.predict$Date)
 ```
 
-
+```{=html}
 <!--
 RENDER FROM TEMPLATE
 -->
-
-
+```
 ```{r generate}
 
 saves <- c("clinic_map", "staff.clinics", "df", "POE", "staff", "CSAT", "CSAT.predict")
@@ -398,8 +401,8 @@ for (var in saves) {
 }
 
 quarto::quarto_render(
-    input = "dashboardClinics.qmd",
-    output_file = "clinics.html",
+    input = "dashboardHome.qmd",
+    output_file = "home.html",
     )
 
 for (goal_category in c("theme", "phase")) {

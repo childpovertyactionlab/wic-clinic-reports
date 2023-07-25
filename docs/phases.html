@@ -76,15 +76,112 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./web_report.html" rel="" target=""><i class="bi bi-house-door-fill" role="img">
+    <a class="nav-link" href="./home.html" rel="" target=""><i class="bi bi-house-door-fill" role="img">
 </i> 
  <span class="menu-text">Home</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./clinics.html" rel="" target=""><i class="bi bi-building-fill" role="img">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-clinics" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+      <i class="bi bi-building-fill" role="img">
 </i> 
- <span class="menu-text">Clinics</span></a>
+ <span class="menu-text">Clinics</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-clinics">    
+        <li>
+    <a class="dropdown-item" href="./Abrams_Road.html" rel="" target="">
+ <span class="dropdown-text">Abrams Road</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./Duncanville.html" rel="" target="">
+ <span class="dropdown-text">Duncanville</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./East_Garland.html" rel="" target="">
+ <span class="dropdown-text">East Garland</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./Fruitdale.html" rel="" target="">
+ <span class="dropdown-text">Fruitdale</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./Grand_Prairie.html" rel="" target="">
+ <span class="dropdown-text">Grand Prairie</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./Highland_Hills.html" rel="" target="">
+ <span class="dropdown-text">Highland Hills</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./Irving.html" rel="" target="">
+ <span class="dropdown-text">Irving</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./John_West_Buckner.html" rel="" target="">
+ <span class="dropdown-text">John West/Buckner</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./Lake_June.html" rel="" target="">
+ <span class="dropdown-text">Lake June</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./Ledbetter.html" rel="" target="">
+ <span class="dropdown-text">Ledbetter</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./Medical_District.html" rel="" target="">
+ <span class="dropdown-text">Medical District (LC)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./MLK_Center.html" rel="" target="">
+ <span class="dropdown-text">MLK Center</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./North_Dallas.html" rel="" target="">
+ <span class="dropdown-text">North Dallas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./Northwest_Highway.html" rel="" target="">
+ <span class="dropdown-text">Northwest Highway</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./West_Garland.html" rel="" target="">
+ <span class="dropdown-text">West Garland</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./Westmoreland.html" rel="" target="">
+ <span class="dropdown-text">Westmoreland</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-managers" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+      <i class="bi bi-person-fill" role="img">
+</i> 
+ <span class="menu-text">Managers</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-managers">    
+        <li>
+    <a class="dropdown-item" href="./Ana_clinics.html" rel="" target="">
+ <span class="dropdown-text">Ana’s clinics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./Chandra_clinics.html" rel="" target="">
+ <span class="dropdown-text">Chandra’s clinics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./Cheryl_clinics.html" rel="" target="">
+ <span class="dropdown-text">Cheryl’s clinics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./Heather_clinics.html" rel="" target="">
+ <span class="dropdown-text">Heather’s clinics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./Na’Cole_clinics.html" rel="" target="">
+ <span class="dropdown-text">Na’Cole’s clinics</span></a>
+  </li>  
+    </ul>
+  </li>
   <li class="nav-item">
     <a class="nav-link" href="https://github.com/childpovertyactionlab/" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
@@ -134,49 +231,71 @@ This template for clinic dashboards is in the following order:
  3. Layout of dashboard using variables from generations
  
 -->
-<section id="clinic-themes" class="level1">
-<h1>Clinic themes</h1>
+<section id="clinic-phases" class="level1">
+<h1>Clinic phases</h1>
 <!--
 Print theme phrases
 -->
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "## 1"
-attr(,"class")
-[1] "knit_asis"
-attr(,"knit_cacheable")
-[1] NA
-
-
-&lt;!-- --&gt;
-
-[1] "Is there a television present?\nIs the television utilized appropriately?\nIs there developmentally appropriate entertainment available for children in every room?\nIs the environment peaceful and neutral, including factors such as smells and sounds?\nAre staff members properly welcoming, greeting clients with a friendly \"Hi, Welcome to WIC\"?\nIs staff at entrance to greet and provide information promptly?\nIs staff communicating options to walk-ins?\nIs water visible and available to clients?\nIs the current WIC logo on or above entrance?\nAre accurate hours of operation displayed on door in a permanent format?\nDoes the entire scope of practice take place in a private room?\nDo all rooms display the Jordan Michael Design?\nDo all private rooms display room status indicators?\nIs the WIC material QR code visible, colorful &amp; intentional?\nIs the WIC material QR code linked to the WIC shopping guide?\nIs the WIC material QR code linked to social media?\nIs the WIC material QR code linked to the WIC cookbook?\nIs the WIC material QR code linked to state website?\nIs a clinic manager or supervisor present?"
-attr(,"class")
-[1] "knit_asis"
-attr(,"knit_cacheable")
-[1] NA
-
-
-&lt;!-- --&gt;
-
-[1] "## 2"
-attr(,"class")
-[1] "knit_asis"
-attr(,"knit_cacheable")
-[1] NA
-
-
-&lt;!-- --&gt;
-
-[1] "Are there a minimum of 2 padded chairs available for clients?\nIs the desk size within the maximum limit of 8 sq ft?\nIs the lab equipment area within the maximum limit of 12 sq ft?\nIs there a small filing cabinet?\nAre at least 3 wall hangings displayed?\nAre sharp corners covered to ensure safety?\nAre electrical outlets covered to ensure safety?\nIs the hazard box placed up and out reach?\nHas any flammable clutter been removed?\nAre confidential conversations conducted with the door closed?\nIs alternative lighting available?\nAre padded or gel chairs available for comfort?\nAre interactive rugs provided for children?\nAre kitchen sets available for children?\nIs there at least one child chair provided?\nAre children's books visible and accessible?\nIs there a standard filing system in place for forms?\nAre gloves mounted on the wall for easy access?\nIs there a rolling cart available in each room?\nDo clients stay in the same room throughout their visit?\nIs there a dedicated room for each certifier?\nHow many families are currently waiting?"
-attr(,"class")
-[1] "knit_asis"
-attr(,"knit_cacheable")
-[1] NA
-
-
-&lt;!-- --&gt;</code></pre>
+<div class="cell-output-display">
+<section id="section" class="level2">
+<h2 data-anchor-id="section">1</h2>
+<!-- -->
+<div style="columns: 2; -webkit-columns: 2; -moz-columns: 2;">
+<ul>
+<li>Is there a television present?</li>
+<li>Is the television utilized appropriately?</li>
+<li>Is there developmentally appropriate entertainment available for children in every room?</li>
+<li>Is the environment peaceful and neutral, including factors such as smells and sounds?</li>
+<li>Are staff members properly welcoming, greeting clients with a friendly “Hi, Welcome to WIC”?</li>
+<li>Is staff at entrance to greet and provide information promptly?</li>
+<li>Is staff communicating options to walk-ins?</li>
+<li>Is water visible and available to clients?</li>
+<li>Is the current WIC logo on or above entrance?</li>
+<li>Are accurate hours of operation displayed on door in a permanent format?</li>
+<li>Does the entire scope of practice take place in a private room?</li>
+<li>Do all rooms display the Jordan Michael Design?</li>
+<li>Do all private rooms display room status indicators?</li>
+<li>Is the WIC material QR code visible, colorful &amp; intentional?</li>
+<li>Is the WIC material QR code linked to the WIC shopping guide?</li>
+<li>Is the WIC material QR code linked to social media?</li>
+<li>Is the WIC material QR code linked to the WIC cookbook?</li>
+<li>Is the WIC material QR code linked to state website?</li>
+<li>Is a clinic manager or supervisor present?</li>
+</ul>
 </div>
+<!-- -->
+</section>
+<section id="section-1" class="level2">
+<h2 data-anchor-id="section-1">2</h2>
+<!-- -->
+<div style="columns: 2; -webkit-columns: 2; -moz-columns: 2;">
+<ul>
+<li>Are there a minimum of 2 padded chairs available for clients?</li>
+<li>Is the desk size within the maximum limit of 8 sq ft?</li>
+<li>Is the lab equipment area within the maximum limit of 12 sq ft?</li>
+<li>Is there a small filing cabinet?</li>
+<li>Are at least 3 wall hangings displayed?</li>
+<li>Are sharp corners covered to ensure safety?</li>
+<li>Are electrical outlets covered to ensure safety?</li>
+<li>Is the hazard box placed up and out reach?</li>
+<li>Has any flammable clutter been removed?</li>
+<li>Are confidential conversations conducted with the door closed?</li>
+<li>Is alternative lighting available?</li>
+<li>Are padded or gel chairs available for comfort?</li>
+<li>Are interactive rugs provided for children?</li>
+<li>Are kitchen sets available for children?</li>
+<li>Is there at least one child chair provided?</li>
+<li>Are children’s books visible and accessible?</li>
+<li>Is there a standard filing system in place for forms?</li>
+<li>Are gloves mounted on the wall for easy access?</li>
+<li>Is there a rolling cart available in each room?</li>
+<li>Do clients stay in the same room throughout their visit?</li>
+<li>Is there a dedicated room for each certifier?</li>
+<li>How many families are currently waiting?</li>
+</ul>
+</div>
+<!-- -->
+</section>
 </div>
 
 

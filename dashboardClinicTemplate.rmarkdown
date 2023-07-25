@@ -26,6 +26,7 @@ This template for clinic dashboards is in the following order:
  
 -->
 ```
+
 ```{r setup, echo=FALSE, output=FALSE}
 clinic_name = params$clinic_name
 
@@ -104,6 +105,7 @@ current_month <- as.integer(format(Sys.Date(), "%m"))
 Set aside numbers of families waiting, specify phases
 -->
 ```
+
 ```{r preprocess, echo=FALSE, output=FALSE}
 df.familiesWaiting <- df %>% 
   dplyr::select(Clinic, Date, `# of Families Waiting`) %>%
@@ -129,6 +131,7 @@ df.phase <- df %>%
 Summarize POE data from individual criteria into categories and even wider themes
 -->
 ```
+
 ```{r categories, echo=FALSE, output=FALSE}
 
 df.grouped.long <- df %>%
@@ -171,6 +174,7 @@ df.themes <- df.themes.long %>%
 Snapshot of only the most recent data to see current fulfillment
 -->
 ```
+
 ```{r snapshot, echo=FALSE, output=FALSE}
 ##  DETAILED RECENT SNAPSHOT
 df.recent <- df %>%
@@ -213,6 +217,7 @@ df.recent.themes.long <- df.recent.themes %>%
 AGENCY-WIDE PREPROCESSING STOPS HERE -- BELOW ARE GENERATIONS
 -->
 ```
+
 ```{=html}
 <!--
 Generate dynamic text that: 
@@ -222,6 +227,7 @@ Generate dynamic text that:
  PRODUCT: "phase_text"
 -->
 ```
+
 ```{r phasetext, echo=FALSE, output=FALSE}
 df.phase.clinic <- df.phase %>%
   # ungroup() %>%
@@ -260,6 +266,7 @@ Generate dynamic text that:
  PRODUCT: "improvement_text"
 -->
 ```
+
 ```{r improvement_targets, echo=FALSE, output=FALSE}
 df.recent.long <- df.recent %>%
   pivot_longer(cols = -c(1:2,length(.)),
@@ -314,6 +321,7 @@ Generate dynamic text that:
  PRODUCT: "performance_text"
 -->
 ```
+
 ```{r themes, echo=FALSE, output=FALSE}
 df.recent.themes.long.filtered <- df.recent.themes.long %>% filter(Clinic == clinic_name)
 
@@ -336,6 +344,7 @@ Generate dynamic text that:
  PRODUCT: "vacancy_text"
 -->
 ```
+
 ```{r vacancies, echo=FALSE, output=FALSE}
 summarize_role <- function(df, clinic_name, role) {
   df %>%
@@ -381,6 +390,7 @@ Generate dynamic text that:
  PRODUCT: "CSATtext"
 -->
 ```
+
 ```{r CSATtext, echo=FALSE, output=FALSE}
 CSAT.integrated <- CSAT %>%
   drop_na() %>%
@@ -447,13 +457,11 @@ CSAT.text.agency <- paste0("Agency-wide, ", clinic_name, " brought the average f
 
 CSAT.text.trend <- paste0("Over the last 18 months, the score for ", clinic_name, " has ", ifelse(CSAT.clinic.recent$Average[1] > CSAT.clinic.recent$Average[18], " increased overall.", " decreased overall."), " Over the last 3 months, the score has ", ifelse(CSAT.clinic.recent$Average[1] > CSAT.clinic.recent$Average[3], " increased.", " decreased."))
 
-CSAT.clinic.recent <- CSAT.clinic.recent %>% arrange(Date)
-
 CSAT.sparkline <- sparkline(round(as.vector(CSAT.clinic.recent$Average), 4), "line", 
           list(lineColor = palette_cpal_teal[6],
                fillColor = palette_cpal_teal[2],
-               width = "200px",
-               height = "80px"))
+               width = "16em",
+               height = "4em"))
 
 ```
 
@@ -464,6 +472,7 @@ Generate radar chart that:
  PRODUCT: "POEradar"
 -->
 ```
+
 ```{r POEradar, echo=FALSE, output=FALSE}
 POEradar <- plot_ly(df.recent.themes.long.filtered, 
                     r = ~Value, 
@@ -505,6 +514,7 @@ Generate area-under-the-line chart that:
  PRODUCT: "POEarea"
 -->
 ```
+
 ```{r POEarea, echo=FALSE, output=FALSE}
 phase_cols <- grep("^phase", names(df.phase.clinic), value = TRUE)
 
@@ -570,6 +580,7 @@ Generate stacked bar chart that:
  PRODUCT: "staffchart"
 -->
 ```
+
 ```{r staffchart, echo=FALSE, output=FALSE}
 count_df$Role <- tools::toTitleCase(count_df$Role)
 
@@ -615,6 +626,7 @@ Generate line chart that:
  PRODUCT: "qual_chart"
 -->
 ```
+
 ```{r qualchart,  echo=FALSE, output=FALSE}
 
 
@@ -787,6 +799,7 @@ DASHBOARD LAYOUT TEMPLATE STARTS HERE
 </div>
 ```
 
+
 ## Clinic environment
 
 #### `r improvement_text`
@@ -821,3 +834,4 @@ Read more about the goals that go into [phases](phases.html) and [themes](themes
 `r CSAT.text.trend`
 
 `r CSAT.sparkline`
+

@@ -67,11 +67,14 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
 <link href="site_libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
 <script src="site_libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+<script src="site_libs/sparklines-2.1.2/jquery.sparkline.min.js"></script>
+<link href="site_libs/sparklines-bootstrap-override-0/sparklines-bootstrap-override.css" rel="stylesheet">
+<script src="site_libs/sparklines-binding-0.0.1/sparklines.js"></script>
 
 
 </head>
 
-<body class="floating nav-fixed">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -84,15 +87,112 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./web_report.html" rel="" target=""><i class="bi bi-house-door-fill" role="img">
+    <a class="nav-link" href="./home.html" rel="" target=""><i class="bi bi-house-door-fill" role="img">
 </i> 
  <span class="menu-text">Home</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./clinics.html" rel="" target=""><i class="bi bi-building-fill" role="img">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-clinics" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+      <i class="bi bi-building-fill" role="img">
 </i> 
- <span class="menu-text">Clinics</span></a>
+ <span class="menu-text">Clinics</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-clinics">    
+        <li>
+    <a class="dropdown-item" href="./Abrams_Road.html" rel="" target="">
+ <span class="dropdown-text">Abrams Road</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./Duncanville.html" rel="" target="">
+ <span class="dropdown-text">Duncanville</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./East_Garland.html" rel="" target="">
+ <span class="dropdown-text">East Garland</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./Fruitdale.html" rel="" target="">
+ <span class="dropdown-text">Fruitdale</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./Grand_Prairie.html" rel="" target="">
+ <span class="dropdown-text">Grand Prairie</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./Highland_Hills.html" rel="" target="">
+ <span class="dropdown-text">Highland Hills</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./Irving.html" rel="" target="">
+ <span class="dropdown-text">Irving</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./John_West_Buckner.html" rel="" target="">
+ <span class="dropdown-text">John West/Buckner</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./Lake_June.html" rel="" target="">
+ <span class="dropdown-text">Lake June</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./Ledbetter.html" rel="" target="">
+ <span class="dropdown-text">Ledbetter</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./Medical_District.html" rel="" target="">
+ <span class="dropdown-text">Medical District (LC)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./MLK_Center.html" rel="" target="">
+ <span class="dropdown-text">MLK Center</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./North_Dallas.html" rel="" target="">
+ <span class="dropdown-text">North Dallas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./Northwest_Highway.html" rel="" target="">
+ <span class="dropdown-text">Northwest Highway</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./West_Garland.html" rel="" target="">
+ <span class="dropdown-text">West Garland</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./Westmoreland.html" rel="" target="">
+ <span class="dropdown-text">Westmoreland</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-managers" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+      <i class="bi bi-person-fill" role="img">
+</i> 
+ <span class="menu-text">Managers</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-managers">    
+        <li>
+    <a class="dropdown-item" href="./Ana_clinics.html" rel="" target="">
+ <span class="dropdown-text">Ana’s clinics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./Chandra_clinics.html" rel="" target="">
+ <span class="dropdown-text">Chandra’s clinics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./Cheryl_clinics.html" rel="" target="">
+ <span class="dropdown-text">Cheryl’s clinics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./Heather_clinics.html" rel="" target="">
+ <span class="dropdown-text">Heather’s clinics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./Na’Cole_clinics.html" rel="" target="">
+ <span class="dropdown-text">Na’Cole’s clinics</span></a>
+  </li>  
+    </ul>
+  </li>
   <li class="nav-item">
     <a class="nav-link" href="https://github.com/childpovertyactionlab/" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
@@ -106,7 +206,7 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
       <h1 class="title">WIC Clinic Dashboard</h1>
@@ -124,23 +224,20 @@ ul.task-list li input[type="checkbox"] {
   
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
-    <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="2">
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
-  <ul>
-  <li><a href="#goals" id="toc-goals" class="nav-link active" data-scroll-target="#goals">Goals</a></li>
+  <ul class="collapse">
+  <li><a href="#clinic-environment" id="toc-clinic-environment" class="nav-link active" data-scroll-target="#clinic-environment">Clinic environment</a></li>
   <li><a href="#staffing" id="toc-staffing" class="nav-link" data-scroll-target="#staffing">Staffing</a></li>
   <li><a href="#customer-satisfaction" id="toc-customer-satisfaction" class="nav-link" data-scroll-target="#customer-satisfaction">Customer satisfaction</a></li>
   </ul>
 </nav>
-</nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block page-columns page-full" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
@@ -225,37 +322,37 @@ Generate line chart that:
 DASHBOARD LAYOUT TEMPLATE STARTS HERE
 -->
 <div class="d-flex align-items-center">
-    <div style="display: inline-block; border: 1px solid #2f2f2f; border-radius: 5px; padding: 10px; font-size: 2em; font-weight: bold; color: #2f2f2f; font-family: 'Poppins', sans-serif;">
-        <i class="bi bi-building-fill mr-2"></i>
-        North Dallas
+    <div style="display: inline-block; border: 1px solid #2f2f2f; border-radius: 5px; padding: 10px; ">
+        <div style="font-size: 2em; font-weight: bold; color: #2f2f2f; font-family: 'Poppins', sans-serif;">
+            <i class="bi bi-building-fill mr-2"></i>
+            North Dallas
+        </div>
+        
+        <div style="font-size: 1em; font-style: italic; color: #2f2f2f; font-family: 'Poppins', sans-serif; padding-top: 10px;">
+            Number of participants: <b>6,959</b>
+        </div>
     </div>
 </div>
-<section id="goals" class="level2 page-columns page-full">
-<h2 data-anchor-id="goals">Goals</h2>
+<section id="clinic-environment" class="level2">
+<h2 data-anchor-id="clinic-environment">Clinic environment</h2>
 <section id="north-dallas-has-1-items-in-phase-1-and-6-items-in-phase-2-that-need-improvement." class="level4">
 <h4 data-anchor-id="north-dallas-has-1-items-in-phase-1-and-6-items-in-phase-2-that-need-improvement.">North Dallas has 1 items in <b style="color:NA">Phase 1</b> and 6 items in <b style="color:NA">Phase 2</b> that need improvement.</h4>
 <p>Here are some goals to focus on:</p>
 <ul>
-<li>utilize alternative lighting options</li>
-<li>have one or more chairs for children</li>
+<li>make children’s books visibly accessible</li>
+<li>display the current WIC logo at or above the entrance</li>
 <li>maintain a standard filing system for forms</li>
-<li>offer padded or gel chairs for comfort</li>
+<li>have one or more chairs for children</li>
 <li>install interactive rugs for children</li>
 </ul>
 </section>
-<div class="column-body-outset">
-<div class="column" style="width:'50%';">
 <section id="nice-job-getting-phase-1-fulfillment-above-90-work-on-getting-phase-2-targets-up." class="level4">
 <h4 data-anchor-id="nice-job-getting-phase-1-fulfillment-above-90-work-on-getting-phase-2-targets-up.">Nice job getting Phase 1 fulfillment above 90%! Work on getting Phase 2 targets up.</h4>
-<p></p><div class="plotly html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-b1c688b0f196073c5e14" style="width:100%;height:400px;"></div> <script type="application/json" data-for="htmlwidget-b1c688b0f196073c5e14">{"x":{"visdat":{"3058212d5e8c":["function () ","plotlyVisDat"]},"cur_data":"3058212d5e8c","attrs":{"3058212d5e8c":{"hoverinfo":"none","x":{},"mode":"none","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"},"3058212d5e8c.1":{"hoverinfo":"none","x":{},"mode":"none","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter","y":{},"name":"Phase 1","fill":"tozeroy","fillcolor":null,"inherit":true},"3058212d5e8c.2":{"hoverinfo":"none","x":{},"mode":"none","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter","y":{},"name":"Phase 2","fill":"tozeroy","fillcolor":null,"inherit":true},"3058212d5e8c.3":{"x":"2022-11-28","y":0.90000000000000002,"xend":"2023-07-20","yend":0.90000000000000002,"type":"scatter","mode":"lines","line":{"dash":"dash"},"showlegend":false,"inherit":false}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"","plot_bgcolor":"rgba(0,0,0,0)","paper_bgcolor":"rgba(0,0,0,0)","xaxis":{"domain":[0,1],"automargin":true,"title":"Date"},"yaxis":{"domain":[0,1],"automargin":true,"title":"Fulfillment","tickformat":"0%","range":[0,1]},"hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"displayModeBar":false},"data":[{"hoverinfo":["none","none","none","none","none","none","none","none","none","none","none","none"],"x":["2022-11-28","2022-12-05","2022-12-19","2023-01-03","2023-01-09","2023-01-18","2023-02-27","2023-05-01","2023-05-11","2023-05-18","2023-06-01","2023-07-20"],"mode":"none","type":"scatter","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":[null,null,null,null,null,null,null,null,null,null,null,null],"hoverinfo":["none","none","none","none","none","none","none","none","none","none","none","none"],"x":["2022-11-28","2022-12-05","2022-12-19","2023-01-03","2023-01-09","2023-01-18","2023-02-27","2023-05-01","2023-05-11","2023-05-18","2023-06-01","2023-07-20"],"mode":"none","type":"scatter","y":[0.84210526315789469,0.81081081081081086,0.88245874716508954,0.83370134792209072,0.85810600737855613,0.88753248454936562,0.86053017748307736,0.92967484731008843,0.91181446014302026,0.92615559856852481,0.92967484731008843,0.92732868148237935],"name":"Phase 1","fill":"tozeroy","marker":{"color":"rgba(255,127,14,1)","line":{"color":"rgba(255,127,14,1)"}},"error_y":{"color":"rgba(255,127,14,1)"},"error_x":{"color":"rgba(255,127,14,1)"},"line":{"color":"rgba(255,127,14,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":[null,null,null,null,null,null,null,null,null,null,null,null],"hoverinfo":["none","none","none","none","none","none","none","none","none","none","none","none"],"x":["2022-11-28","2022-12-05","2022-12-19","2023-01-03","2023-01-09","2023-01-18","2023-02-27","2023-05-01","2023-05-11","2023-05-18","2023-06-01","2023-07-20"],"mode":"none","type":"scatter","y":[0,0,0,0,0,0,0,0.33988586747880728,0.52445982497222787,0.52445982497222787,0.66842405746105049,0.66842405746105049],"name":"Phase 2","fill":"tozeroy","marker":{"color":"rgba(44,160,44,1)","line":{"color":"rgba(44,160,44,1)"}},"error_y":{"color":"rgba(44,160,44,1)"},"error_x":{"color":"rgba(44,160,44,1)"},"line":{"color":"rgba(44,160,44,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2022-11-28","2023-07-20"],"y":[0.90000000000000002,0.90000000000000002],"type":"scatter","mode":"lines","line":{"color":"rgba(214,39,40,1)","dash":"dash"},"showlegend":false,"marker":{"color":"rgba(214,39,40,1)","line":{"color":"rgba(214,39,40,1)"}},"error_y":{"color":"rgba(214,39,40,1)"},"error_x":{"color":"rgba(214,39,40,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script><p></p>
+<p></p><div class="plotly html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-1414e5e843b9ba34a1e7" style="width:100%;height:400px;"></div> <script type="application/json" data-for="htmlwidget-1414e5e843b9ba34a1e7">{"x":{"visdat":{"31907e6746db":["function () ","plotlyVisDat"]},"cur_data":"31907e6746db","attrs":{"31907e6746db":{"hoverinfo":"none","x":{},"y":{},"fill":"tozeroy","fillcolor":null,"mode":"none","name":"Phase 1","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"},"31907e6746db.1":{"hoverinfo":"none","x":{},"y":{},"fill":"tozeroy","fillcolor":null,"mode":"none","name":"Phase 2","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter","inherit":true},"31907e6746db.2":{"x":"2022-11-28","y":0.90000000000000002,"xend":"2023-07-25","yend":0.90000000000000002,"type":"scatter","mode":"lines","line":{"dash":"dash","color":"red"},"showlegend":false,"inherit":false}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"","plot_bgcolor":"rgba(0,0,0,0)","paper_bgcolor":"rgba(0,0,0,0)","xaxis":{"domain":[0,1],"automargin":true,"title":""},"yaxis":{"domain":[0,1],"automargin":true,"title":"","tickformat":"0%","range":[0,1]},"annotations":[{"text":"<i>Goal<\/i>","x":"2023-07-25","y":0.90000000000000002,"showarrow":false,"font":{"size":12},"xanchor":"right","yanchor":"middle"}],"hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"displayModeBar":false},"data":[{"fillcolor":[null,null,null,null,null,null,null,null,null,null,null,null],"hoverinfo":["none","none","none","none","none","none","none","none","none","none","none","none"],"x":["2022-11-28","2022-12-05","2022-12-19","2023-01-03","2023-01-09","2023-01-18","2023-02-27","2023-05-01","2023-05-11","2023-05-18","2023-06-01","2023-07-25"],"y":[0.84210526315789469,0.81081081081081086,0.88245874716508954,0.83370134792209072,0.85810600737855613,0.88753248454936562,0.86053017748307736,0.92967484731008843,0.91181446014302026,0.92615559856852481,0.92967484731008843,0.92732868148237935],"fill":"tozeroy","mode":"none","name":"Phase 1","type":"scatter","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":[null,null,null,null,null,null,null,null,null,null,null,null],"hoverinfo":["none","none","none","none","none","none","none","none","none","none","none","none"],"x":["2022-11-28","2022-12-05","2022-12-19","2023-01-03","2023-01-09","2023-01-18","2023-02-27","2023-05-01","2023-05-11","2023-05-18","2023-06-01","2023-07-25"],"y":[0,0,0,0,0,0,0,0.33988586747880728,0.52445982497222787,0.52445982497222787,0.66842405746105049,0.66842405746105049],"fill":"tozeroy","mode":"none","name":"Phase 2","type":"scatter","marker":{"color":"rgba(255,127,14,1)","line":{"color":"rgba(255,127,14,1)"}},"error_y":{"color":"rgba(255,127,14,1)"},"error_x":{"color":"rgba(255,127,14,1)"},"line":{"color":"rgba(255,127,14,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2022-11-28","2023-07-25"],"y":[0.90000000000000002,0.90000000000000002],"type":"scatter","mode":"lines","line":{"color":"red","dash":"dash"},"showlegend":false,"marker":{"color":"rgba(44,160,44,1)","line":{"color":"rgba(44,160,44,1)"}},"error_y":{"color":"rgba(44,160,44,1)"},"error_x":{"color":"rgba(44,160,44,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script><p></p>
 </section>
-</div>
-<div class="column" style="width:'50%';">
 <section id="there-arent-any-particularly-weak-areaskeep-up-the-good-work" class="level4">
 <h4 data-anchor-id="there-arent-any-particularly-weak-areaskeep-up-the-good-work">There aren’t any particularly weak areas—keep up the good work!</h4>
-<p></p><div class="plotly html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-9b349fd5a806b11bc702" style="width:100%;height:400px;"></div> <script type="application/json" data-for="htmlwidget-9b349fd5a806b11bc702">{"x":{"visdat":{"305820f5617e":["function () ","plotlyVisDat"]},"cur_data":"305820f5617e","attrs":{"305820f5617e":{"r":{},"theta":{},"mode":"markers","fill":"toself","hoverinfo":"none","marker":{"color":"#008097"},"fillcolor":"rgba(0,128,151,0.5)","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatterpolar"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"","plot_bgcolor":"rgba(0,0,0,0)","paper_bgcolor":"rgba(0,0,0,0)","polar":{"radialaxis":{"visible":true,"showticklabels":false,"range":[0,1],"linecolor":"rgba(0,0,0,0)","tickcolor":"rgba(0,0,0,0)"},"angularaxis":{"showticklabels":true}},"showlegend":false,"hovermode":"closest"},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"displayModeBar":false},"data":[{"fillcolor":"rgba(0,128,151,0.5)","r":[0.89955530056026789,0.87227722046261147,0.73360655737704916,0.7925704748789214,0.65199063231850118],"theta":["Hospitality","Communication","Layout","Efficiency","Safety"],"mode":"markers","fill":"toself","hoverinfo":["none","none","none","none","none"],"marker":{"color":"#008097","line":{"color":"rgba(31,119,180,1)"}},"type":"scatterpolar","name":"rgba(0,128,151,0.5)","line":{"color":"rgba(31,119,180,1)"},"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script><p></p>
-</section>
-</div>
+<p></p><div class="plotly html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-e8f0ae238e498ad44d2d" style="width:100%;height:400px;"></div> <script type="application/json" data-for="htmlwidget-e8f0ae238e498ad44d2d">{"x":{"visdat":{"319011a4bca":["function () ","plotlyVisDat"]},"cur_data":"319011a4bca","attrs":{"319011a4bca":{"r":{},"theta":{},"mode":"markers","fill":"toself","hoverinfo":"none","marker":{"color":"#008097"},"fillcolor":"rgba(0,128,151,0.5)","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatterpolar"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"","plot_bgcolor":"rgba(0,0,0,0)","paper_bgcolor":"rgba(0,0,0,0)","polar":{"radialaxis":{"visible":true,"showticklabels":false,"range":[0,1],"linecolor":"rgba(0,0,0,0)","tickcolor":"rgba(0,0,0,0)"},"angularaxis":{"showticklabels":true}},"showlegend":false,"hovermode":"closest"},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"displayModeBar":false},"data":[{"fillcolor":"rgba(0,128,151,0.5)","r":[0.89955530056026789,0.87227722046261147,0.73360655737704916,0.7925704748789214,0.65199063231850118],"theta":["Hospitality","Communication","Layout","Efficiency","Safety"],"mode":"markers","fill":"toself","hoverinfo":["none","none","none","none","none"],"marker":{"color":"#008097","line":{"color":"rgba(31,119,180,1)"}},"type":"scatterpolar","name":"rgba(0,128,151,0.5)","line":{"color":"rgba(31,119,180,1)"},"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script><p></p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -269,17 +366,21 @@ Phases and themes
 <p>Read more about the goals that go into <a href="phases.html">phases</a> and <a href="themes.html">themes</a>.</p>
 </div>
 </div>
-</div>
+</section>
 </section>
 <section id="staffing" class="level2">
 <h2 data-anchor-id="staffing">Staffing</h2>
 <section id="consider-hiring-2-clerks-and-2-certifiers-to-meet-staffing-needs." class="level4">
 <h4 data-anchor-id="consider-hiring-2-clerks-and-2-certifiers-to-meet-staffing-needs.">Consider hiring 2 clerks and 2 certifiers to meet staffing needs.</h4>
-<p></p><div class="plotly html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-e3b1f1bead8c093c6308" style="width:100%;height:400px;"></div> <script type="application/json" data-for="htmlwidget-e3b1f1bead8c093c6308">{"x":{"visdat":{"305876297075":["function () ","plotlyVisDat"]},"cur_data":"305876297075","attrs":{"305876297075":{"x":{},"y":{},"marker":{"color":"#00687A"},"hoverinfo":"none","orientation":"h","name":"Active","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar"},"305876297075.1":{"x":{},"y":{},"marker":{"color":"#5AB4C4"},"hoverinfo":"none","orientation":"h","name":"Temporary/inactive","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar","inherit":true},"305876297075.2":{"x":{},"y":{},"marker":{"color":"#B4DDE4"},"hoverinfo":"none","orientation":"h","name":"Vacant","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar","inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"plot_bgcolor":"rgba(0,0,0,0)","paper_bgcolor":"rgba(0,0,0,0)","yaxis":{"domain":[0,1],"automargin":true,"title":"","categoryorder":"array","categoryarray":["clerk","certifier","supervisor"],"type":"category"},"xaxis":{"domain":[0,1],"automargin":true,"title":"Count","gridwidth":2,"dtick":1},"barmode":"stack","hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"displayModeBar":false},"data":[{"x":[7,1,2],"y":["clerk","certifier","supervisor"],"marker":{"color":"#00687A","line":{"color":"rgba(31,119,180,1)"}},"hoverinfo":["none","none","none"],"orientation":"h","name":"Active","type":"bar","error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[1,3,0],"y":["clerk","certifier","supervisor"],"marker":{"color":"#5AB4C4","line":{"color":"rgba(255,127,14,1)"}},"hoverinfo":["none","none","none"],"orientation":"h","name":"Temporary/inactive","type":"bar","error_y":{"color":"rgba(255,127,14,1)"},"error_x":{"color":"rgba(255,127,14,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[2,2,0],"y":["clerk","certifier","supervisor"],"marker":{"color":"#B4DDE4","line":{"color":"rgba(44,160,44,1)"}},"hoverinfo":["none","none","none"],"orientation":"h","name":"Vacant","type":"bar","error_y":{"color":"rgba(44,160,44,1)"},"error_x":{"color":"rgba(44,160,44,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script><p></p>
+<p></p><div class="plotly html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-59d6731fc5f768dabae6" style="width:100%;height:400px;"></div> <script type="application/json" data-for="htmlwidget-59d6731fc5f768dabae6">{"x":{"visdat":{"319062933828":["function () ","plotlyVisDat"]},"cur_data":"319062933828","attrs":{"319062933828":{"x":{},"y":{},"marker":{"color":"#00687A"},"hoverinfo":"none","orientation":"h","name":"Active","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar"},"319062933828.1":{"x":{},"y":{},"marker":{"color":"#5AB4C4"},"hoverinfo":"none","orientation":"h","name":"Temporary/inactive","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar","inherit":true},"319062933828.2":{"x":{},"y":{},"marker":{"color":"#B4DDE4"},"hoverinfo":"none","orientation":"h","name":"Vacant","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar","inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"plot_bgcolor":"rgba(0,0,0,0)","paper_bgcolor":"rgba(0,0,0,0)","yaxis":{"domain":[0,1],"automargin":true,"title":"","categoryorder":"array","categoryarray":["Clerk","Certifier","Supervisor"],"tickfont":{"size":12},"tickprefix":"   ","type":"category"},"xaxis":{"domain":[0,1],"automargin":true,"title":"","gridwidth":2,"dtick":1},"barmode":"stack","hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"displayModeBar":false},"data":[{"x":[7,1,2],"y":["Clerk","Certifier","Supervisor"],"marker":{"color":"#00687A","line":{"color":"rgba(31,119,180,1)"}},"hoverinfo":["none","none","none"],"orientation":"h","name":"Active","type":"bar","error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[1,3,0],"y":["Clerk","Certifier","Supervisor"],"marker":{"color":"#5AB4C4","line":{"color":"rgba(255,127,14,1)"}},"hoverinfo":["none","none","none"],"orientation":"h","name":"Temporary/inactive","type":"bar","error_y":{"color":"rgba(255,127,14,1)"},"error_x":{"color":"rgba(255,127,14,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[2,2,0],"y":["Clerk","Certifier","Supervisor"],"marker":{"color":"#B4DDE4","line":{"color":"rgba(44,160,44,1)"}},"hoverinfo":["none","none","none"],"orientation":"h","name":"Vacant","type":"bar","error_y":{"color":"rgba(44,160,44,1)"},"error_x":{"color":"rgba(44,160,44,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script><p></p>
 </section>
 </section>
 <section id="customer-satisfaction" class="level2">
 <h2 data-anchor-id="customer-satisfaction">Customer satisfaction</h2>
+<p>In 2023-06-01, the customer satisfaction score was better than North Dallas’s average. Good work!</p>
+<p>Agency-wide, North Dallas brought the average for Dallas County clinics down. Keep working!</p>
+<p>Over the last 18 months, the score for North Dallas has decreased overall. Over the last 3 months, the score has increased.</p>
+<p><span id="htmlwidget-ea7ad582b0d4978667ce" class="sparklines html-widget "></span> <script type="application/json" data-for="htmlwidget-ea7ad582b0d4978667ce">{"x":{"values":[6.5386,6.5353,6.536,6.5375,6.5338,6.5373,6.5373,6.5432,6.5513,6.5534,6.5649,6.5691,6.5748,6.5809,6.5829,6.58,6.5704,6.5712],"config":{"type":"line","width":100,"height":20,"lineColor":"#00687A","fillColor":"#B4DDE4"},"height":20,"width":100},"evals":[],"jsHooks":[]}</script></p>
 
 
 </section>

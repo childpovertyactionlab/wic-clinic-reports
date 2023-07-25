@@ -65,21 +65,37 @@ bold_color <- function(text, color) {
 }
 ```
 
-# Clinic themes
+# Clinic `r params$goal_category`s
 
 <!--
 Print theme phrases
 -->
 
-```{r group, echo=FALSE, output=TRUE}
+```{r group, echo=FALSE, output=TRUE, results='asis'}
 grouped_POE <- POE %>% 
   group_by(!!sym(goal_category)) %>% 
   summarise(refined_phrases = list(refined_phrase))
 
+output_string <- ""
+
 for (i in 1:nrow(grouped_POE)) {
-  print(knitr::asis_output(paste0("## ", grouped_POE[[1]][i])))
-  cat('\n\n<!-- -->\n\n')
-  print(knitr::asis_output(paste(grouped_POE$refined_phrases[[i]], collapse = "\n")))
-  cat('\n\n<!-- -->\n\n')
+  phrases <- grouped_POE$refined_phrases[[i]]
+  half <- ceiling(length(phrases) / 2)  # find middle index
+  column1 <- phrases[1:half]  # first half of phrases
+  column2 <- phrases[(half + 1):length(phrases)]  # second half of phrases
+  
+  output_string <- paste0(
+    output_string,
+    ifelse(berryFunctions::is.error(as.integer(grouped_POE[[1]][i])), "\n\n## Phase ", "\n\n## "),
+    grouped_POE[[1]][i],
+    "\n\n<!-- -->\n\n",
+    '<div style="columns: 2; -webkit-columns: 2; -moz-columns: 2;">',
+    '\n* ', paste(column1, collapse = "\n* "),  # column 1 as bullet points
+    '\n* ', paste(column2, collapse = "\n* "),  # column 2 as bullet points
+    '\n</div>',
+    "\n\n<!-- -->\n\n"
+  )
 }
+
+knitr::asis_output(output_string)
 ```

@@ -1,234 +1,122 @@
 [
   {
-    "objectID": "Fruitdale.html",
-    "href": "Fruitdale.html",
+    "objectID": "home.html",
+    "href": "home.html",
     "title": "WIC Clinic Dashboard",
     "section": "",
-    "text": "Fruitdale"
+    "text": "Abrams Road\nJohn West/Buckner\nWest Garland\n\n\n\n\nDuncanville\nLedbetter\nWestmoreland\n\n\n\n\nGrand Prairie\nIrving\nMedical District (LC)\nNorthwest Highway\n\n\n\n\n\n\n\nFruitdale\nHighland Hills\nLake June\nMLK Center\n\n\n\n\nEast Garland\nNorth Dallas (Spring Valley)"
   },
   {
-    "objectID": "Fruitdale.html#points-of-excellence",
-    "href": "Fruitdale.html#points-of-excellence",
+    "objectID": "home.html#html-i-classbi-bi-building-fill-mr-2i-ana",
+    "href": "home.html#html-i-classbi-bi-building-fill-mr-2i-ana",
     "title": "WIC Clinic Dashboard",
-    "section": "Points of excellence",
-    "text": "Points of excellence\n\n\n\n\n\nThere aren’t any particularly weak areas—keep up the good work!\n\n\nWork on getting Phase 1 and Phase 2 targets up.\n\n\n\n\n\n\n\n\n\n\n\n\nPhases and themes\n\n\n\nRead more about the goals that go into phases and themes.\n\n\nThere aren’t any particularly weak areas—keep up the good work!"
+    "section": "",
+    "text": "Abrams Road\nJohn West/Buckner\nWest Garland"
+  },
+  {
+    "objectID": "home.html#chandra",
+    "href": "home.html#chandra",
+    "title": "WIC Clinic Dashboard",
+    "section": "",
+    "text": "Duncanville\nLedbetter\nWestmoreland"
+  },
+  {
+    "objectID": "home.html#cheryl",
+    "href": "home.html#cheryl",
+    "title": "WIC Clinic Dashboard",
+    "section": "",
+    "text": "Grand Prairie\nIrving\nMedical District (LC)\nNorthwest Highway"
+  },
+  {
+    "objectID": "home.html#heather",
+    "href": "home.html#heather",
+    "title": "WIC Clinic Dashboard",
+    "section": "",
+    "text": "Fruitdale\nHighland Hills\nLake June\nMLK Center"
+  },
+  {
+    "objectID": "home.html#nacole",
+    "href": "home.html#nacole",
+    "title": "WIC Clinic Dashboard",
+    "section": "",
+    "text": "East Garland\nNorth Dallas (Spring Valley)"
+  },
+  {
+    "objectID": "themes.html",
+    "href": "themes.html",
+    "title": "WIC Clinic Dashboard",
+    "section": "",
+    "text": "Is the current WIC logo on or above entrance?\nAre accurate hours of operation displayed on door in a permanent format?\nIs the WIC material QR code visible, colorful & intentional?\nIs the WIC material QR code linked to the WIC shopping guide?\nIs the WIC material QR code linked to social media?\nIs the WIC material QR code linked to the WIC cookbook?\nIs the WIC material QR code linked to state website?\n\n\n\n\n\n\n\n\n\nIs a clinic manager or supervisor present?\nIs there a standard filing system in place for forms?\nAre gloves mounted on the wall for easy access?\nIs there a rolling cart available in each room?\nDo clients stay in the same room throughout their visit?\nIs there a dedicated room for each certifier?\n\n\n\n\n\n\n\n\n\nIs there a television present?\nIs the television utilized appropriately?\nIs there developmentally appropriate entertainment available for children in every room?\nIs the environment peaceful and neutral, including factors such as smells and sounds?\nAre staff members properly welcoming, greeting clients with a friendly “Hi, Welcome to WIC”?\nIs staff at entrance to greet and provide information promptly?\nIs staff communicating options to walk-ins?\nIs water visible and available to clients?\nHow many families are currently waiting?\n\n\n\n\n\n\n\n\n\nDoes the entire scope of practice take place in a private room?\nDo all rooms display the Jordan Michael Design?\nDo all private rooms display room status indicators?\nAre there a minimum of 2 padded chairs available for clients?\nIs the desk size within the maximum limit of 8 sq ft?\nIs the lab equipment area within the maximum limit of 12 sq ft?\nIs there a small filing cabinet?\nAre at least 3 wall hangings displayed?\nAre interactive rugs provided for children?\nAre kitchen sets available for children?\nIs there at least one child chair provided?\nAre children’s books visible and accessible?\n\n\n\n\n\n\n\n\n\nAre sharp corners covered to ensure safety?\nAre electrical outlets covered to ensure safety?\nIs the hazard box placed up and out reach?\nHas any flammable clutter been removed?\nAre confidential conversations conducted with the door closed?\nIs alternative lighting available?\nAre padded or gel chairs available for comfort?"
+  },
+  {
+    "objectID": "themes.html#communication",
+    "href": "themes.html#communication",
+    "title": "WIC Clinic Dashboard",
+    "section": "",
+    "text": "Is the current WIC logo on or above entrance?\nAre accurate hours of operation displayed on door in a permanent format?\nIs the WIC material QR code visible, colorful & intentional?\nIs the WIC material QR code linked to the WIC shopping guide?\nIs the WIC material QR code linked to social media?\nIs the WIC material QR code linked to the WIC cookbook?\nIs the WIC material QR code linked to state website?"
+  },
+  {
+    "objectID": "themes.html#efficiency",
+    "href": "themes.html#efficiency",
+    "title": "WIC Clinic Dashboard",
+    "section": "",
+    "text": "Is a clinic manager or supervisor present?\nIs there a standard filing system in place for forms?\nAre gloves mounted on the wall for easy access?\nIs there a rolling cart available in each room?\nDo clients stay in the same room throughout their visit?\nIs there a dedicated room for each certifier?"
+  },
+  {
+    "objectID": "themes.html#hospitality",
+    "href": "themes.html#hospitality",
+    "title": "WIC Clinic Dashboard",
+    "section": "",
+    "text": "Is there a television present?\nIs the television utilized appropriately?\nIs there developmentally appropriate entertainment available for children in every room?\nIs the environment peaceful and neutral, including factors such as smells and sounds?\nAre staff members properly welcoming, greeting clients with a friendly “Hi, Welcome to WIC”?\nIs staff at entrance to greet and provide information promptly?\nIs staff communicating options to walk-ins?\nIs water visible and available to clients?\nHow many families are currently waiting?"
+  },
+  {
+    "objectID": "themes.html#layout",
+    "href": "themes.html#layout",
+    "title": "WIC Clinic Dashboard",
+    "section": "",
+    "text": "Does the entire scope of practice take place in a private room?\nDo all rooms display the Jordan Michael Design?\nDo all private rooms display room status indicators?\nAre there a minimum of 2 padded chairs available for clients?\nIs the desk size within the maximum limit of 8 sq ft?\nIs the lab equipment area within the maximum limit of 12 sq ft?\nIs there a small filing cabinet?\nAre at least 3 wall hangings displayed?\nAre interactive rugs provided for children?\nAre kitchen sets available for children?\nIs there at least one child chair provided?\nAre children’s books visible and accessible?"
+  },
+  {
+    "objectID": "themes.html#safety",
+    "href": "themes.html#safety",
+    "title": "WIC Clinic Dashboard",
+    "section": "",
+    "text": "Are sharp corners covered to ensure safety?\nAre electrical outlets covered to ensure safety?\nIs the hazard box placed up and out reach?\nHas any flammable clutter been removed?\nAre confidential conversations conducted with the door closed?\nIs alternative lighting available?\nAre padded or gel chairs available for comfort?"
+  },
+  {
+    "objectID": "phases.html",
+    "href": "phases.html",
+    "title": "WIC Clinic Dashboard",
+    "section": "",
+    "text": "Is there a television present?\nIs the television utilized appropriately?\nIs there developmentally appropriate entertainment available for children in every room?\nIs the environment peaceful and neutral, including factors such as smells and sounds?\nAre staff members properly welcoming, greeting clients with a friendly “Hi, Welcome to WIC”?\nIs staff at entrance to greet and provide information promptly?\nIs staff communicating options to walk-ins?\nIs water visible and available to clients?\nIs the current WIC logo on or above entrance?\nAre accurate hours of operation displayed on door in a permanent format?\nDoes the entire scope of practice take place in a private room?\nDo all rooms display the Jordan Michael Design?\nDo all private rooms display room status indicators?\nIs the WIC material QR code visible, colorful & intentional?\nIs the WIC material QR code linked to the WIC shopping guide?\nIs the WIC material QR code linked to social media?\nIs the WIC material QR code linked to the WIC cookbook?\nIs the WIC material QR code linked to state website?\nIs a clinic manager or supervisor present?\n\n\n\n\n\n\n\n\n\nAre there a minimum of 2 padded chairs available for clients?\nIs the desk size within the maximum limit of 8 sq ft?\nIs the lab equipment area within the maximum limit of 12 sq ft?\nIs there a small filing cabinet?\nAre at least 3 wall hangings displayed?\nAre sharp corners covered to ensure safety?\nAre electrical outlets covered to ensure safety?\nIs the hazard box placed up and out reach?\nHas any flammable clutter been removed?\nAre confidential conversations conducted with the door closed?\nIs alternative lighting available?\nAre padded or gel chairs available for comfort?\nAre interactive rugs provided for children?\nAre kitchen sets available for children?\nIs there at least one child chair provided?\nAre children’s books visible and accessible?\nIs there a standard filing system in place for forms?\nAre gloves mounted on the wall for easy access?\nIs there a rolling cart available in each room?\nDo clients stay in the same room throughout their visit?\nIs there a dedicated room for each certifier?\nHow many families are currently waiting?"
+  },
+  {
+    "objectID": "phases.html#section",
+    "href": "phases.html#section",
+    "title": "WIC Clinic Dashboard",
+    "section": "",
+    "text": "Is there a television present?\nIs the television utilized appropriately?\nIs there developmentally appropriate entertainment available for children in every room?\nIs the environment peaceful and neutral, including factors such as smells and sounds?\nAre staff members properly welcoming, greeting clients with a friendly “Hi, Welcome to WIC”?\nIs staff at entrance to greet and provide information promptly?\nIs staff communicating options to walk-ins?\nIs water visible and available to clients?\nIs the current WIC logo on or above entrance?\nAre accurate hours of operation displayed on door in a permanent format?\nDoes the entire scope of practice take place in a private room?\nDo all rooms display the Jordan Michael Design?\nDo all private rooms display room status indicators?\nIs the WIC material QR code visible, colorful & intentional?\nIs the WIC material QR code linked to the WIC shopping guide?\nIs the WIC material QR code linked to social media?\nIs the WIC material QR code linked to the WIC cookbook?\nIs the WIC material QR code linked to state website?\nIs a clinic manager or supervisor present?"
+  },
+  {
+    "objectID": "phases.html#section-1",
+    "href": "phases.html#section-1",
+    "title": "WIC Clinic Dashboard",
+    "section": "",
+    "text": "Are there a minimum of 2 padded chairs available for clients?\nIs the desk size within the maximum limit of 8 sq ft?\nIs the lab equipment area within the maximum limit of 12 sq ft?\nIs there a small filing cabinet?\nAre at least 3 wall hangings displayed?\nAre sharp corners covered to ensure safety?\nAre electrical outlets covered to ensure safety?\nIs the hazard box placed up and out reach?\nHas any flammable clutter been removed?\nAre confidential conversations conducted with the door closed?\nIs alternative lighting available?\nAre padded or gel chairs available for comfort?\nAre interactive rugs provided for children?\nAre kitchen sets available for children?\nIs there at least one child chair provided?\nAre children’s books visible and accessible?\nIs there a standard filing system in place for forms?\nAre gloves mounted on the wall for easy access?\nIs there a rolling cart available in each room?\nDo clients stay in the same room throughout their visit?\nIs there a dedicated room for each certifier?\nHow many families are currently waiting?"
   },
   {
     "objectID": "MLK_Center.html",
     "href": "MLK_Center.html",
     "title": "WIC Clinic Dashboard",
     "section": "",
-    "text": "MLK Center"
+    "text": "MLK Center\n        \n        \n        \n            Number of participants: 1,244"
   },
   {
-    "objectID": "MLK_Center.html#points-of-excellence",
-    "href": "MLK_Center.html#points-of-excellence",
+    "objectID": "MLK_Center.html#clinic-environment",
+    "href": "MLK_Center.html#clinic-environment",
     "title": "WIC Clinic Dashboard",
-    "section": "Points of excellence",
-    "text": "Points of excellence\n\n\n\n\n\nMLK Center is strong in hospitality. There aren’t any particularly weak areas—keep up the good work!\n\n\nWork on getting Phase 1 and Phase 2 targets up.\n\n\n\n\n\n\n\n\n\n\n\n\nPhases and themes\n\n\n\nRead more about the goals that go into phases and themes.\n\n\nMLK Center is strong in hospitality. There aren’t any particularly weak areas—keep up the good work!"
-  },
-  {
-    "objectID": "Westmoreland.html",
-    "href": "Westmoreland.html",
-    "title": "WIC Clinic Dashboard",
-    "section": "",
-    "text": "Westmoreland"
-  },
-  {
-    "objectID": "Westmoreland.html#points-of-excellence",
-    "href": "Westmoreland.html#points-of-excellence",
-    "title": "WIC Clinic Dashboard",
-    "section": "Points of excellence",
-    "text": "Points of excellence\n\n\n\n\n\nWestmoreland is strong in communication. There aren’t any particularly weak areas—keep up the good work!\n\n\nWork on getting Phase 1 and Phase 2 targets up.\n\n\n\n\n\n\n\n\n\n\n\n\nPhases and themes\n\n\n\nRead more about the goals that go into phases and themes.\n\n\nWestmoreland is strong in communication. There aren’t any particularly weak areas—keep up the good work!"
-  },
-  {
-    "objectID": "Lake_June.html",
-    "href": "Lake_June.html",
-    "title": "WIC Clinic Dashboard",
-    "section": "",
-    "text": "Lake June"
-  },
-  {
-    "objectID": "Lake_June.html#points-of-excellence",
-    "href": "Lake_June.html#points-of-excellence",
-    "title": "WIC Clinic Dashboard",
-    "section": "Points of excellence",
-    "text": "Points of excellence\n\n\n\n\n\nLake June is strong in hospitality and communication. There aren’t any particularly weak areas—keep up the good work!\n\n\nNice job getting Phase 1 fulfillment above 90%! Work on getting Phase 2 targets up.\n\n\n\n\n\n\n\n\n\n\n\n\nPhases and themes\n\n\n\nRead more about the goals that go into phases and themes.\n\n\nLake June is strong in hospitality and communication. There aren’t any particularly weak areas—keep up the good work!"
-  },
-  {
-    "objectID": "Grand_Prairie.html",
-    "href": "Grand_Prairie.html",
-    "title": "WIC Clinic Dashboard",
-    "section": "",
-    "text": "Grand Prairie"
-  },
-  {
-    "objectID": "Grand_Prairie.html#points-of-excellence",
-    "href": "Grand_Prairie.html#points-of-excellence",
-    "title": "WIC Clinic Dashboard",
-    "section": "Points of excellence",
-    "text": "Points of excellence\n\n\n\n\n\nThere aren’t any particularly weak areas—keep up the good work!\n\n\nNice job getting Phase 1 fulfillment above 90%! Work on getting Phase 2 targets up.\n\n\n\n\n\n\n\n\n\n\n\n\nPhases and themes\n\n\n\nRead more about the goals that go into phases and themes.\n\n\nThere aren’t any particularly weak areas—keep up the good work!"
-  },
-  {
-    "objectID": "Irving.html",
-    "href": "Irving.html",
-    "title": "WIC Clinic Dashboard",
-    "section": "",
-    "text": "Irving"
-  },
-  {
-    "objectID": "Irving.html#points-of-excellence",
-    "href": "Irving.html#points-of-excellence",
-    "title": "WIC Clinic Dashboard",
-    "section": "Points of excellence",
-    "text": "Points of excellence\n\n\n\n\n\nIrving is strong in hospitality. Focus on improving clinic layout and safety.\n\n\nWork on getting Phase 1 and Phase 2 targets up.\n\n\n\n\n\n\n\n\n\n\n\n\nPhases and themes\n\n\n\nRead more about the goals that go into phases and themes.\n\n\nIrving is strong in hospitality. Focus on improving clinic layout and safety."
-  },
-  {
-    "objectID": "Highland_Hills.html",
-    "href": "Highland_Hills.html",
-    "title": "WIC Clinic Dashboard",
-    "section": "",
-    "text": "Highland Hills"
-  },
-  {
-    "objectID": "Highland_Hills.html#points-of-excellence",
-    "href": "Highland_Hills.html#points-of-excellence",
-    "title": "WIC Clinic Dashboard",
-    "section": "Points of excellence",
-    "text": "Points of excellence\n\n\n\n\n\nThere aren’t any particularly weak areas—keep up the good work!\n\n\nWork on getting Phase 1 and Phase 2 targets up.\n\n\n\n\n\n\n\n\n\n\n\n\nPhases and themes\n\n\n\nRead more about the goals that go into phases and themes.\n\n\nThere aren’t any particularly weak areas—keep up the good work!"
-  },
-  {
-    "objectID": "East_Garland.html",
-    "href": "East_Garland.html",
-    "title": "WIC Clinic Dashboard",
-    "section": "",
-    "text": "East Garland"
-  },
-  {
-    "objectID": "East_Garland.html#points-of-excellence",
-    "href": "East_Garland.html#points-of-excellence",
-    "title": "WIC Clinic Dashboard",
-    "section": "Points of excellence",
-    "text": "Points of excellence\n\n\n\n\n\nEast Garland is strong in hospitality and efficiency. There aren’t any particularly weak areas—keep up the good work!\n\n\nNice job getting Phase 1 fulfillment above 90%! Work on getting Phase 2 targets up.\n\n\n\n\n\n\n\n\n\n\n\n\nPhases and themes\n\n\n\nRead more about the goals that go into phases and themes.\n\n\nEast Garland is strong in hospitality and efficiency. There aren’t any particularly weak areas—keep up the good work!"
-  },
-  {
-    "objectID": "Northwest_Highway.html",
-    "href": "Northwest_Highway.html",
-    "title": "WIC Clinic Dashboard",
-    "section": "",
-    "text": "Northwest Highway"
-  },
-  {
-    "objectID": "Northwest_Highway.html#points-of-excellence",
-    "href": "Northwest_Highway.html#points-of-excellence",
-    "title": "WIC Clinic Dashboard",
-    "section": "Points of excellence",
-    "text": "Points of excellence\n\n\n\n\n\nNorthwest Highway is strong in communication. Focus on improving clinic layout, efficiency and safety.\n\n\nWork on getting Phase 1 and Phase 2 targets up.\n\n\n\n\n\n\n\n\n\n\n\n\nPhases and themes\n\n\n\nRead more about the goals that go into phases and themes.\n\n\nNorthwest Highway is strong in communication. Focus on improving clinic layout, efficiency and safety."
-  },
-  {
-    "objectID": "North_Dallas.html",
-    "href": "North_Dallas.html",
-    "title": "WIC Clinic Dashboard",
-    "section": "",
-    "text": "North Dallas"
-  },
-  {
-    "objectID": "North_Dallas.html#points-of-excellence",
-    "href": "North_Dallas.html#points-of-excellence",
-    "title": "WIC Clinic Dashboard",
-    "section": "Points of excellence",
-    "text": "Points of excellence\n\n\n\n\n\nThere aren’t any particularly weak areas—keep up the good work!\n\n\nNice job getting Phase 1 fulfillment above 90%! Work on getting Phase 2 targets up.\n\n\n\n\n\n\n\n\n\n\n\n\nPhases and themes\n\n\n\nRead more about the goals that go into phases and themes.\n\n\nThere aren’t any particularly weak areas—keep up the good work!"
-  },
-  {
-    "objectID": "Ledbetter.html",
-    "href": "Ledbetter.html",
-    "title": "WIC Clinic Dashboard",
-    "section": "",
-    "text": "Ledbetter"
-  },
-  {
-    "objectID": "Ledbetter.html#points-of-excellence",
-    "href": "Ledbetter.html#points-of-excellence",
-    "title": "WIC Clinic Dashboard",
-    "section": "Points of excellence",
-    "text": "Points of excellence\n\n\n\n\n\nLedbetter is strong in hospitality and communication. There aren’t any particularly weak areas—keep up the good work!\n\n\nNice job getting Phase 1 fulfillment above 90%! Work on getting Phase 2 targets up.\n\n\n\n\n\n\n\n\n\n\n\n\nPhases and themes\n\n\n\nRead more about the goals that go into phases and themes.\n\n\nLedbetter is strong in hospitality and communication. There aren’t any particularly weak areas—keep up the good work!"
-  },
-  {
-    "objectID": "John_West_Buckner.html",
-    "href": "John_West_Buckner.html",
-    "title": "WIC Clinic Dashboard",
-    "section": "",
-    "text": "John West/Buckner"
-  },
-  {
-    "objectID": "John_West_Buckner.html#points-of-excellence",
-    "href": "John_West_Buckner.html#points-of-excellence",
-    "title": "WIC Clinic Dashboard",
-    "section": "Points of excellence",
-    "text": "Points of excellence\n\n\n\n\n\nJohn West/Buckner is strong in hospitality and communication. There aren’t any particularly weak areas—keep up the good work!\n\n\nNice job getting Phase 1 fulfillment above 90%! Work on getting Phase 2 targets up.\n\n\n\n\n\n\n\n\n\n\n\n\nPhases and themes\n\n\n\nRead more about the goals that go into phases and themes.\n\n\nJohn West/Buckner is strong in hospitality and communication. There aren’t any particularly weak areas—keep up the good work!"
-  },
-  {
-    "objectID": "Duncanville.html",
-    "href": "Duncanville.html",
-    "title": "WIC Clinic Dashboard",
-    "section": "",
-    "text": "Duncanville"
-  },
-  {
-    "objectID": "Duncanville.html#points-of-excellence",
-    "href": "Duncanville.html#points-of-excellence",
-    "title": "WIC Clinic Dashboard",
-    "section": "Points of excellence",
-    "text": "Points of excellence\n\n\n\n\n\nDuncanville is strong in hospitality. Focus on improving clinic safety.\n\n\nWork on getting Phase 1 and Phase 2 targets up.\n\n\n\n\n\n\n\n\n\n\n\n\nPhases and themes\n\n\n\nRead more about the goals that go into phases and themes.\n\n\nDuncanville is strong in hospitality. Focus on improving clinic safety."
-  },
-  {
-    "objectID": "West_Garland.html",
-    "href": "West_Garland.html",
-    "title": "WIC Clinic Dashboard",
-    "section": "",
-    "text": "West Garland"
-  },
-  {
-    "objectID": "West_Garland.html#points-of-excellence",
-    "href": "West_Garland.html#points-of-excellence",
-    "title": "WIC Clinic Dashboard",
-    "section": "Points of excellence",
-    "text": "Points of excellence\n\n\n\n\n\nWest Garland is strong in communication. Focus on improving clinic safety.\n\n\nWork on getting Phase 1 and Phase 2 targets up.\n\n\n\n\n\n\n\n\n\n\n\n\nPhases and themes\n\n\n\nRead more about the goals that go into phases and themes.\n\n\nWest Garland is strong in communication. Focus on improving clinic safety."
-  },
-  {
-    "objectID": "Medical_District.html",
-    "href": "Medical_District.html",
-    "title": "WIC Clinic Dashboard",
-    "section": "",
-    "text": "Medical District"
-  },
-  {
-    "objectID": "Medical_District.html#points-of-excellence",
-    "href": "Medical_District.html#points-of-excellence",
-    "title": "WIC Clinic Dashboard",
-    "section": "Points of excellence",
-    "text": "Points of excellence\n\n\n\n\n\nFocus on improving clinic layout, efficiency and safety.\n\n\nWork on getting Phase 1 and Phase 2 targets up.\n\n\n\n\n\n\n\n\n\n\n\n\nPhases and themes\n\n\n\nRead more about the goals that go into phases and themes.\n\n\nFocus on improving clinic layout, efficiency and safety."
-  },
-  {
-    "objectID": "Abrams_Road.html",
-    "href": "Abrams_Road.html",
-    "title": "WIC Clinic Dashboard",
-    "section": "",
-    "text": "Abrams Road"
-  },
-  {
-    "objectID": "Abrams_Road.html#points-of-excellence",
-    "href": "Abrams_Road.html#points-of-excellence",
-    "title": "WIC Clinic Dashboard",
-    "section": "Points of excellence",
-    "text": "Points of excellence\n\n\n\n\n\nFocus on improving clinic efficiency and safety.\n\n\nWork on getting Phase 1 and Phase 2 targets up.\n\n\n\n\n\n\n\n\n\n\n\n\nPhases and themes\n\n\n\nRead more about the goals that go into phases and themes.\n\n\nFocus on improving clinic efficiency and safety."
-  },
-  {
-    "objectID": "Fruitdale.html#staffing",
-    "href": "Fruitdale.html#staffing",
-    "title": "WIC Clinic Dashboard",
-    "section": "Staffing",
-    "text": "Staffing\n\nThere are no vacancies right now. Nice job!"
+    "section": "Clinic environment",
+    "text": "Clinic environment\n\nMLK Center has 1 items in Phase 1 and 2 items in Phase 2 that need improvement.\nHere are some goals to focus on:\n\nutilize alternative lighting options\ndisplay the current WIC logo at or above the entrance\nutilize a rolling cart in each room\nNA\nNA\n\n\n\nWork on getting Phase 1 and Phase 2 targets up.\n \n\n\nMLK Center is strong in hospitality. There aren’t any particularly weak areas—keep up the good work!\n \n\n\n\n\n\n\nPhases and themes\n\n\n\nRead more about the goals that go into phases and themes."
   },
   {
     "objectID": "MLK_Center.html#staffing",
@@ -238,11 +126,53 @@
     "text": "Staffing\n\nThere are no vacancies right now. Nice job!"
   },
   {
+    "objectID": "MLK_Center.html#customer-satisfaction",
+    "href": "MLK_Center.html#customer-satisfaction",
+    "title": "WIC Clinic Dashboard",
+    "section": "Customer satisfaction",
+    "text": "Customer satisfaction\nIn 2023-06-01, the customer satisfaction score was worse than MLK Center’s average.\nAgency-wide, MLK Center brought the average for Dallas County clinics down. Keep working!\nOver the last 18 months, the score for MLK Center has increased overall. Over the last 3 months, the score has increased."
+  },
+  {
+    "objectID": "Westmoreland.html",
+    "href": "Westmoreland.html",
+    "title": "WIC Clinic Dashboard",
+    "section": "",
+    "text": "Westmoreland\n        \n        \n        \n            Number of participants: 4,462"
+  },
+  {
+    "objectID": "Westmoreland.html#clinic-environment",
+    "href": "Westmoreland.html#clinic-environment",
+    "title": "WIC Clinic Dashboard",
+    "section": "Clinic environment",
+    "text": "Clinic environment\n\nWestmoreland has 2 items in Phase 1 and 5 items in Phase 2 that need improvement.\nHere are some goals to focus on:\n\ninstall interactive rugs for children\nmake water visibly available for clients\nmake children’s books visibly accessible\nhave a clinic manager or supervisor always on site\nprovide kitchen sets for children\n\n\n\nWork on getting Phase 1 and Phase 2 targets up.\n \n\n\nWestmoreland is strong in communication. There aren’t any particularly weak areas—keep up the good work!\n \n\n\n\n\n\n\nPhases and themes\n\n\n\nRead more about the goals that go into phases and themes."
+  },
+  {
     "objectID": "Westmoreland.html#staffing",
     "href": "Westmoreland.html#staffing",
     "title": "WIC Clinic Dashboard",
     "section": "Staffing",
     "text": "Staffing\n\nThere are no vacancies right now. Nice job!"
+  },
+  {
+    "objectID": "Westmoreland.html#customer-satisfaction",
+    "href": "Westmoreland.html#customer-satisfaction",
+    "title": "WIC Clinic Dashboard",
+    "section": "Customer satisfaction",
+    "text": "Customer satisfaction\nIn 2023-06-01, the customer satisfaction score was better than Westmoreland’s average. Good work!\nAgency-wide, Westmoreland brought the average for Dallas County clinics down. Keep working!\nOver the last 18 months, the score for Westmoreland has increased overall. Over the last 3 months, the score has increased."
+  },
+  {
+    "objectID": "Lake_June.html",
+    "href": "Lake_June.html",
+    "title": "WIC Clinic Dashboard",
+    "section": "",
+    "text": "Lake June\n        \n        \n        \n            Number of participants: 10,040"
+  },
+  {
+    "objectID": "Lake_June.html#clinic-environment",
+    "href": "Lake_June.html#clinic-environment",
+    "title": "WIC Clinic Dashboard",
+    "section": "Clinic environment",
+    "text": "Clinic environment\n\nLake June has 6 items in Phase 2 that need improvement.\nHere are some goals to focus on:\n\nutilize alternative lighting options\nutilize a rolling cart in each room\ncover all sharp corners in each room\nhave one or more chairs for children\nwork to keep wait times down\n\n\n\nNice job getting Phase 1 fulfillment above 90%! Work on getting Phase 2 targets up.\n \n\n\nLake June is strong in hospitality and communication. There aren’t any particularly weak areas—keep up the good work!\n \n\n\n\n\n\n\nPhases and themes\n\n\n\nRead more about the goals that go into phases and themes."
   },
   {
     "objectID": "Lake_June.html#staffing",
@@ -252,11 +182,53 @@
     "text": "Staffing\n\nConsider hiring 1 clerk and 1 certifier and 1 supervisor to meet staffing needs."
   },
   {
+    "objectID": "Lake_June.html#customer-satisfaction",
+    "href": "Lake_June.html#customer-satisfaction",
+    "title": "WIC Clinic Dashboard",
+    "section": "Customer satisfaction",
+    "text": "Customer satisfaction\nIn 2023-06-01, the customer satisfaction score was worse than Lake June’s average.\nAgency-wide, Lake June brought the average for Dallas County clinics down. Keep working!\nOver the last 18 months, the score for Lake June has increased overall. Over the last 3 months, the score has increased."
+  },
+  {
+    "objectID": "Grand_Prairie.html",
+    "href": "Grand_Prairie.html",
+    "title": "WIC Clinic Dashboard",
+    "section": "",
+    "text": "Grand Prairie\n        \n        \n        \n            Number of participants: 4,977"
+  },
+  {
+    "objectID": "Grand_Prairie.html#clinic-environment",
+    "href": "Grand_Prairie.html#clinic-environment",
+    "title": "WIC Clinic Dashboard",
+    "section": "Clinic environment",
+    "text": "Clinic environment\n\nGrand Prairie has 1 items in Phase 1 and 6 items in Phase 2 that need improvement.\nHere are some goals to focus on:\n\ninstall interactive rugs for children\nutilize a rolling cart in each room\nmake children’s books visibly accessible\noffer padded or gel chairs for comfort\nhave one or more chairs for children\n\n\n\nNice job getting Phase 1 fulfillment above 90%! Work on getting Phase 2 targets up.\n \n\n\nThere aren’t any particularly weak areas—keep up the good work!\n \n\n\n\n\n\n\nPhases and themes\n\n\n\nRead more about the goals that go into phases and themes."
+  },
+  {
     "objectID": "Grand_Prairie.html#staffing",
     "href": "Grand_Prairie.html#staffing",
     "title": "WIC Clinic Dashboard",
     "section": "Staffing",
     "text": "Staffing\n\nConsider hiring 3 clerks and 1 supervisor to meet staffing needs."
+  },
+  {
+    "objectID": "Grand_Prairie.html#customer-satisfaction",
+    "href": "Grand_Prairie.html#customer-satisfaction",
+    "title": "WIC Clinic Dashboard",
+    "section": "Customer satisfaction",
+    "text": "Customer satisfaction\nIn 2023-06-01, the customer satisfaction score was better than Grand Prairie’s average. Good work!\nAgency-wide, Grand Prairie brought the average for Dallas County clinics up. Nice!\nOver the last 18 months, the score for Grand Prairie has increased overall. Over the last 3 months, the score has increased."
+  },
+  {
+    "objectID": "Irving.html",
+    "href": "Irving.html",
+    "title": "WIC Clinic Dashboard",
+    "section": "",
+    "text": "Irving\n        \n        \n        \n            Number of participants: 9,200"
+  },
+  {
+    "objectID": "Irving.html#clinic-environment",
+    "href": "Irving.html#clinic-environment",
+    "title": "WIC Clinic Dashboard",
+    "section": "Clinic environment",
+    "text": "Clinic environment\n\nIrving has 2 items in Phase 1 and 15 items in Phase 2 that need improvement.\nHere are some goals to focus on:\n\nprovide a minimum of 2 padded client chairs\nutilize alternative lighting options\ndecorate all rooms with the Jordan Michael Design\nwork to keep wait times down\nmake children’s books visibly accessible\n\n\n\nWork on getting Phase 1 and Phase 2 targets up.\n \n\n\nIrving is strong in hospitality. Focus on improving clinic layout and safety.\n \n\n\n\n\n\n\nPhases and themes\n\n\n\nRead more about the goals that go into phases and themes."
   },
   {
     "objectID": "Irving.html#staffing",
@@ -266,11 +238,53 @@
     "text": "Staffing\n\nConsider hiring 2 clerks and 1 supervisor to meet staffing needs."
   },
   {
+    "objectID": "Irving.html#customer-satisfaction",
+    "href": "Irving.html#customer-satisfaction",
+    "title": "WIC Clinic Dashboard",
+    "section": "Customer satisfaction",
+    "text": "Customer satisfaction\nIn 2023-06-01, the customer satisfaction score was better than Irving’s average. Good work!\nAgency-wide, Irving brought the average for Dallas County clinics down. Keep working!\nOver the last 18 months, the score for Irving has increased overall. Over the last 3 months, the score has increased."
+  },
+  {
+    "objectID": "Highland_Hills.html",
+    "href": "Highland_Hills.html",
+    "title": "WIC Clinic Dashboard",
+    "section": "",
+    "text": "Highland Hills\n        \n        \n        \n            Number of participants: 179"
+  },
+  {
+    "objectID": "Highland_Hills.html#clinic-environment",
+    "href": "Highland_Hills.html#clinic-environment",
+    "title": "WIC Clinic Dashboard",
+    "section": "Clinic environment",
+    "text": "Clinic environment\n\nHighland Hills has 3 items in Phase 1 and 8 items in Phase 2 that need improvement.\nHere are some goals to focus on:\n\ndisplay the current WIC logo at or above the entrance\nprovide kitchen sets for children\nutilize a rolling cart in each room\nequip all private rooms with status indicators\ninstall interactive rugs for children\n\n\n\nWork on getting Phase 1 and Phase 2 targets up.\n \n\n\nThere aren’t any particularly weak areas—keep up the good work!\n \n\n\n\n\n\n\nPhases and themes\n\n\n\nRead more about the goals that go into phases and themes."
+  },
+  {
     "objectID": "Highland_Hills.html#staffing",
     "href": "Highland_Hills.html#staffing",
     "title": "WIC Clinic Dashboard",
     "section": "Staffing",
     "text": "Staffing\n\nThere are no vacancies right now. Nice job!"
+  },
+  {
+    "objectID": "Highland_Hills.html#customer-satisfaction",
+    "href": "Highland_Hills.html#customer-satisfaction",
+    "title": "WIC Clinic Dashboard",
+    "section": "Customer satisfaction",
+    "text": "Customer satisfaction\nIn 2023-06-01, the customer satisfaction score was better than Highland Hills’s average. Good work!\nAgency-wide, Highland Hills brought the average for Dallas County clinics up. Nice!\nOver the last 18 months, the score for Highland Hills has increased overall. Over the last 3 months, the score has decreased."
+  },
+  {
+    "objectID": "East_Garland.html",
+    "href": "East_Garland.html",
+    "title": "WIC Clinic Dashboard",
+    "section": "",
+    "text": "East Garland\n        \n        \n        \n            Number of participants: 6,182"
+  },
+  {
+    "objectID": "East_Garland.html#clinic-environment",
+    "href": "East_Garland.html#clinic-environment",
+    "title": "WIC Clinic Dashboard",
+    "section": "Clinic environment",
+    "text": "Clinic environment\n\nEast Garland has 1 items in Phase 1 and 2 items in Phase 2 that need improvement.\nHere are some goals to focus on:\n\nhave one or more chairs for children\ndisplay the current WIC logo at or above the entrance\noffer padded or gel chairs for comfort\nNA\nNA\n\n\n\nNice job getting Phase 1 fulfillment above 90%! Work on getting Phase 2 targets up.\n \n\n\nEast Garland is strong in hospitality and efficiency. There aren’t any particularly weak areas—keep up the good work!\n \n\n\n\n\n\n\nPhases and themes\n\n\n\nRead more about the goals that go into phases and themes."
   },
   {
     "objectID": "East_Garland.html#staffing",
@@ -280,11 +294,53 @@
     "text": "Staffing\n\nConsider hiring 4 clerks and 1 certifier and 1 supervisor to meet staffing needs."
   },
   {
+    "objectID": "East_Garland.html#customer-satisfaction",
+    "href": "East_Garland.html#customer-satisfaction",
+    "title": "WIC Clinic Dashboard",
+    "section": "Customer satisfaction",
+    "text": "Customer satisfaction\nIn 2023-06-01, the customer satisfaction score was better than East Garland’s average. Good work!\nAgency-wide, East Garland brought the average for Dallas County clinics up. Nice!\nOver the last 18 months, the score for East Garland has increased overall. Over the last 3 months, the score has increased."
+  },
+  {
+    "objectID": "Northwest_Highway.html",
+    "href": "Northwest_Highway.html",
+    "title": "WIC Clinic Dashboard",
+    "section": "",
+    "text": "Northwest Highway\n        \n        \n        \n            Number of participants: 3,818"
+  },
+  {
+    "objectID": "Northwest_Highway.html#clinic-environment",
+    "href": "Northwest_Highway.html#clinic-environment",
+    "title": "WIC Clinic Dashboard",
+    "section": "Clinic environment",
+    "text": "Clinic environment\n\nNorthwest Highway has 3 items in Phase 1 and 12 items in Phase 2 that need improvement.\nHere are some goals to focus on:\n\ndedicate a room for each certifier\noffer padded or gel chairs for comfort\ncover all sharp corners in each room\ndisplay three or more wall hangings in each room\nensure that a television is present\n\n\n\nWork on getting Phase 1 and Phase 2 targets up.\n \n\n\nNorthwest Highway is strong in communication. Focus on improving clinic layout, efficiency and safety.\n \n\n\n\n\n\n\nPhases and themes\n\n\n\nRead more about the goals that go into phases and themes."
+  },
+  {
     "objectID": "Northwest_Highway.html#staffing",
     "href": "Northwest_Highway.html#staffing",
     "title": "WIC Clinic Dashboard",
     "section": "Staffing",
     "text": "Staffing\n\nConsider hiring 2 clerks and 2 certifiers to meet staffing needs."
+  },
+  {
+    "objectID": "Northwest_Highway.html#customer-satisfaction",
+    "href": "Northwest_Highway.html#customer-satisfaction",
+    "title": "WIC Clinic Dashboard",
+    "section": "Customer satisfaction",
+    "text": "Customer satisfaction\nIn 2023-06-01, the customer satisfaction score was better than Northwest Highway’s average. Good work!\nAgency-wide, Northwest Highway brought the average for Dallas County clinics down. Keep working!\nOver the last 18 months, the score for Northwest Highway has increased overall. Over the last 3 months, the score has decreased."
+  },
+  {
+    "objectID": "North_Dallas.html",
+    "href": "North_Dallas.html",
+    "title": "WIC Clinic Dashboard",
+    "section": "",
+    "text": "North Dallas\n        \n        \n        \n            Number of participants: 6,959"
+  },
+  {
+    "objectID": "North_Dallas.html#clinic-environment",
+    "href": "North_Dallas.html#clinic-environment",
+    "title": "WIC Clinic Dashboard",
+    "section": "Clinic environment",
+    "text": "Clinic environment\n\nNorth Dallas has 1 items in Phase 1 and 6 items in Phase 2 that need improvement.\nHere are some goals to focus on:\n\nmake children’s books visibly accessible\ndisplay the current WIC logo at or above the entrance\nmaintain a standard filing system for forms\nhave one or more chairs for children\ninstall interactive rugs for children\n\n\n\nNice job getting Phase 1 fulfillment above 90%! Work on getting Phase 2 targets up.\n \n\n\nThere aren’t any particularly weak areas—keep up the good work!\n \n\n\n\n\n\n\nPhases and themes\n\n\n\nRead more about the goals that go into phases and themes."
   },
   {
     "objectID": "North_Dallas.html#staffing",
@@ -294,11 +350,53 @@
     "text": "Staffing\n\nConsider hiring 2 clerks and 2 certifiers to meet staffing needs."
   },
   {
+    "objectID": "North_Dallas.html#customer-satisfaction",
+    "href": "North_Dallas.html#customer-satisfaction",
+    "title": "WIC Clinic Dashboard",
+    "section": "Customer satisfaction",
+    "text": "Customer satisfaction\nIn 2023-06-01, the customer satisfaction score was better than North Dallas’s average. Good work!\nAgency-wide, North Dallas brought the average for Dallas County clinics down. Keep working!\nOver the last 18 months, the score for North Dallas has decreased overall. Over the last 3 months, the score has increased."
+  },
+  {
+    "objectID": "Ledbetter.html",
+    "href": "Ledbetter.html",
+    "title": "WIC Clinic Dashboard",
+    "section": "",
+    "text": "Ledbetter\n        \n        \n        \n            Number of participants: 8,800"
+  },
+  {
+    "objectID": "Ledbetter.html#clinic-environment",
+    "href": "Ledbetter.html#clinic-environment",
+    "title": "WIC Clinic Dashboard",
+    "section": "Clinic environment",
+    "text": "Clinic environment\n\nLedbetter has 1 items in Phase 1 and 2 items in Phase 2 that need improvement.\nHere are some goals to focus on:\n\nwork to keep wait times down\nkeep all patient procedures in private room\noffer padded or gel chairs for comfort\nNA\nNA\n\n\n\nNice job getting Phase 1 fulfillment above 90%! Work on getting Phase 2 targets up.\n \n\n\nLedbetter is strong in hospitality, communication and efficiency. There aren’t any particularly weak areas—keep up the good work!\n \n\n\n\n\n\n\nPhases and themes\n\n\n\nRead more about the goals that go into phases and themes."
+  },
+  {
     "objectID": "Ledbetter.html#staffing",
     "href": "Ledbetter.html#staffing",
     "title": "WIC Clinic Dashboard",
     "section": "Staffing",
     "text": "Staffing\n\nConsider hiring 2 clerks and 1 supervisor to meet staffing needs."
+  },
+  {
+    "objectID": "Ledbetter.html#customer-satisfaction",
+    "href": "Ledbetter.html#customer-satisfaction",
+    "title": "WIC Clinic Dashboard",
+    "section": "Customer satisfaction",
+    "text": "Customer satisfaction\nIn 2023-06-01, the customer satisfaction score was better than Ledbetter’s average. Good work!\nAgency-wide, Ledbetter brought the average for Dallas County clinics up. Nice!\nOver the last 18 months, the score for Ledbetter has increased overall. Over the last 3 months, the score has increased."
+  },
+  {
+    "objectID": "John_West_Buckner.html",
+    "href": "John_West_Buckner.html",
+    "title": "WIC Clinic Dashboard",
+    "section": "",
+    "text": "John West/Buckner\n        \n        \n        \n            Number of participants: 7,749"
+  },
+  {
+    "objectID": "John_West_Buckner.html#clinic-environment",
+    "href": "John_West_Buckner.html#clinic-environment",
+    "title": "WIC Clinic Dashboard",
+    "section": "Clinic environment",
+    "text": "Clinic environment\n\nJohn West/Buckner has 2 items in Phase 2 that need improvement.\nHere are some goals to focus on:\n\noffer padded or gel chairs for comfort\nutilize a rolling cart in each room\nNA\nNA\nNA\n\n\n\nNice job getting Phase 1 fulfillment above 90%! Work on getting Phase 2 targets up.\n \n\n\nJohn West/Buckner is strong in hospitality and communication. There aren’t any particularly weak areas—keep up the good work!\n \n\n\n\n\n\n\nPhases and themes\n\n\n\nRead more about the goals that go into phases and themes."
   },
   {
     "objectID": "John_West_Buckner.html#staffing",
@@ -308,11 +406,53 @@
     "text": "Staffing\n\nConsider hiring 1 supervisor to meet staffing needs."
   },
   {
+    "objectID": "John_West_Buckner.html#customer-satisfaction",
+    "href": "John_West_Buckner.html#customer-satisfaction",
+    "title": "WIC Clinic Dashboard",
+    "section": "Customer satisfaction",
+    "text": "Customer satisfaction\nIn 2023-06-01, the customer satisfaction score was better than John West/Buckner’s average. Good work!\nAgency-wide, John West/Buckner brought the average for Dallas County clinics up. Nice!\nOver the last 18 months, the score for John West/Buckner has increased overall. Over the last 3 months, the score has increased."
+  },
+  {
+    "objectID": "Duncanville.html",
+    "href": "Duncanville.html",
+    "title": "WIC Clinic Dashboard",
+    "section": "",
+    "text": "Duncanville\n        \n        \n        \n            Number of participants: 3,818"
+  },
+  {
+    "objectID": "Duncanville.html#clinic-environment",
+    "href": "Duncanville.html#clinic-environment",
+    "title": "WIC Clinic Dashboard",
+    "section": "Clinic environment",
+    "text": "Clinic environment\n\nDuncanville has 2 items in Phase 1 and 12 items in Phase 2 that need improvement.\nHere are some goals to focus on:\n\nkeep the hazard box up and out of reach in each room\nmount gloves to the wall\ndisplay the current WIC logo at or above the entrance\ninstall interactive rugs for children\nremove flammable clutter in each room\n\n\n\nWork on getting Phase 1 and Phase 2 targets up.\n \n\n\nDuncanville is strong in hospitality. Focus on improving clinic safety.\n \n\n\n\n\n\n\nPhases and themes\n\n\n\nRead more about the goals that go into phases and themes."
+  },
+  {
     "objectID": "Duncanville.html#staffing",
     "href": "Duncanville.html#staffing",
     "title": "WIC Clinic Dashboard",
     "section": "Staffing",
     "text": "Staffing\n\nConsider hiring 2 certifiers to meet staffing needs."
+  },
+  {
+    "objectID": "Duncanville.html#customer-satisfaction",
+    "href": "Duncanville.html#customer-satisfaction",
+    "title": "WIC Clinic Dashboard",
+    "section": "Customer satisfaction",
+    "text": "Customer satisfaction\nIn 2023-06-01, the customer satisfaction score was better than Duncanville’s average. Good work!\nAgency-wide, Duncanville brought the average for Dallas County clinics down. Keep working!\nOver the last 18 months, the score for Duncanville has increased overall. Over the last 3 months, the score has decreased."
+  },
+  {
+    "objectID": "West_Garland.html",
+    "href": "West_Garland.html",
+    "title": "WIC Clinic Dashboard",
+    "section": "",
+    "text": "West Garland\n        \n        \n        \n            Number of participants: 4,755"
+  },
+  {
+    "objectID": "West_Garland.html#clinic-environment",
+    "href": "West_Garland.html#clinic-environment",
+    "title": "WIC Clinic Dashboard",
+    "section": "Clinic environment",
+    "text": "Clinic environment\n\nWest Garland has 3 items in Phase 1 and 8 items in Phase 2 that need improvement.\nHere are some goals to focus on:\n\nmake children’s books visibly accessible\noffer padded or gel chairs for comfort\nequip all private rooms with status indicators\nkeep the hazard box up and out of reach in each room\nmake developmentally appropriate entertainment for children available in every room\n\n\n\nWork on getting Phase 1 and Phase 2 targets up.\n \n\n\nWest Garland is strong in communication. Focus on improving clinic safety.\n \n\n\n\n\n\n\nPhases and themes\n\n\n\nRead more about the goals that go into phases and themes."
   },
   {
     "objectID": "West_Garland.html#staffing",
@@ -322,11 +462,53 @@
     "text": "Staffing\n\nConsider hiring 2 clerks and 1 certifier to meet staffing needs."
   },
   {
+    "objectID": "West_Garland.html#customer-satisfaction",
+    "href": "West_Garland.html#customer-satisfaction",
+    "title": "WIC Clinic Dashboard",
+    "section": "Customer satisfaction",
+    "text": "Customer satisfaction\nIn 2023-06-01, the customer satisfaction score was better than West Garland’s average. Good work!\nAgency-wide, West Garland brought the average for Dallas County clinics down. Keep working!\nOver the last 18 months, the score for West Garland has increased overall. Over the last 3 months, the score has increased."
+  },
+  {
+    "objectID": "Medical_District.html",
+    "href": "Medical_District.html",
+    "title": "WIC Clinic Dashboard",
+    "section": "",
+    "text": "Medical District\n        \n        \n        \n            Number of participants:"
+  },
+  {
+    "objectID": "Medical_District.html#clinic-environment",
+    "href": "Medical_District.html#clinic-environment",
+    "title": "WIC Clinic Dashboard",
+    "section": "Clinic environment",
+    "text": "Clinic environment\n\nMedical District has 7 items in Phase 1 and 18 items in Phase 2 that need improvement.\nHere are some goals to focus on:\n\nmaintain a standard filing system for forms\nensure the client remains stationary during the visit\nmake water visibly available for clients\ninstall interactive rugs for children\nmount gloves to the wall\n\n\n\nWork on getting Phase 1 and Phase 2 targets up.\n \n\n\nFocus on improving clinic layout, efficiency and safety.\n \n\n\n\n\n\n\nPhases and themes\n\n\n\nRead more about the goals that go into phases and themes."
+  },
+  {
     "objectID": "Medical_District.html#staffing",
     "href": "Medical_District.html#staffing",
     "title": "WIC Clinic Dashboard",
     "section": "Staffing",
     "text": "Staffing\n\nThere are no vacancies right now. Nice job!"
+  },
+  {
+    "objectID": "Medical_District.html#customer-satisfaction",
+    "href": "Medical_District.html#customer-satisfaction",
+    "title": "WIC Clinic Dashboard",
+    "section": "Customer satisfaction",
+    "text": "Customer satisfaction\nIn 2023-06-01, the customer satisfaction score was better than Medical District’s average. Good work!\nAgency-wide, Medical District brought the average for Dallas County clinics up. Nice!\nOver the last 18 months, the score for Medical District has increased overall. Over the last 3 months, the score has increased."
+  },
+  {
+    "objectID": "Abrams_Road.html",
+    "href": "Abrams_Road.html",
+    "title": "WIC Clinic Dashboard",
+    "section": "",
+    "text": "Abrams Road\n        \n        \n        \n            Number of participants: 4,606"
+  },
+  {
+    "objectID": "Abrams_Road.html#clinic-environment",
+    "href": "Abrams_Road.html#clinic-environment",
+    "title": "WIC Clinic Dashboard",
+    "section": "Clinic environment",
+    "text": "Clinic environment\n\nAbrams Road has 1 items in Phase 1 and 12 items in Phase 2 that need improvement.\nHere are some goals to focus on:\n\nensure the client remains stationary during the visit\nhave one or more chairs for children\ndisplay the current WIC logo at or above the entrance\nmake children’s books visibly accessible\nprovide kitchen sets for children\n\n\n\nWork on getting Phase 1 and Phase 2 targets up.\n \n\n\nFocus on improving clinic efficiency and safety.\n \n\n\n\n\n\n\nPhases and themes\n\n\n\nRead more about the goals that go into phases and themes."
   },
   {
     "objectID": "Abrams_Road.html#staffing",
@@ -336,325 +518,45 @@
     "text": "Staffing\n\nThere are no vacancies right now. Nice job!"
   },
   {
-    "objectID": "Fruitdale.html#customer-satisfaction",
-    "href": "Fruitdale.html#customer-satisfaction",
-    "title": "WIC Clinic Dashboard",
-    "section": "Customer satisfaction",
-    "text": "Customer satisfaction"
-  },
-  {
-    "objectID": "MLK_Center.html#customer-satisfaction",
-    "href": "MLK_Center.html#customer-satisfaction",
-    "title": "WIC Clinic Dashboard",
-    "section": "Customer satisfaction",
-    "text": "Customer satisfaction"
-  },
-  {
-    "objectID": "Westmoreland.html#customer-satisfaction",
-    "href": "Westmoreland.html#customer-satisfaction",
-    "title": "WIC Clinic Dashboard",
-    "section": "Customer satisfaction",
-    "text": "Customer satisfaction"
-  },
-  {
-    "objectID": "Lake_June.html#customer-satisfaction",
-    "href": "Lake_June.html#customer-satisfaction",
-    "title": "WIC Clinic Dashboard",
-    "section": "Customer satisfaction",
-    "text": "Customer satisfaction"
-  },
-  {
-    "objectID": "Grand_Prairie.html#customer-satisfaction",
-    "href": "Grand_Prairie.html#customer-satisfaction",
-    "title": "WIC Clinic Dashboard",
-    "section": "Customer satisfaction",
-    "text": "Customer satisfaction"
-  },
-  {
-    "objectID": "Irving.html#customer-satisfaction",
-    "href": "Irving.html#customer-satisfaction",
-    "title": "WIC Clinic Dashboard",
-    "section": "Customer satisfaction",
-    "text": "Customer satisfaction"
-  },
-  {
-    "objectID": "Highland_Hills.html#customer-satisfaction",
-    "href": "Highland_Hills.html#customer-satisfaction",
-    "title": "WIC Clinic Dashboard",
-    "section": "Customer satisfaction",
-    "text": "Customer satisfaction"
-  },
-  {
-    "objectID": "East_Garland.html#customer-satisfaction",
-    "href": "East_Garland.html#customer-satisfaction",
-    "title": "WIC Clinic Dashboard",
-    "section": "Customer satisfaction",
-    "text": "Customer satisfaction"
-  },
-  {
-    "objectID": "Northwest_Highway.html#customer-satisfaction",
-    "href": "Northwest_Highway.html#customer-satisfaction",
-    "title": "WIC Clinic Dashboard",
-    "section": "Customer satisfaction",
-    "text": "Customer satisfaction"
-  },
-  {
-    "objectID": "North_Dallas.html#customer-satisfaction",
-    "href": "North_Dallas.html#customer-satisfaction",
-    "title": "WIC Clinic Dashboard",
-    "section": "Customer satisfaction",
-    "text": "Customer satisfaction"
-  },
-  {
-    "objectID": "Ledbetter.html#customer-satisfaction",
-    "href": "Ledbetter.html#customer-satisfaction",
-    "title": "WIC Clinic Dashboard",
-    "section": "Customer satisfaction",
-    "text": "Customer satisfaction"
-  },
-  {
-    "objectID": "John_West_Buckner.html#customer-satisfaction",
-    "href": "John_West_Buckner.html#customer-satisfaction",
-    "title": "WIC Clinic Dashboard",
-    "section": "Customer satisfaction",
-    "text": "Customer satisfaction"
-  },
-  {
-    "objectID": "Duncanville.html#customer-satisfaction",
-    "href": "Duncanville.html#customer-satisfaction",
-    "title": "WIC Clinic Dashboard",
-    "section": "Customer satisfaction",
-    "text": "Customer satisfaction"
-  },
-  {
-    "objectID": "West_Garland.html#customer-satisfaction",
-    "href": "West_Garland.html#customer-satisfaction",
-    "title": "WIC Clinic Dashboard",
-    "section": "Customer satisfaction",
-    "text": "Customer satisfaction"
-  },
-  {
-    "objectID": "Medical_District.html#customer-satisfaction",
-    "href": "Medical_District.html#customer-satisfaction",
-    "title": "WIC Clinic Dashboard",
-    "section": "Customer satisfaction",
-    "text": "Customer satisfaction"
-  },
-  {
     "objectID": "Abrams_Road.html#customer-satisfaction",
     "href": "Abrams_Road.html#customer-satisfaction",
     "title": "WIC Clinic Dashboard",
     "section": "Customer satisfaction",
-    "text": "Customer satisfaction"
+    "text": "Customer satisfaction\nIn 2023-06-01, the customer satisfaction score was better than Abrams Road’s average. Good work!\nAgency-wide, Abrams Road brought the average for Dallas County clinics up. Nice!\nOver the last 18 months, the score for Abrams Road has increased overall. Over the last 3 months, the score has increased."
   },
   {
-    "objectID": "dashboardGoals.html",
-    "href": "dashboardGoals.html",
+    "objectID": "Fruitdale.html",
+    "href": "Fruitdale.html",
     "title": "WIC Clinic Dashboard",
     "section": "",
-    "text": "Choose a variable:\n\nPhases\nThemes\n\n\n\n\n\n\n\n\n\n\n\nGoals, themes, and phases"
+    "text": "Fruitdale\n        \n        \n        \n            Number of participants: 0"
   },
   {
-    "objectID": "theme.html",
-    "href": "theme.html",
+    "objectID": "Fruitdale.html#clinic-environment",
+    "href": "Fruitdale.html#clinic-environment",
     "title": "WIC Clinic Dashboard",
-    "section": "",
-    "text": "Clinic themes\n\n\n\nError in `group_by()`:\n! Must group by variables found in `.data`.\n✖ Column `goal_category` is not found.\n\n\nError in nrow(grouped_POE): object 'grouped_POE' not found"
+    "section": "Clinic environment",
+    "text": "Clinic environment\n\nFruitdale has 5 items in Phase 1 and 4 items in Phase 2 that need improvement.\nHere are some goals to focus on:\n\nensure that a television is present\nkeep a small filing cabinet\ndisplay the current WIC logo at or above the entrance\npresent clear and accurate hours of operation on the door\nhave one or more chairs for children\n\n\n\nWork on getting Phase 1 and Phase 2 targets up.\n \n\n\nThere aren’t any particularly weak areas—keep up the good work!\n \n\n\n\n\n\n\nPhases and themes\n\n\n\nRead more about the goals that go into phases and themes."
   },
   {
-    "objectID": "phase.html",
-    "href": "phase.html",
+    "objectID": "Fruitdale.html#staffing",
+    "href": "Fruitdale.html#staffing",
     "title": "WIC Clinic Dashboard",
-    "section": "",
-    "text": "Clinic themes\n\n\n\nError in `group_by()`:\n! Must group by variables found in `.data`.\n✖ Column `goal_category` is not found.\n\n\nError in nrow(grouped_POE): object 'grouped_POE' not found"
+    "section": "Staffing",
+    "text": "Staffing\n\nThere are no vacancies right now. Nice job!"
   },
   {
-    "objectID": "themes.html",
-    "href": "themes.html",
+    "objectID": "Fruitdale.html#customer-satisfaction",
+    "href": "Fruitdale.html#customer-satisfaction",
     "title": "WIC Clinic Dashboard",
-    "section": "",
-    "text": "Clinic themes\n\n\n\n[1] \"## Communication\"\nattr(,\"class\")\n[1] \"knit_asis\"\nattr(,\"knit_cacheable\")\n[1] NA\n\n\n&lt;!-- --&gt;\n\n[1] \"Is the current WIC logo on or above entrance?\\nAre accurate hours of operation displayed on door in a permanent format?\\nIs the WIC material QR code visible, colorful & intentional?\\nIs the WIC material QR code linked to the WIC shopping guide?\\nIs the WIC material QR code linked to social media?\\nIs the WIC material QR code linked to the WIC cookbook?\\nIs the WIC material QR code linked to state website?\"\nattr(,\"class\")\n[1] \"knit_asis\"\nattr(,\"knit_cacheable\")\n[1] NA\n\n\n&lt;!-- --&gt;\n\n[1] \"## Efficiency\"\nattr(,\"class\")\n[1] \"knit_asis\"\nattr(,\"knit_cacheable\")\n[1] NA\n\n\n&lt;!-- --&gt;\n\n[1] \"Is a clinic manager or supervisor present?\\nIs there a standard filing system in place for forms?\\nAre gloves mounted on the wall for easy access?\\nIs there a rolling cart available in each room?\\nDo clients stay in the same room throughout their visit?\\nIs there a dedicated room for each certifier?\"\nattr(,\"class\")\n[1] \"knit_asis\"\nattr(,\"knit_cacheable\")\n[1] NA\n\n\n&lt;!-- --&gt;\n\n[1] \"## Hospitality\"\nattr(,\"class\")\n[1] \"knit_asis\"\nattr(,\"knit_cacheable\")\n[1] NA\n\n\n&lt;!-- --&gt;\n\n[1] \"Is there a television present?\\nIs the television utilized appropriately?\\nIs there developmentally appropriate entertainment available for children in every room?\\nIs the environment peaceful and neutral, including factors such as smells and sounds?\\nAre staff members properly welcoming, greeting clients with a friendly \\\"Hi, Welcome to WIC\\\"?\\nIs staff at entrance to greet and provide information promptly?\\nIs staff communicating options to walk-ins?\\nIs water visible and available to clients?\\nHow many families are currently waiting?\"\nattr(,\"class\")\n[1] \"knit_asis\"\nattr(,\"knit_cacheable\")\n[1] NA\n\n\n&lt;!-- --&gt;\n\n[1] \"## Layout\"\nattr(,\"class\")\n[1] \"knit_asis\"\nattr(,\"knit_cacheable\")\n[1] NA\n\n\n&lt;!-- --&gt;\n\n[1] \"Does the entire scope of practice take place in a private room?\\nDo all rooms display the Jordan Michael Design?\\nDo all private rooms display room status indicators?\\nAre there a minimum of 2 padded chairs available for clients?\\nIs the desk size within the maximum limit of 8 sq ft?\\nIs the lab equipment area within the maximum limit of 12 sq ft?\\nIs there a small filing cabinet?\\nAre at least 3 wall hangings displayed?\\nAre interactive rugs provided for children?\\nAre kitchen sets available for children?\\nIs there at least one child chair provided?\\nAre children's books visible and accessible?\"\nattr(,\"class\")\n[1] \"knit_asis\"\nattr(,\"knit_cacheable\")\n[1] NA\n\n\n&lt;!-- --&gt;\n\n[1] \"## Safety\"\nattr(,\"class\")\n[1] \"knit_asis\"\nattr(,\"knit_cacheable\")\n[1] NA\n\n\n&lt;!-- --&gt;\n\n[1] \"Are sharp corners covered to ensure safety?\\nAre electrical outlets covered to ensure safety?\\nIs the hazard box placed up and out reach?\\nHas any flammable clutter been removed?\\nAre confidential conversations conducted with the door closed?\\nIs alternative lighting available?\\nAre padded or gel chairs available for comfort?\"\nattr(,\"class\")\n[1] \"knit_asis\"\nattr(,\"knit_cacheable\")\n[1] NA\n\n\n&lt;!-- --&gt;"
+    "section": "Customer satisfaction",
+    "text": "Customer satisfaction\nIn NA, the customer satisfaction score was NA than Fruitdale’s average.NA\nAgency-wide, Fruitdale brought the average for Dallas County clinicsNA\nOver the last 18 months, the score for Fruitdale has NA Over the last 3 months, the score has NA"
   },
   {
-    "objectID": "phases.html",
-    "href": "phases.html",
-    "title": "WIC Clinic Dashboard",
-    "section": "",
-    "text": "Clinic themes\n\n\n\n[1] \"## 1\"\nattr(,\"class\")\n[1] \"knit_asis\"\nattr(,\"knit_cacheable\")\n[1] NA\n\n\n&lt;!-- --&gt;\n\n[1] \"Is there a television present?\\nIs the television utilized appropriately?\\nIs there developmentally appropriate entertainment available for children in every room?\\nIs the environment peaceful and neutral, including factors such as smells and sounds?\\nAre staff members properly welcoming, greeting clients with a friendly \\\"Hi, Welcome to WIC\\\"?\\nIs staff at entrance to greet and provide information promptly?\\nIs staff communicating options to walk-ins?\\nIs water visible and available to clients?\\nIs the current WIC logo on or above entrance?\\nAre accurate hours of operation displayed on door in a permanent format?\\nDoes the entire scope of practice take place in a private room?\\nDo all rooms display the Jordan Michael Design?\\nDo all private rooms display room status indicators?\\nIs the WIC material QR code visible, colorful & intentional?\\nIs the WIC material QR code linked to the WIC shopping guide?\\nIs the WIC material QR code linked to social media?\\nIs the WIC material QR code linked to the WIC cookbook?\\nIs the WIC material QR code linked to state website?\\nIs a clinic manager or supervisor present?\"\nattr(,\"class\")\n[1] \"knit_asis\"\nattr(,\"knit_cacheable\")\n[1] NA\n\n\n&lt;!-- --&gt;\n\n[1] \"## 2\"\nattr(,\"class\")\n[1] \"knit_asis\"\nattr(,\"knit_cacheable\")\n[1] NA\n\n\n&lt;!-- --&gt;\n\n[1] \"Are there a minimum of 2 padded chairs available for clients?\\nIs the desk size within the maximum limit of 8 sq ft?\\nIs the lab equipment area within the maximum limit of 12 sq ft?\\nIs there a small filing cabinet?\\nAre at least 3 wall hangings displayed?\\nAre sharp corners covered to ensure safety?\\nAre electrical outlets covered to ensure safety?\\nIs the hazard box placed up and out reach?\\nHas any flammable clutter been removed?\\nAre confidential conversations conducted with the door closed?\\nIs alternative lighting available?\\nAre padded or gel chairs available for comfort?\\nAre interactive rugs provided for children?\\nAre kitchen sets available for children?\\nIs there at least one child chair provided?\\nAre children's books visible and accessible?\\nIs there a standard filing system in place for forms?\\nAre gloves mounted on the wall for easy access?\\nIs there a rolling cart available in each room?\\nDo clients stay in the same room throughout their visit?\\nIs there a dedicated room for each certifier?\\nHow many families are currently waiting?\"\nattr(,\"class\")\n[1] \"knit_asis\"\nattr(,\"knit_cacheable\")\n[1] NA\n\n\n&lt;!-- --&gt;"
-  },
-  {
-    "objectID": "dashboardClinics.html",
-    "href": "dashboardClinics.html",
-    "title": "WIC Clinic Dashboard",
-    "section": "",
-    "text": "Ana\n\n\nJohn West/Buckner\n\n\nWest Garland\n\n\nAbrams Road\n\n\n\n\n\n\n\n\n\nChandra\n\n\nWestmoreland\n\n\nLedbetter\n\n\nDuncanville\n\n\n\n\n\n\n\n\n\nCheryl\n\n\nGrand Prairie\n\n\nIrving\n\n\nNorthwest Highway\n\n\n\n\n\n\n\n\n\nHeather\n\n\nFruitdale\n\n\nMLK Center\n\n\nLake June\n\n\nHighland Hills\n\n\n\n\n\n\n\n\n\nNa’Cole\n\n\nEast Garland\n\n\nNorth Dallas\n\n\nMedical District\n\n\n\n\n\n\n\n\n\n\n\n\n\nAbrams Road\nJohn West/Buckner\nWest Garland\n\n\n\n\nAbrams Road\nJohn West/Buckner\nWest Garland"
-  },
-  {
-    "objectID": "dashboardClinics.html#anas-clinics",
-    "href": "dashboardClinics.html#anas-clinics",
+    "objectID": "home.html#ana",
+    "href": "home.html#ana",
     "title": "WIC Clinic Dashboard",
     "section": "",
     "text": "Abrams Road\nJohn West/Buckner\nWest Garland"
-  },
-  {
-    "objectID": "dashboardClinics.html#anas-clinics-2",
-    "href": "dashboardClinics.html#anas-clinics-2",
-    "title": "WIC Clinic Dashboard",
-    "section": "",
-    "text": "Abrams Road\nJohn West/Buckner\nWest Garland"
-  },
-  {
-    "objectID": "clinics.html",
-    "href": "clinics.html",
-    "title": "WIC Clinic Dashboard",
-    "section": "",
-    "text": "Abrams Road\nJohn West/Buckner\nWest Garland\n\n\n\n\nDuncanville\nLedbetter\nWestmoreland\n\n\n\n\nGrand Prairie\nIrving\nMedical District (LC)\nNorthwest Highway\n\n\n\n\n\n\n\nFruitdale\nHighland Hills\nLake June\nMLK Center\n\n\n\n\nEast Garland\nNorth Dallas (Spring Valley)"
-  },
-  {
-    "objectID": "clinics.html#ana",
-    "href": "clinics.html#ana",
-    "title": "WIC Clinic Dashboard",
-    "section": "",
-    "text": "Abrams Road\nJohn West/Buckner\nWest Garland"
-  },
-  {
-    "objectID": "clinics.html#chandra",
-    "href": "clinics.html#chandra",
-    "title": "WIC Clinic Dashboard",
-    "section": "",
-    "text": "Duncanville\nLedbetter\nWestmoreland"
-  },
-  {
-    "objectID": "clinics.html#dani",
-    "href": "clinics.html#dani",
-    "title": "WIC Clinic Dashboard",
-    "section": "",
-    "text": "Grand Prairie\nIrving\nMedical District (LC)\nNorthwest Highway"
-  },
-  {
-    "objectID": "clinics.html#heather",
-    "href": "clinics.html#heather",
-    "title": "WIC Clinic Dashboard",
-    "section": "",
-    "text": "Fruitdale\nHighland Hills\nLake June\nMLK Center"
-  },
-  {
-    "objectID": "clinics.html#nacole",
-    "href": "clinics.html#nacole",
-    "title": "WIC Clinic Dashboard",
-    "section": "",
-    "text": "East Garland\nNorth Dallas (Spring Valley)"
-  },
-  {
-    "objectID": "Fruitdale.html#goals",
-    "href": "Fruitdale.html#goals",
-    "title": "WIC Clinic Dashboard",
-    "section": "Goals",
-    "text": "Goals\n\nFruitdale has 5 items in Phase 1 and 4 items in Phase 2 that need improvement.\nHere are some goals to focus on:\n\nkeep the hazard box up and out of reach in each room\nkeep a small filing cabinet\nhave one or more chairs for children\nutilize the television appropriately\noffer padded or gel chairs for comfort\n\n\n\n\n\nWork on getting Phase 1 and Phase 2 targets up.\n \n\n\n\n\nThere aren’t any particularly weak areas—keep up the good work!\n \n\n\n\n\n\n\n\n\nPhases and themes\n\n\n\nRead more about the goals that go into phases and themes."
-  },
-  {
-    "objectID": "MLK_Center.html#goals",
-    "href": "MLK_Center.html#goals",
-    "title": "WIC Clinic Dashboard",
-    "section": "Goals",
-    "text": "Goals\n\nMLK Center has 1 items in Phase 1 and 2 items in Phase 2 that need improvement.\nHere are some goals to focus on:\n\nutilize alternative lighting options\ndisplay the current WIC logo at or above the entrance\nutilize a rolling cart in each room\nNA\nNA\n\n\n\n\n\nWork on getting Phase 1 and Phase 2 targets up.\n \n\n\n\n\nMLK Center is strong in hospitality. There aren’t any particularly weak areas—keep up the good work!\n \n\n\n\n\n\n\n\n\nPhases and themes\n\n\n\nRead more about the goals that go into phases and themes."
-  },
-  {
-    "objectID": "Westmoreland.html#goals",
-    "href": "Westmoreland.html#goals",
-    "title": "WIC Clinic Dashboard",
-    "section": "Goals",
-    "text": "Goals\n\nWestmoreland has 2 items in Phase 1 and 5 items in Phase 2 that need improvement.\nHere are some goals to focus on:\n\ninstall interactive rugs for children\nmake children’s books visibly accessible\nmake water visibly available for clients\nprovide kitchen sets for children\nhave one or more chairs for children\n\n\n\n\n\nWork on getting Phase 1 and Phase 2 targets up.\n \n\n\n\n\nWestmoreland is strong in communication. There aren’t any particularly weak areas—keep up the good work!\n \n\n\n\n\n\n\n\n\nPhases and themes\n\n\n\nRead more about the goals that go into phases and themes."
-  },
-  {
-    "objectID": "Lake_June.html#goals",
-    "href": "Lake_June.html#goals",
-    "title": "WIC Clinic Dashboard",
-    "section": "Goals",
-    "text": "Goals\n\nLake June has 6 items in Phase 2 that need improvement.\nHere are some goals to focus on:\n\nhave one or more chairs for children\nutilize alternative lighting options\nwork to keep wait times down\ncover all sharp corners in each room\noffer padded or gel chairs for comfort\n\n\n\n\n\nNice job getting Phase 1 fulfillment above 90%! Work on getting Phase 2 targets up.\n \n\n\n\n\nLake June is strong in hospitality and communication. There aren’t any particularly weak areas—keep up the good work!\n \n\n\n\n\n\n\n\n\nPhases and themes\n\n\n\nRead more about the goals that go into phases and themes."
-  },
-  {
-    "objectID": "Grand_Prairie.html#goals",
-    "href": "Grand_Prairie.html#goals",
-    "title": "WIC Clinic Dashboard",
-    "section": "Goals",
-    "text": "Goals\n\nGrand Prairie has 1 items in Phase 1 and 6 items in Phase 2 that need improvement.\nHere are some goals to focus on:\n\nhave one or more chairs for children\nmake children’s books visibly accessible\noffer padded or gel chairs for comfort\nkeep the hazard box up and out of reach in each room\ninstall interactive rugs for children\n\n\n\n\n\nNice job getting Phase 1 fulfillment above 90%! Work on getting Phase 2 targets up.\n \n\n\n\n\nThere aren’t any particularly weak areas—keep up the good work!\n \n\n\n\n\n\n\n\n\nPhases and themes\n\n\n\nRead more about the goals that go into phases and themes."
-  },
-  {
-    "objectID": "Irving.html#goals",
-    "href": "Irving.html#goals",
-    "title": "WIC Clinic Dashboard",
-    "section": "Goals",
-    "text": "Goals\n\nIrving has 2 items in Phase 1 and 15 items in Phase 2 that need improvement.\nHere are some goals to focus on:\n\nkeep the hazard box up and out of reach in each room\nutilize a rolling cart in each room\nmount gloves to the wall\nprovide a minimum of 2 padded client chairs\nhave one or more chairs for children\n\n\n\n\n\nWork on getting Phase 1 and Phase 2 targets up.\n \n\n\n\n\nIrving is strong in hospitality. Focus on improving clinic layout and safety.\n \n\n\n\n\n\n\n\n\nPhases and themes\n\n\n\nRead more about the goals that go into phases and themes."
-  },
-  {
-    "objectID": "Highland_Hills.html#goals",
-    "href": "Highland_Hills.html#goals",
-    "title": "WIC Clinic Dashboard",
-    "section": "Goals",
-    "text": "Goals\n\nHighland Hills has 3 items in Phase 1 and 8 items in Phase 2 that need improvement.\nHere are some goals to focus on:\n\nutilize alternative lighting options\ninstall interactive rugs for children\nequip all private rooms with status indicators\nmake developmentally appropriate entertainment for children available in every room\noffer padded or gel chairs for comfort\n\n\n\n\n\nWork on getting Phase 1 and Phase 2 targets up.\n \n\n\n\n\nThere aren’t any particularly weak areas—keep up the good work!\n \n\n\n\n\n\n\n\n\nPhases and themes\n\n\n\nRead more about the goals that go into phases and themes."
-  },
-  {
-    "objectID": "East_Garland.html#goals",
-    "href": "East_Garland.html#goals",
-    "title": "WIC Clinic Dashboard",
-    "section": "Goals",
-    "text": "Goals\n\nEast Garland has 1 items in Phase 1 and 2 items in Phase 2 that need improvement.\nHere are some goals to focus on:\n\nhave one or more chairs for children\ndisplay the current WIC logo at or above the entrance\noffer padded or gel chairs for comfort\nNA\nNA\n\n\n\n\n\nNice job getting Phase 1 fulfillment above 90%! Work on getting Phase 2 targets up.\n \n\n\n\n\nEast Garland is strong in hospitality and efficiency. There aren’t any particularly weak areas—keep up the good work!\n \n\n\n\n\n\n\n\n\nPhases and themes\n\n\n\nRead more about the goals that go into phases and themes."
-  },
-  {
-    "objectID": "Northwest_Highway.html#goals",
-    "href": "Northwest_Highway.html#goals",
-    "title": "WIC Clinic Dashboard",
-    "section": "Goals",
-    "text": "Goals\n\nNorthwest Highway has 3 items in Phase 1 and 12 items in Phase 2 that need improvement.\nHere are some goals to focus on:\n\nutilize the television appropriately\nmaintain a standard filing system for forms\nmake children’s books visibly accessible\nkeep the hazard box up and out of reach in each room\ndisplay three or more wall hangings in each room\n\n\n\n\n\nWork on getting Phase 1 and Phase 2 targets up.\n \n\n\n\n\nNorthwest Highway is strong in communication. Focus on improving clinic layout, efficiency and safety.\n \n\n\n\n\n\n\n\n\nPhases and themes\n\n\n\nRead more about the goals that go into phases and themes."
-  },
-  {
-    "objectID": "North_Dallas.html#goals",
-    "href": "North_Dallas.html#goals",
-    "title": "WIC Clinic Dashboard",
-    "section": "Goals",
-    "text": "Goals\n\nNorth Dallas has 1 items in Phase 1 and 6 items in Phase 2 that need improvement.\nHere are some goals to focus on:\n\nutilize alternative lighting options\nhave one or more chairs for children\nmaintain a standard filing system for forms\noffer padded or gel chairs for comfort\ninstall interactive rugs for children\n\n\n\n\n\nNice job getting Phase 1 fulfillment above 90%! Work on getting Phase 2 targets up.\n \n\n\n\n\nThere aren’t any particularly weak areas—keep up the good work!\n \n\n\n\n\n\n\n\n\nPhases and themes\n\n\n\nRead more about the goals that go into phases and themes."
-  },
-  {
-    "objectID": "Ledbetter.html#goals",
-    "href": "Ledbetter.html#goals",
-    "title": "WIC Clinic Dashboard",
-    "section": "Goals",
-    "text": "Goals\n\nLedbetter has 1 items in Phase 1 and 4 items in Phase 2 that need improvement.\nHere are some goals to focus on:\n\nwork to keep wait times down\nkeep all patient procedures in private room\ninstall interactive rugs for children\noffer padded or gel chairs for comfort\nmaintain a standard filing system for forms\n\n\n\n\n\nNice job getting Phase 1 fulfillment above 90%! Work on getting Phase 2 targets up.\n \n\n\n\n\nLedbetter is strong in hospitality and communication. There aren’t any particularly weak areas—keep up the good work!\n \n\n\n\n\n\n\n\n\nPhases and themes\n\n\n\nRead more about the goals that go into phases and themes."
-  },
-  {
-    "objectID": "John_West_Buckner.html#goals",
-    "href": "John_West_Buckner.html#goals",
-    "title": "WIC Clinic Dashboard",
-    "section": "Goals",
-    "text": "Goals\n\nJohn West/Buckner has 2 items in Phase 2 that need improvement.\nHere are some goals to focus on:\n\noffer padded or gel chairs for comfort\nutilize a rolling cart in each room\nNA\nNA\nNA\n\n\n\n\n\nNice job getting Phase 1 fulfillment above 90%! Work on getting Phase 2 targets up.\n \n\n\n\n\nJohn West/Buckner is strong in hospitality and communication. There aren’t any particularly weak areas—keep up the good work!\n \n\n\n\n\n\n\n\n\nPhases and themes\n\n\n\nRead more about the goals that go into phases and themes."
-  },
-  {
-    "objectID": "Duncanville.html#goals",
-    "href": "Duncanville.html#goals",
-    "title": "WIC Clinic Dashboard",
-    "section": "Goals",
-    "text": "Goals\n\nDuncanville has 2 items in Phase 1 and 12 items in Phase 2 that need improvement.\nHere are some goals to focus on:\n\nutilize the television appropriately\ninstall interactive rugs for children\ndisplay three or more wall hangings in each room\nprovide kitchen sets for children\ncover all sharp corners in each room\n\n\n\n\n\nWork on getting Phase 1 and Phase 2 targets up.\n \n\n\n\n\nDuncanville is strong in hospitality. Focus on improving clinic safety.\n \n\n\n\n\n\n\n\n\nPhases and themes\n\n\n\nRead more about the goals that go into phases and themes."
-  },
-  {
-    "objectID": "West_Garland.html#goals",
-    "href": "West_Garland.html#goals",
-    "title": "WIC Clinic Dashboard",
-    "section": "Goals",
-    "text": "Goals\n\nWest Garland has 3 items in Phase 1 and 10 items in Phase 2 that need improvement.\nHere are some goals to focus on:\n\nmaintain confidentiality by keeping doors closed during conversations\nequip all private rooms with status indicators\nkeep all patient procedures in private room\nkeep the hazard box up and out of reach in each room\nmake developmentally appropriate entertainment for children available in every room\n\n\n\n\n\nWork on getting Phase 1 and Phase 2 targets up.\n \n\n\n\n\nWest Garland is strong in communication. Focus on improving clinic safety.\n \n\n\n\n\n\n\n\n\nPhases and themes\n\n\n\nRead more about the goals that go into phases and themes."
-  },
-  {
-    "objectID": "Medical_District.html#goals",
-    "href": "Medical_District.html#goals",
-    "title": "WIC Clinic Dashboard",
-    "section": "Goals",
-    "text": "Goals\n\nMedical District has 7 items in Phase 1 and 18 items in Phase 2 that need improvement.\nHere are some goals to focus on:\n\ncover all electrical outlets in each room\ncover all sharp corners in each room\noffer padded or gel chairs for comfort\nkeep a small filing cabinet\nmake children’s books visibly accessible\n\n\n\n\n\nWork on getting Phase 1 and Phase 2 targets up.\n \n\n\n\n\nFocus on improving clinic layout, efficiency and safety.\n \n\n\n\n\n\n\n\n\nPhases and themes\n\n\n\nRead more about the goals that go into phases and themes."
-  },
-  {
-    "objectID": "Abrams_Road.html#goals",
-    "href": "Abrams_Road.html#goals",
-    "title": "WIC Clinic Dashboard",
-    "section": "Goals",
-    "text": "Goals\n\nAbrams Road has 1 items in Phase 1 and 12 items in Phase 2 that need improvement.\nHere are some goals to focus on:\n\nprovide kitchen sets for children\ninstall interactive rugs for children\nensure the client remains stationary during the visit\nhave one or more chairs for children\nmake children’s books visibly accessible\n\n\n\n\n\nWork on getting Phase 1 and Phase 2 targets up.\n \n\n\n\n\nFocus on improving clinic efficiency and safety.\n \n\n\n\n\n\n\n\n\nPhases and themes\n\n\n\nRead more about the goals that go into phases and themes."
   }
 ]

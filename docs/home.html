@@ -44,8 +44,8 @@ ul.task-list li input[type="checkbox"] {
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "end",
-  "type": "overlay",
-  "limit": 20,
+  "type": "textbox",
+  "limit": 4,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -76,15 +76,17 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./web_report.html" rel="" target=""><i class="bi bi-house-door-fill" role="img">
+    <a class="nav-link" href="./home.html" rel="" target=""><i class="bi bi-house-door-fill" role="img">
 </i> 
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
- <span class="menu-text"></span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-clinics" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+      <i class="bi bi-building-fill" role="img">
+</i> 
+ <span class="menu-text">Clinics</span>
     </a>
-    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-">    
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-clinics">    
         <li>
     <a class="dropdown-item" href="./Abrams_Road.html" rel="" target="">
  <span class="dropdown-text">Abrams Road</span></a>
@@ -112,6 +114,71 @@ ul.task-list li input[type="checkbox"] {
         <li>
     <a class="dropdown-item" href="./Irving.html" rel="" target="">
  <span class="dropdown-text">Irving</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./John_West_Buckner.html" rel="" target="">
+ <span class="dropdown-text">John West/Buckner</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./Lake_June.html" rel="" target="">
+ <span class="dropdown-text">Lake June</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./Ledbetter.html" rel="" target="">
+ <span class="dropdown-text">Ledbetter</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./Medical_District.html" rel="" target="">
+ <span class="dropdown-text">Medical District (LC)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./MLK_Center.html" rel="" target="">
+ <span class="dropdown-text">MLK Center</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./North_Dallas.html" rel="" target="">
+ <span class="dropdown-text">North Dallas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./Northwest_Highway.html" rel="" target="">
+ <span class="dropdown-text">Northwest Highway</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./West_Garland.html" rel="" target="">
+ <span class="dropdown-text">West Garland</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./Westmoreland.html" rel="" target="">
+ <span class="dropdown-text">Westmoreland</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-managers" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+      <i class="bi bi-person-fill" role="img">
+</i> 
+ <span class="menu-text">Managers</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-managers">    
+        <li>
+    <a class="dropdown-item" href="./Ana_clinics.html" rel="" target="">
+ <span class="dropdown-text">Ana’s clinics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./Chandra_clinics.html" rel="" target="">
+ <span class="dropdown-text">Chandra’s clinics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./Cheryl_clinics.html" rel="" target="">
+ <span class="dropdown-text">Cheryl’s clinics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./Heather_clinics.html" rel="" target="">
+ <span class="dropdown-text">Heather’s clinics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./Na’Cole_clinics.html" rel="" target="">
+ <span class="dropdown-text">Na’Cole’s clinics</span></a>
   </li>  
     </ul>
   </li>
@@ -149,7 +216,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
+<main class="content quarto-banner-title-block page-columns page-full" id="quarto-document-content">
 
 
 
@@ -164,19 +231,54 @@ This template for clinic dashboards is in the following order:
  3. Layout of dashboard using variables from generations
  
 -->
-<section id="clinic-themes" class="level1">
-<h1>Clinic themes</h1>
+<section id="home" class="level1 page-columns page-full">
+<h1>Home</h1>
 <!--
-Print theme phrases
+Print clinics under headers
 -->
-<div class="cell">
-<div class="cell-output cell-output-error">
-<pre><code>Error in `group_by()`:
-! Must group by variables found in `.data`.
-✖ Column `goal_category` is not found.</code></pre>
+<div class="cell column-screen-inset-shaded quarto-layout-panel">
+
 </div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in nrow(grouped_POE): object 'grouped_POE' not found</code></pre>
+<div class="columns">
+<div class="column" style="width:33%;">
+<section id="ana" class="level2">
+<h2 data-anchor-id="ana"><i class="bi bi-person-fill mr-2"></i> <a href="Ana_clinics.html">Ana</a></h2>
+<p><a href="Abrams_Road.html">Abrams Road</a></p>
+<p><a href="John_West_Buckner.html">John West/Buckner</a></p>
+<p><a href="West_Garland.html">West Garland</a></p>
+</section>
+</div><div class="column" style="width:33%;">
+<section id="chandra" class="level2">
+<h2 data-anchor-id="chandra"><i class="bi bi-person-fill mr-2"></i> <a href="Chandra_clinics.html">Chandra</a></h2>
+<p><a href="Duncanville.html">Duncanville</a></p>
+<p><a href="Ledbetter.html">Ledbetter</a></p>
+<p><a href="Westmoreland.html">Westmoreland</a></p>
+</section>
+</div><div class="column" style="width:33%;">
+<section id="cheryl" class="level2">
+<h2 data-anchor-id="cheryl"><i class="bi bi-person-fill mr-2"></i> <a href="Cheryl_clinics.html">Cheryl</a></h2>
+<p><a href="Grand_Prairie.html">Grand Prairie</a></p>
+<p><a href="Irving.html">Irving</a></p>
+<p><a href="Medical_District.html">Medical District (LC)</a></p>
+<p><a href="Northwest_Highway.html">Northwest Highway</a></p>
+</section>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:33%;">
+<section id="heather" class="level2">
+<h2 data-anchor-id="heather"><i class="bi bi-person-fill mr-2"></i> <a href="Heather_clinics.html">Heather</a></h2>
+<p><a href="Fruitdale.html">Fruitdale</a></p>
+<p><a href="Highland_Hills.html">Highland Hills</a></p>
+<p><a href="Lake_June.html">Lake June</a></p>
+<p><a href="MLK_Center.html">MLK Center</a></p>
+</section>
+</div><div class="column" style="width:33%;">
+<section id="nacole" class="level2">
+<h2 data-anchor-id="nacole"><i class="bi bi-person-fill mr-2"></i> <a href="Na'Cole_clinics.html">Na’Cole</a></h2>
+<p><a href=".html">East Garland</a></p>
+<p><a href="North_Dallas.html">North Dallas (Spring Valley)</a></p>
+</section>
 </div>
 </div>
 
