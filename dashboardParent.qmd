@@ -35,8 +35,10 @@ library(glue)
 library(stringr)
 library(waffle)
 library(yaml)
+library(dotenv)
 
-gs4_auth(email = "taylor@childpovertyactionlab.org")
+load_dot_env()
+gs4_auth(email = g_auth)
 use_python("C:/Users/twcro/Documents/Environment/Scripts/python.exe", required = TRUE)
 
 # palette for visualizations
@@ -397,7 +399,7 @@ RENDER FROM TEMPLATE
 
 saves <- c("clinic_map", "staff.clinics", "df", "POE", "staff", "CSAT", "CSAT.predict")
 for (var in saves) {
-  save(list = var, file = paste0("C:/Users/twcro/Documents/GitHub/_WICdashboardClinic/data/scriptData/", var, ".RData"))
+  write.csv(var, paste0("data/scriptData/", var, ".csv"))
 }
 
 quarto::quarto_render(
@@ -441,9 +443,5 @@ for(clinic_name in clinic_map$Clinic){
 #     execute_params = list(manager_name = manager_name)
 #   )
 # }
-
-
-# to-do list
-# - page explaining themes and phases
 
 ```

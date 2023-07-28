@@ -29,11 +29,11 @@ This template for clinic dashboards is in the following order:
 ```{r setup, echo=FALSE, output=FALSE}
 clinic_name = params$clinic_name
 
-files <- list.files(path = "C:/Users/twcro/Documents/GitHub/_WICdashboardClinic/data/scriptData/", pattern = "\\.RData$")
+files <- list.files(path = "_WICdashboardClinic/data/scriptData/", pattern = "\\.csv$")
 
 # load each file
 for (file in files) {
-  load(paste0("C:/Users/twcro/Documents/GitHub/_WICdashboardClinic/data/scriptData/", file))
+  read.csv(paste0("data/scriptData/", file))
 }
 
 library(tidyverse)
@@ -49,27 +49,11 @@ library(tsibble)
 library(cpaltemplates)
 library(sparklines)
 
+
 ## make sure poppins is installed locally
 poppins_import()
 
 set_cpal_defaults()
-
-
-# palette for visualizations
-palette_a <- c(
-  phase1 = 'rgba(80, 203, 134, 0.5)',
-  phase2 = 'rgba(0, 201, 194, 0.5)',
-  phase3 = 'rgba(0, 191, 234, 0.5)',
-  phase4 = 'rgba(107, 175, 241, 0.5)',
-  phase5 = 'rgba(175, 157, 218, 0.5)'
-)
-palette <- c(
-  phase1 = 'rgba(80, 203, 134, 1)',
-  phase2 = 'rgba(0, 201, 194, 1)',
-  phase3 = 'rgba(0, 191, 234, 1)',
-  phase4 = 'rgba(107, 175, 241, 1)',
-  phase5 = 'rgba(175, 157, 218, 1)'
-)
 
 bold_color <- function(text, color) {
   paste0("<b style='color:", color, "'>", text, "</b>")
@@ -472,7 +456,7 @@ POEradar <- plot_ly(df.recent.themes.long.filtered,
                     mode = "markers", 
                     fill = 'toself', 
                     hoverinfo = "none",
-                    marker = list(color = "#008097"),
+                    marker = list(color = palette_cpal_main[1]),
                     fillcolor = "rgba(0,128,151,0.5)") %>%
   layout(
     title = "",
