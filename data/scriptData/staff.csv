@@ -1,2 +1,196 @@
-"","x"
-"1","staff"
+"Role","Position","Site","Location","Employee name","Vacant","In training","WCS trainee","BFPC","IBCLC","RD","Part-time","Temp","Interim","On leave","Submission"
+"supervisor","clinic supervisor","1","MLK Center","Nicole Harris-Jones",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"clerk","CSR","1","MLK Center","Jessica Resendiz",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"clerk","CSR","1","MLK Center","Lizzie Bryant",NA,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA
+"supervisor","clinic supervisor","3","Westmoreland","Ashley Savage",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"certifier","nutritionist","3","Westmoreland","Craig Thomas",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"certifier","WCS","3","Westmoreland","Rosa Monsivais",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"clerk","CSW","3","Westmoreland","Patrice Robertson",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"clerk","CSW","3","Westmoreland","Rosie Madison",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"clerk","CSW","3","Westmoreland","Emma Becerra",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"clerk","CSR","3","Westmoreland","Joseph Cook",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"clerk","CSR","3","Westmoreland","Marisol Garcia",NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA
+"clerk","CSR","3","Westmoreland","Jennifer Popoca",NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"supervisor","clinic supervisor","32","West Garland","Jeromy Apena",NA,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA
+"certifier","nutritionist","32","West Garland","Hang Nguyen",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"certifier","WCS","32","West Garland","Adelita Moreno",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"certifier","certifier","32","West Garland",NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"clerk","CSW","32","West Garland","Sara Presas",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"clerk","CSW","32","West Garland","Maria Meraz",NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,NA
+"clerk","CSR","32","West Garland","Tien Nguyen",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"clerk","clerk","32","West Garland",NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"clerk","clerk","32","West Garland",NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"clerk","clerk","32","West Garland","Virginia Flores",NA,TRUE,NA,NA,NA,NA,NA,TRUE,NA,NA,NA
+"clerk","clerk","32","West Garland","Kimberly Fernandez",NA,TRUE,NA,NA,NA,NA,NA,TRUE,NA,NA,NA
+"certifier","nutritionist","32","West Garland","Henry Hong",NA,TRUE,NA,NA,NA,NA,NA,TRUE,NA,NA,NA
+"supervisor","clinic supervisor","8","Grand Prairie",NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-07 12:09:30
+"supervisor","clinic supervisor","8","Grand Prairie","Karla Martinez",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-07 12:09:30
+"certifier","nutritionist","8","Grand Prairie","Martha Cantu",NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,2023-06-07 12:09:30
+"certifier","WCS","8","Grand Prairie","Rosie DelaRosa",NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,2023-06-07 12:09:30
+"certifier","WCS","8","Grand Prairie","Sandra Tovar",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-07 12:09:30
+"certifier","WCS","8","Grand Prairie","Vanessa Bryan",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-07 12:09:30
+"clerk","CSR","8","Grand Prairie","Gloria Granados",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-07 12:09:30
+"clerk","CSR","8","Grand Prairie","Dora Rodriguez",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-07 12:09:30
+"clerk","clerk","8","Grand Prairie",NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-07 12:09:30
+"clerk","clerk","8","Grand Prairie",NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-07 12:09:30
+"clerk","clerk","8","Grand Prairie",NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-07 12:09:30
+"supervisor","clinic supervisor","9","Irving",NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-07 12:16:15
+"supervisor","clinic supervisor","9","Irving","Chelsea O'Rourke",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-07 12:16:15
+"supervisor","clinic supervisor","9","Irving","Berenizes Gutierrez",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-07 12:16:15
+"certifier","nutritionist","9","Irving","Ummahane Kagawala",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-07 12:16:15
+"certifier","WCS","9","Irving","Maria Sepeda",NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,2023-06-07 12:16:15
+"certifier","WCS","9","Irving","Lydie Makengo",NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,2023-06-07 12:16:15
+"certifier","WCS","9","Irving","Merla Pineda",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-07 12:16:15
+"certifier","WCS","9","Irving","Lorena Gonzalez",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-07 12:16:15
+"clerk","CSW","9","Irving","Sandra Miera",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-07 12:16:15
+"clerk","CSR","9","Irving","Kenya Brass",NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,2023-06-07 12:16:15
+"clerk","CSR","9","Irving","Martha Castillo",NA,NA,TRUE,TRUE,NA,NA,NA,NA,NA,NA,2023-06-07 12:16:15
+"clerk","CSR","9","Irving","Laura Olvera",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-07 12:16:15
+"clerk","CSR","9","Irving","Brianna Culclager",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-07 12:16:15
+"clerk","CSR","9","Irving","Crystal Rodriguez",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-07 12:16:15
+"clerk","CSR","9","Irving","Alyssa Gomez",NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-07 12:16:15
+"clerk","clerk","9","Irving",NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-07 12:16:15
+"clerk","clerk","9","Irving",NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-07 12:16:15
+"supervisor","clinic supervisor","24","North Dallas","Megha Bhattaram",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-07 12:30:24
+"supervisor","clinic supervisor","24","North Dallas","Maria Mossman",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-07 12:30:24
+"certifier","nutritionist","24","North Dallas","Tania Zaragoza",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-07 12:30:24
+"certifier","WCS","24","North Dallas","Nyshinemia Smith",NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,2023-06-07 12:30:24
+"certifier","certifier","24","North Dallas",NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-07 12:30:24
+"certifier","certifier","24","North Dallas",NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-07 12:30:24
+"clerk","CSR","24","North Dallas","Lady Warren",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-07 12:30:24
+"clerk","CSW","24","North Dallas","Guillermina Lara",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-07 12:30:24
+"clerk","CSR","24","North Dallas","Mojisola Balogun",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-07 12:30:24
+"clerk","CSR","24","North Dallas","Maria Ramos",NA,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,2023-06-07 12:30:24
+"clerk","CSR","24","North Dallas","Kassy Pettigrew",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-07 12:30:24
+"certifier","nutritionist","24","North Dallas","Karla Perez",NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,2023-06-07 12:30:24
+"certifier","nutritionist","24","North Dallas","Twinkle Thompson",NA,TRUE,NA,NA,NA,NA,NA,TRUE,NA,NA,2023-06-07 12:30:24
+"clerk","clerk","24","North Dallas","Adriana Ortiz",NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,2023-06-07 12:30:24
+"clerk","clerk","24","North Dallas",NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-07 12:30:24
+"clerk","clerk","24","North Dallas",NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-07 12:30:24
+"clerk","CSR (virtual)","24","North Dallas","Marisol Lara",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-07 12:30:24
+"clerk","CSR (virtual)","24","North Dallas","Cecilia Valdez",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-07 12:30:24
+"clerk","CSR (virtual)","24","North Dallas","Cynthia Jimenez",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-07 12:30:24
+"certifier","WCS","42","Fruitdale","Torri Smith",NA,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,2023-06-07 12:34:49
+"clerk","CSR","42","Fruitdale","Stephanie Duenas",NA,NA,TRUE,NA,NA,NA,TRUE,NA,NA,NA,2023-06-07 12:34:49
+"certifier","WCS","10","Highland Hills","Tori Smith",NA,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,2023-06-07 12:34:56
+"clerk","CSR","10","Highland Hills","Stephanie Duenas",NA,NA,TRUE,NA,NA,NA,TRUE,NA,NA,NA,2023-06-07 12:34:56
+"certifier","nutritionist","5","Lake June","Norma Perea",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-08 11:25:53
+"certifier","nutritionist","5","Lake June","Rosie Castilleja",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-08 11:25:53
+"certifier","nutritionist","5","Lake June","Rosa Romero",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-08 11:25:53
+"certifier","WCS","5","Lake June","Letitia Washington",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-08 11:25:53
+"clerk","CSW","5","Lake June","Veronica Salinas",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-08 11:25:53
+"clerk","CSW","5","Lake June","Maria Rosales",NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,2023-06-08 11:25:53
+"clerk","CSR","5","Lake June","Liliana Toney",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-08 11:25:53
+"clerk","CSR","5","Lake June","Isaura Piedra",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-08 11:25:53
+"clerk","CSR","5","Lake June","Jannice Banks",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-08 11:25:53
+"clerk","CSR","5","Lake June","Dulce Contreras",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-08 11:25:53
+"clerk","CSR","5","Lake June","Catherine Clark",NA,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,2023-06-08 11:25:53
+"clerk","CSR","5","Lake June","Clarissa Cano",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-08 11:25:53
+"clerk","CSR","5","Lake June","Jorge Chuecas",NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,2023-06-08 11:25:53
+"clerk","CSR","5","Lake June","Abigail Romo",NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,2023-06-08 11:25:53
+"certifier","nutritionist","5","Lake June","Tomas Caseres",NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,2023-06-08 11:25:53
+"supervisor","clinic supervisor","5","Lake June","Andrea Ambriati",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-08 11:25:53
+"supervisor","clinic supervisor","5","Lake June","Haley Perry",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-08 11:25:53
+"supervisor","clinic supervisor","5","Lake June","Haley Perry",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-08 11:25:53
+"clerk","clerk","5","Lake June",NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-08 11:25:53
+"certifier","certifier","5","Lake June",NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-08 11:25:53
+"supervisor","supervisor","5","Lake June",NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-08 11:25:53
+"supervisor","clinic supervisor","25","Ledbetter","Trish Ward",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-08 11:53:24
+"supervisor","clinic supervisor","25","Ledbetter","Arria Andrews",NA,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,2023-06-08 11:53:24
+"certifier","nutritionist","25","Ledbetter","Fabiola Dimas",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-08 11:53:24
+"certifier","nutritionist","25","Ledbetter","Alba Martinez",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-08 11:53:24
+"certifier","WCS","25","Ledbetter","Miracle Calcote",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-08 11:53:24
+"certifier","WCS/LC","25","Ledbetter","Adette McFarland-Cole",NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,2023-06-08 11:53:24
+"certifier","WCS","25","Ledbetter","Wadainafi Smith",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-08 11:53:24
+"certifier","WCS","25","Ledbetter","Virginia Nava",NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,2023-06-08 11:53:24
+"clerk","CSW","25","Ledbetter","Jocelyn Coleman",NA,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,2023-06-08 11:53:24
+"clerk","CSW","25","Ledbetter","Margaret Baptiste",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-08 11:53:24
+"clerk","CSR","25","Ledbetter","Anabel Abonza",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-08 11:53:24
+"clerk","CSR","25","Ledbetter","Kayla Brown",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-08 11:53:24
+"clerk","CSR","25","Ledbetter","Annette Martin",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-08 11:53:24
+"clerk","CSR","25","Ledbetter","Ivory Simmons",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-08 11:53:24
+"clerk","CSR","25","Ledbetter","Elizabeth Armendariz",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-08 11:53:24
+"clerk","CSR (virtual)","25","Ledbetter","Arionna Johns",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-08 11:53:24
+"clerk","CSR (virtual)","25","Ledbetter","Lorena Carillo",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-08 11:53:24
+"clerk","CSR (virtual)","25","Ledbetter","Blanca Fonseca",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-08 11:53:24
+"clerk","CSR (virtual)","25","Ledbetter","Bianca Trevino",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-08 11:53:24
+"clerk","clerk","25","Ledbetter",NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-08 11:53:24
+"clerk","clerk","25","Ledbetter",NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-08 11:53:24
+"supervisor","supervisor","25","Ledbetter",NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-08 11:53:24
+"supervisor","clinic supervisor","17","Northwest Highway","Cassie Shockey-Holguin",NA,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,2023-06-08 11:54:19
+"certifier","WCS","17","Northwest Highway","Martha Dominguez",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-08 11:54:19
+"clerk","CSW","17","Northwest Highway","Maria Abonza",NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,2023-06-08 11:54:19
+"clerk","CSR","17","Northwest Highway","Marilyn Lopez",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-08 11:54:19
+"clerk","clerk","17","Northwest Highway","Belen Navea",NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-08 11:54:19
+"clerk","clerk","17","Northwest Highway","Marysol Garcia",NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-08 11:54:19
+"clerk","clerk","17","Northwest Highway",NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-08 11:54:19
+"clerk","clerk","17","Northwest Highway",NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-08 11:54:19
+"certifier","certifier","17","Northwest Highway",NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-08 11:54:19
+"certifier","certifier","17","Northwest Highway",NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-08 11:54:19
+"supervisor","clinic supervisor","30","Duncanville","Cassie Shockey-Holguin",NA,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,2023-06-08 12:07:52
+"certifier","WCS","30","Duncanville","Martha Dominguez",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-08 12:07:52
+"clerk","CSW","30","Duncanville","Maria Abonza",NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,2023-06-08 12:07:52
+"clerk","CSR","30","Duncanville","Marilyn Lopez",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-08 12:07:52
+"clerk","clerk","30","Duncanville","Belen Navea",NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-08 12:07:52
+"clerk","clerk","30","Duncanville","Marysol Garcia",NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-08 12:07:52
+"certifier","certifier","30","Duncanville",NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-08 12:07:52
+"certifier","certifier","30","Duncanville",NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-08 12:07:52
+"supervisor","clinic supervisor","34","LCC","Renee Colton",NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,2023-06-08 12:10:50
+NA,"PHE","34","LCC","Sandra Rodriguez",NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,2023-06-08 12:10:50
+NA,"PHE","34","LCC","Elizabeth Sanchez",NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,2023-06-08 12:10:50
+NA,"PHE","34","LCC","Rosalind Coleman",NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,2023-06-08 12:10:50
+NA,"PHE","34","LCC","Ninfa Wowack",NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,2023-06-08 12:10:50
+"certifier","WCS","34","LCC","Brenda Pesina",NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,2023-06-08 12:10:50
+"clerk","CSR","34","LCC","Elena Tovar",NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,2023-06-08 12:10:50
+"clerk","CSW","34","LCC","Ana Longoria",NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,2023-06-08 12:10:50
+"certifier","nutritionist","11","East Garland","Rachel Walker",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-08 12:17:50
+"supervisor","clinic supervisor","11","East Garland","Sandra Denney",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-08 12:17:50
+"certifier","WCS","11","East Garland","Nancy Pedroza",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-08 12:17:50
+"certifier","WCS","11","East Garland","Claudia Mendoza",NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,2023-06-08 12:17:50
+"clerk","CSR","11","East Garland","Reina Cardona",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-08 12:17:50
+"clerk","CSR","11","East Garland","Guadalupe Gonzales",NA,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,2023-06-08 12:17:50
+"clerk","CSR","11","East Garland","Arian Franklin",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-08 12:17:50
+"clerk","clerk","11","East Garland","Ayerin Banagas",NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,2023-06-08 12:17:50
+"clerk","clerk","11","East Garland","Emily Garcia",NA,TRUE,NA,NA,NA,NA,NA,TRUE,NA,NA,2023-06-08 12:17:50
+"clerk","clerk","11","East Garland","Adeline Avalos",NA,TRUE,NA,NA,NA,NA,NA,TRUE,NA,NA,2023-06-08 12:17:50
+"clerk","clerk","11","East Garland",NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-08 12:17:50
+"clerk","clerk","11","East Garland",NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-08 12:17:50
+"clerk","clerk","11","East Garland",NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-08 12:17:50
+"clerk","clerk","11","East Garland",NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-08 12:17:50
+"certifier","certifier","11","East Garland",NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-08 12:17:50
+"supervisor","supervisor","11","East Garland",NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-08 12:17:50
+"supervisor","clinic supervisor","37","Abrams Road","Walla Daffalla",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-14 13:49:15
+"certifier","nutritionist","37","Abrams Road","Nastaran Nafar",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-14 13:49:15
+"clerk","CSW","37","Abrams Road","Raquel Ruiz",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-14 13:49:15
+"clerk","CSW","37","Abrams Road","Estel Sterling",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-14 13:49:15
+"clerk","CSW","37","Abrams Road","Georgia Clark",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-14 13:49:15
+"clerk","CSW","37","Abrams Road","Deldrion Taylor",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-14 13:49:15
+"clerk","CSR","37","Abrams Road","Karina Romero",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-14 13:49:15
+"clerk","CSR","37","Abrams Road","Shenoah Price",NA,NA,TRUE,TRUE,NA,NA,NA,NA,NA,NA,2023-06-14 13:49:15
+"certifier","nutritionist","37","Abrams Road","Carla Samaniegro",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-14 13:49:15
+"certifier","nutritionist","37","Abrams Road","Tamara Collins",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-14 13:49:15
+"supervisor","clinic supervisor","26","John West/Buckner","Diana Steed",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-22 17:20:19
+"certifier","nutritionist","26","John West/Buckner","Maria Jiminez",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-22 17:20:19
+"certifier","nutritionist","26","John West/Buckner","Vivian Mendoza",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-22 17:20:19
+"certifier","WCS","26","John West/Buckner","Erica Gorostieta",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-22 17:20:19
+"certifier","WCS","26","John West/Buckner","Tiffany Coleman",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-22 17:20:19
+"certifier","WCS","26","John West/Buckner","Maria DelaCruz",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-22 17:20:19
+"clerk","CSW","26","John West/Buckner","Lisa Bailey",NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,2023-06-22 17:20:19
+"clerk","clerk","26","John West/Buckner","Marianna Tellez",NA,TRUE,NA,NA,NA,NA,NA,TRUE,NA,NA,2023-06-22 17:20:19
+"clerk","CSW","26","John West/Buckner","Mae Gwen Richardson",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-22 17:20:19
+"clerk","CSR","26","John West/Buckner","Christina Villesana",NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-22 17:20:19
+"clerk","CSR","26","John West/Buckner","Gisela Flores",NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,2023-06-22 17:20:19
+"clerk","CSR","26","John West/Buckner","Krystle Coleman",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-22 17:20:19
+"clerk","CSR","26","John West/Buckner","Latoyia Pearson",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-22 17:20:19
+"clerk","CSR","26","John West/Buckner","Lilia Cipriano",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-22 17:20:19
+"clerk","CSW","26","John West/Buckner","Raquel Ruiz",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-22 17:20:19
+"clerk","CSW","26","John West/Buckner","Estel Sterling",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-22 17:20:19
+"clerk","CSW","26","John West/Buckner","Georgia Clark",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-22 17:20:19
+"clerk","CSW","26","John West/Buckner","Deldrion Taylor",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-22 17:20:19
+"clerk","CSR","26","John West/Buckner","Karina Romero",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-22 17:20:19
+"clerk","CSR","26","John West/Buckner","Shenoah Price",NA,NA,TRUE,TRUE,NA,NA,NA,NA,NA,NA,2023-06-22 17:20:19
+"certifier","nutritionist","26","John West/Buckner","Carla Samaniegro",NA,TRUE,NA,NA,NA,NA,NA,TRUE,NA,NA,2023-06-22 17:20:19
+"supervisor","clinic supervisor","26","John West/Buckner","Walla Daffalla",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-22 17:20:19
+"certifier","nutritionist","26","John West/Buckner","Nastaran Nafar",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-22 17:20:19
+"certifier","nutritionist","26","John West/Buckner","Tamara Collins",NA,TRUE,NA,NA,NA,NA,NA,TRUE,NA,NA,2023-06-22 17:20:19
+"supervisor","supervisor","26","John West/Buckner",NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-06-22 17:20:19

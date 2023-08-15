@@ -9,7 +9,6 @@ format: html
 editor: source
 ---
 
-```{=html}
 <!--
 NOTE: THIS SCRIPT IS NOT FOR DISPLAY! This is a parent function used for
  preprocessing that calls the template "dashboardClinicTemplate.qmd"
@@ -23,7 +22,7 @@ TO USE:
  - click "Run" dropdown arrow in the top right of this panel
  - select "Restart R and run all chunks" from menu
 -->
-```
+
 ```{r setup, echo=FALSE, output=FALSE}
 library(tidyverse)
 library(googlesheets4)
@@ -35,33 +34,19 @@ library(glue)
 library(stringr)
 library(waffle)
 library(yaml)
-library(dotenv)
 
-load_dot_env()
+readRenviron(".env")
+
+g_auth <- Sys.getenv("g_auth")
 gs4_auth(email = g_auth)
-use_python("C:/Users/twcro/Documents/Environment/Scripts/python.exe", required = TRUE)
 
-# palette for visualizations
-palette_a <- c(
-  phase1 = 'rgba(80, 203, 134, 0.5)',
-  phase2 = 'rgba(0, 201, 194, 0.5)',
-  phase3 = 'rgba(0, 191, 234, 0.5)',
-  phase4 = 'rgba(107, 175, 241, 0.5)',
-  phase5 = 'rgba(175, 157, 218, 0.5)'
-)
-palette <- c(
-  phase1 = 'rgba(80, 203, 134, 1)',
-  phase2 = 'rgba(0, 201, 194, 1)',
-  phase3 = 'rgba(0, 191, 234, 1)',
-  phase4 = 'rgba(107, 175, 241, 1)',
-  phase5 = 'rgba(175, 157, 218, 1)'
-)
+use_python("C:/Users/twcro/Documents/Environment/Scripts/python.exe", required = TRUE)
 
 bold_color <- function(text, color) {
   paste0("<b style='color:", color, "'>", text, "</b>")
 }
 
-# high performance threshold for POEs (90%)
+# high performance threshold for POEs (default to 90%)
 threshold = 0.9
 
 # fail threshold (50%)
@@ -78,30 +63,38 @@ oxford_comma <- function(x) {
 }
 ```
 
-```{=html}
 <!--
 Master list of clinics
 -->
-```
+
 ```{r clinic_map, echo=FALSE, output=FALSE}
 ##  MAPPING CLINIC METADATA
 clinic_map <- read_sheet(
   "https://docs.google.com/spreadsheets/d/1pCkVgjP4VLtNDwIHYbCm7wcYOtFqaAZu2znO-N7eXK8/", 
   range = "Clinic Attributes") %>% 
   rename(Manager = Quadrant) %>%
-  mutate(Clinic = str_replace(Clinic, c("Hwy"), c("Highway"))) %>%
+  mutate(Clinic = str_replace(Clinic, c("Hwy"), c("Highway")),
+         Site = factor(Site)) %>%
   select(1,3,4) %>%
   select(-Manager, Manager)
 
+clinic_map_detail <- read_sheet(
+  "https://docs.google.com/spreadsheets/d/1pCkVgjP4VLtNDwIHYbCm7wcYOtFqaAZu2znO-N7eXK8/",
+  range = "Clinic Attributes") %>%
+  rename(Manager = Quadrant, lat = Latitude, long = Longitude) %>%
+  mutate(Clinic = str_replace(Clinic, c("Hwy"), c("Highway")),
+         Site = factor(Site)) %>%  select(1,3,4,8,9) %>%
+  arrange(Manager, Clinic) %>%
+  mutate(index = row_number())
+
 ```
 
-```{=html}
 <!--
 Importing data
  1. Staff data coming from monthly assignment sheets
  2. POE data in order of phases coming from google sheets
 -->
-```
+
 ```{r imports, echo=FALSE, output=FALSE}
 
 
@@ -109,14 +102,14 @@ Importing data
 current_year = as.integer(format(Sys.Date(), "%Y"))
 current_month = as.integer(format(Sys.Date(), "%m"))
 
-directory = "C:/Users/twcro/Documents/GitHub/_WICdashboardClinic/data/staffData"
+staff_directory = "data/staffData"
 
-generate_file_path <- function(year, month) {
-  file.path(directory, sprintf("WIC_assignmentSheet_%d_%02d.xlsm", year, month))
+generate_staff_path <- function(year, month) {
+  file.path(staff_directory, sprintf("WIC_assignmentSheet_%d_%02d.xlsm", year, month))
 }
 
-find_valid_file <- function(year, month) {
-  file_path <- generate_file_path(year, month)
+find_staff_file <- function(year, month) {
+  file_path <- generate_staff_path(year, month)
   
   while (!file.exists(file_path)) {
     month <- month - 1
@@ -124,20 +117,22 @@ find_valid_file <- function(year, month) {
       month <- 12
       year <- year - 1
     }
-    file_path <- generate_file_path(year, month)
+    file_path <- generate_staff_path(year, month)
   }
   
   return(file_path)
 }
 
-file_path <- find_valid_file(current_year, current_month)
+staff_path <- find_staff_file(current_year, current_month)
 
-staff.clinics <- read_excel(path = file_path, sheet = "Clinics", skip = 2) %>%
+staff.clinics <- read_excel(path = staff_path, sheet = "Clinics", skip = 2) %>%
+  select(-Manager) %>%
   na.omit() %>%
   mutate(Location = str_replace_all(Location, 
                                   c("Buckner" = "John West/Buckner",
                                     "Abrams" = "Abrams Road",
-                                    "MLK" = "MLK Center")))
+                                    "MLK" = "MLK Center")),
+         Site = factor(Site))
 
 roles <- c("clerk" = "CSR, CSW, IBCLC, BFPC, clerk, CSR (virtual)",
            "certifier" = "nutritionist, WCS, WCS trainee, certifier, WCS/LC",
@@ -146,11 +141,12 @@ roles <- c("clerk" = "CSR, CSW, IBCLC, BFPC, clerk, CSR (virtual)",
 LC <- c("BFPC",	"IBCLC")
 temp <- c("In training", "Temp", "Part-time", "On leave")
 
-staff <- read_excel(path = file_path, sheet = "Staff", skip = 0) %>%
+staff <- read_excel(path = staff_path, sheet = "Staff", skip = 0) %>%
   mutate(Location = str_replace_all(Location, 
                                   c("Buckner" = "John West/Buckner",
                                     "Abrams" = "Abrams Road",
-                                    "MLK" = "MLK Center"))) %>%
+                                    "MLK" = "MLK Center")),
+         Site = factor(Site)) %>%
   filter(Site != 0) %>%
   mutate(Role = case_when(
     Position %in% strsplit(roles[["clerk"]], ", ")[[1]] ~ "clerk",
@@ -160,11 +156,116 @@ staff <- read_excel(path = file_path, sheet = "Staff", skip = 0) %>%
   )) %>%
   select(Role, Position, everything())
 
+
+##  IMPORT PARTICIPATION INDIV DATA FROM EXCEL  ################################
+ptcp_directory = "data/participantData"
+
+generate_ptcp_path <- function(year, month) {
+  file.path(ptcp_directory, sprintf("ptcp_indiv_%d_%02d.xlsx", year, month))
+}
+
+find_ptcp_file <- function(year, month) {
+  file_path <- generate_ptcp_path(year, month)
+  
+  while (!file.exists(file_path)) {
+    month <- month - 1
+    if (month < 1) {
+      month <- 12
+      year <- year - 1
+    }
+    file_path <- generate_ptcp_path(year, month)
+  }
+  
+  return(file_path)
+}
+
+ptcp_path <- find_ptcp_file(current_year, current_month)
+
+ptcps <- read_excel(path = ptcp_path, sheet = "Participants") %>%
+  rename_all(~ c(
+    "ModifiedOn",
+    "Site",
+    "ZIP",
+    "Ethnicity",
+    "Race",
+    "Gender",
+    "Status",
+    "ModifiedOnFamily",
+    "Category",
+    "CreatedOnFamily",
+    "Street",
+    "CreatedOn",
+    "AcquisitionDate",
+    "Language"
+  )) %>%
+  mutate(Site = as.factor(as.numeric(Site)),
+         FamilyDuration = case_when(
+           floor(time_length(interval(CreatedOnFamily, Sys.Date()), "years")) < 1 ~ "Less than 1 year",
+           floor(time_length(interval(CreatedOnFamily, Sys.Date()), "years")) == 1 ~ "1 year",
+           TRUE ~ paste0(floor(time_length(interval(CreatedOnFamily, Sys.Date()), "years")), " years")
+         ),
+         IndivDuration = case_when(
+           floor(time_length(interval(CreatedOn, Sys.Date()), "years")) < 1 ~ "Less than 1 year",
+           floor(time_length(interval(CreatedOn, Sys.Date()), "years")) == 1 ~ "1 year",
+           TRUE ~ paste0(floor(time_length(interval(CreatedOn, Sys.Date()), "years")), " years")
+         )) %>%
+  mutate(
+    FamilyDuration = factor(FamilyDuration, levels = c("Less than 1 year", paste0(1:100, " year"), paste0(2:100, " years")), ordered = TRUE),
+    IndivDuration = factor(IndivDuration, levels = c("Less than 1 year", paste0(1:100, " year"), paste0(2:100, " years")), ordered = TRUE)
+  )
+
+# these are population count matrices: rows are clinics
+
+client_languages <- ptcps %>%
+  group_by(Site, Language) %>%
+  tally() %>%
+  spread(key = Language, value = n, fill = 0)
+
+client_categories <- ptcps %>%
+  group_by(Site, Category) %>%
+  tally() %>%
+  spread(key = Category, value = n, fill = 0)
+
+client_status <- ptcps %>%
+  group_by(Site, Status) %>%
+  tally() %>%
+  spread(key = Status, value = n, fill = 0)
+
+client_zip <- ptcps %>%
+  group_by(Site, ZIP) %>%
+  tally() %>%
+  spread(key = ZIP, value = n, fill = 0)
+
+client_familyduration <- ptcps %>%
+  group_by(Site, FamilyDuration) %>%
+  tally() %>%
+  ungroup() %>%
+  spread(key = FamilyDuration, value = n, fill = 0)
+
+client_duration <- ptcps %>%
+  group_by(Site, IndivDuration) %>%
+  tally() %>%
+  ungroup() %>%
+  spread(key = IndivDuration, value = n, fill = 0)
+
+##  IMPORT PARTICIPATION DATA FROM GOOGLE SHEETS   #############################
+ptcp <- read_sheet(
+  "https://docs.google.com/spreadsheets/d/1pCkVgjP4VLtNDwIHYbCm7wcYOtFqaAZu2znO-N7eXK8/",
+  range = "Participation Database") %>%
+  select(c(1, 3:5)) %>%
+  mutate(Clinic = str_replace_all(Clinic, 
+                                  c("Hwy" = "Highway"),
+                                  c("Stemmons Clinic" = "Medical District")
+                                  ),
+         Site = factor(Site))
+
+
+
 ##  IMPORT CSAT DATA FROM GOOGLE SHEETS  #######################################
 CSAT <- read_sheet(
   "https://docs.google.com/spreadsheets/d/1pCkVgjP4VLtNDwIHYbCm7wcYOtFqaAZu2znO-N7eXK8/",
   range = "Clinic Database") %>%
-  select(c(1:4,11:13,21:23)) %>%
+  select(c(1,3,4,11:13,21:23)) %>%
   mutate(Clinic = str_replace_all(Clinic, 
                                   c("Hwy" = "Highway"
                                     )))
@@ -190,7 +291,9 @@ phase1.clinics <- read_sheet(ss=phase1, range = "CPAL POE") %>%
                                     "Hwy" = "Highway"))) %>%
   select(c(1,2,4,7,9,11,13,16,18,20,22,24,27,29,31,33,35,37,39,43,45)) %>%
   mutate(Date = as.Date(Date, format = "%Y-%m-%d"),
-         across(2:20, ~ ifelse(. == "YES", 1, 0)))
+         across(2:20, ~ ifelse(. == "YES", 1, 0))) %>%
+  left_join(clinic_map, by = "Clinic") %>%
+  select(Site, Date, everything(), -Manager, -Clinic)
 
 
 ##  IMPORT PHASE2 (clinic-level, excluding room-by-room)
@@ -202,7 +305,9 @@ phase2.clinics <- read_sheet(ss = phase2, range = "Clinic Evaluations") %>%
                                     "Hwy" = "Highway",
                                     "Buckner" = "John West/Buckner"))) %>%
   select(c(2,3,4,5,6,7,8,9)) %>%
-  mutate(Date = as.Date(Date, format = "%Y-%m-%d"))
+  mutate(Date = as.Date(Date, format = "%Y-%m-%d")) %>%
+  left_join(clinic_map, by = "Clinic") %>%
+  select(Site, Date, everything(), -Manager, -Clinic)
 
 
 
@@ -218,7 +323,9 @@ phase2.rooms <- read_sheet(ss = phase2, range = "Room Evaluations") %>%
                                     "Hwy" = "Highway",
                                     "Buckner" = "John West/Buckner"))) %>%
   select(c(1,2,3,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21)) %>%
-  mutate(Date = as.Date(Date, format = "%Y-%m-%d"))
+  mutate(Date = as.Date(Date, format = "%Y-%m-%d")) %>%
+  left_join(clinic_map, by = "Clinic") %>%
+  select(Site, Date, everything(), -Manager, -Clinic)
 
 
 
@@ -244,7 +351,7 @@ def decay(t, t_half=15):
     return 1 / ((t / t_half) + 1)
 
 def ma_read(df):
-    criteria = [i for i in df.columns.values if i not in ('Clinic', 'Date', 'Room')]
+    criteria = [i for i in df.columns.values if i not in ('Site', 'Date', 'Room')]
 
     def ma_calc(group):
         result_list = []
@@ -262,12 +369,12 @@ def ma_read(df):
         return result
 
     if 'Room' in df.columns:
-        df_room_ma = df.groupby(['Clinic', 'Room']).apply(ma_calc).reset_index().drop(columns='level_2')
+        df_room_ma = df.groupby(['Site', 'Room']).apply(ma_calc).reset_index().drop(columns='level_2')
 
-        unique_clinics = df_room_ma['Clinic'].unique().tolist()
+        unique_clinics = df_room_ma['Site'].unique().tolist()
         new_dfs = []
         for clinic in unique_clinics:
-            filtered_df = df_room_ma[df_room_ma['Clinic'] == clinic]
+            filtered_df = df_room_ma[df_room_ma['Site'] == clinic]
             all_dates = filtered_df['Date'].unique()
             all_rooms = filtered_df['Room'].unique()
             combinations = [(date, room) for date in all_dates for room in all_rooms]
@@ -275,20 +382,20 @@ def ma_read(df):
             existing_combinations = [(np.datetime64(date), room) for date, room in existing_combinations]
             missing_combinations = [combo for combo in combinations if combo not in existing_combinations]
             missing_df = pd.DataFrame(missing_combinations, columns=['Date', 'Room'])
-            missing_df['Clinic'] = clinic
+            missing_df['Site'] = clinic
             filtered_df = pd.concat([filtered_df, missing_df])
             new_dfs.append(filtered_df)
 
         df_room_ma = pd.concat(new_dfs)
-        df_room_ma = df_room_ma.sort_values(['Clinic', 'Room', 'Date']).reset_index(drop=True).groupby('Room').ffill()
-        df_ma = df_room_ma.groupby(['Clinic', 'Date']).mean()
+        df_room_ma = df_room_ma.sort_values(['Site', 'Room', 'Date']).reset_index(drop=True).groupby('Room').ffill()
+        df_ma = df_room_ma.groupby(['Site', 'Date']).mean()
     else:
-        df_ma = df.groupby('Clinic').apply(ma_calc).reset_index().set_index(['Clinic', 'Date']).drop(columns='level_1')
+        df_ma = df.groupby('Site').apply(ma_calc).reset_index().set_index(['Site', 'Date']).drop(columns='level_1')
         
     today = pd.Timestamp.today()
-    unique_clinics = df_ma.index.get_level_values('Clinic').unique()
+    unique_clinics = df_ma.index.get_level_values('Site').unique()
     new_rows = pd.DataFrame([(clinic, today) for clinic in unique_clinics], 
-                                columns=['Clinic', 'Date']).set_index(['Clinic', 'Date'])
+                                columns=['Site', 'Date']).set_index(['Site', 'Date'])
     df_ma = pd.concat([df_ma, new_rows]).sort_index()
 
     return df_ma
@@ -310,8 +417,8 @@ dataframes = [phase1_clinics, phase2_clinics, phase2_rooms]
 to_combine = [ma_read(df) for df in dataframes]
 
 # combine dfs
-df_combined = pd.concat(to_combine, ignore_index=False).groupby('Clinic').ffill().reset_index().sort_values(
-    ['Clinic', 'Date']).reset_index(drop=True)
+df_combined = pd.concat(to_combine, ignore_index=False).groupby('Site').ffill().reset_index().sort_values(
+    ['Site', 'Date']).reset_index(drop=True)
 
 # date to string for conversion back to R
 df_combined['Date'] = df_combined['Date'].astype(str)
@@ -338,11 +445,11 @@ CSAT['CSAT'] = CSAT['CSAT'].fillna(CSAT['CSAT'].shift().where(CSAT['CSAT (n)'] =
 forecast_df = pd.DataFrame()
 
 # unique clinics
-clinics = CSAT['Clinic'].unique()
+clinics = CSAT['Site'].unique()
 
 # iterate over each clinic
 for clinic in clinics:
-    df_1 = CSAT[(CSAT['Clinic']==clinic) & (CSAT['CSAT (n)'] > 0)]
+    df_1 = CSAT[(CSAT['Site']==clinic) & (CSAT['CSAT (n)'] > 0)]
 
     # check if there's enough data
     if len(df_1) > 10:
@@ -365,7 +472,7 @@ for clinic in clinics:
         pred_df = pred_df.set_index('Date')
 
         # add clinic column
-        pred_df['Clinic'] = clinic
+        pred_df['Site'] = clinic
 
         # append predictions to forecast_df
         forecast_df = pd.concat([forecast_df, pred_df])
@@ -382,8 +489,10 @@ Migrate back to R to prepare export to template
 ```{r py-to-r, echo=FALSE, output=FALSE}
 ##  MIGRATE DF FROM PY, CREATE DF FOR ONLY FAMILIESWAITING, AND CREATE 'DF.PHASE'
 df <- py$df_combined %>% 
-  group_by(Clinic) %>%
-  fill(-(1:2), .direction = "down")
+  group_by(Site) %>%
+  fill(-(1:2), .direction = "down") %>%
+  left_join(clinic_map, by = "Site") %>%
+  select(Date, Site, Clinic, Manager, everything())
 df$Date <- as.Date(df$Date)
 
 CSAT.predict <- py$forecast_df
@@ -397,9 +506,9 @@ RENDER FROM TEMPLATE
 ```
 ```{r generate}
 
-saves <- c("clinic_map", "staff.clinics", "df", "POE", "staff", "CSAT", "CSAT.predict")
-for (var in saves) {
-  write.csv(var, paste0("data/scriptData/", var, ".csv"))
+saves <- c("clinic_map", "clinic_map_detail", "staff.clinics", "df", "POE", "staff", "CSAT", "CSAT.predict", "ptcp", "ptcps", "client_languages", "client_categories", "client_duration", "client_familyduration", "client_status", "client_zip")
+for (name in saves) {
+  write.csv(get(name), file = paste0("data/scriptData/", gsub("\\.", "__", name), ".csv"), row.names = FALSE)
 }
 
 quarto::quarto_render(

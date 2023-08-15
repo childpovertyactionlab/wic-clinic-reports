@@ -32,11 +32,11 @@ This template for clinic dashboards is in the following order:
 goal_category = params$goal_category
 
 
-files <- list.files(path = "_WICdashboardClinic/data/scriptData/", pattern = "\\.csv$")
+files <- list.files(path = "data/scriptData/", pattern = "\\.csv$")
 
-# load each file
 for (file in files) {
-  read.csv(paste0("data/scriptData/", file))
+  file_name <- tools::file_path_sans_ext(file)
+  assign(file_name, read.csv(file = paste0("data/scriptData/", file)))
 }
 
 library(tidyverse)

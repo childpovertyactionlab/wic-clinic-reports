@@ -14,7 +14,7 @@ format: html
 editor: source
 ---
 
-```{=html}
+
 <!--
 
 ## DASHBOARD TEMPLATE ##
@@ -25,17 +25,8 @@ This template for clinic dashboards is in the following order:
  3. Layout of dashboard using variables from generations
  
 -->
-```
+
 ```{r setup, echo=FALSE, output=FALSE}
-clinic_name = params$clinic_name
-
-files <- list.files(path = "_WICdashboardClinic/data/scriptData/", pattern = "\\.csv$")
-
-# load each file
-for (file in files) {
-  read.csv(paste0("data/scriptData/", file))
-}
-
 library(tidyverse)
 library(googlesheets4)
 library(tsutils)
@@ -49,6 +40,19 @@ library(tsibble)
 library(cpaltemplates)
 library(sparklines)
 
+clinic_name = params$clinic_name
+
+files <- list.files(path = "data/scriptData/", pattern = "\\.csv$")
+
+for (file in files) {
+  file_name <- tools::file_path_sans_ext(file)
+  assign(gsub("__", "\\.", file_name), read_csv(file = paste0("data/scriptData/", file)))
+}
+
+clinic_id = clinic_map %>%
+  filter(Clinic == clinic_name) %>%
+  pull(Site) %>%
+  as.character
 
 ## make sure poppins is installed locally
 poppins_import()
@@ -83,14 +87,14 @@ current_month <- as.integer(format(Sys.Date(), "%m"))
 
 ```
 
-```{=html}
+
 <!--
 Set aside numbers of families waiting, specify phases
 -->
-```
+
 ```{r preprocess, echo=FALSE, output=FALSE}
 df.familiesWaiting <- df %>% 
-  dplyr::select(Clinic, Date, `# of Families Waiting`) %>%
+  select(Site, Date, `# of Families Waiting`) %>%
   rename(familiesWaiting = `# of Families Waiting`) %>%
   drop_na()
 
@@ -98,14 +102,15 @@ df <- df %>%
   mutate(`# of Families Waiting` = 1 / exp(`# of Families Waiting` / maxFamiliesWaiting))
 
 df.phase <- df %>%
-  group_by(Clinic) %>%
+  select(-Clinic, -Manager) %>%
+  group_by(Site) %>%
   replace(is.na(.), 0) %>% 
   pivot_longer( cols = -c(1:2), names_to = "variable", values_to = "score") %>%
   left_join(POE, by = "variable") %>%
-  group_by(Clinic, Date, phase) %>%
+  group_by(Site, Date, phase) %>%
   summarise(score = mean(score, na.rm = TRUE)) %>%
   pivot_wider(names_from = phase, values_from = score) %>%
-  rename_with(~ifelse(grepl("^\\d+$", .), paste0("phase", .), .), -c(Clinic, Date))
+  rename_with(~ifelse(grepl("^\\d+$", .), paste0("phase", .), .), -c(Site, Date))
 ```
 
 ```{=html}
@@ -116,13 +121,14 @@ Summarize POE data from individual criteria into categories and even wider theme
 ```{r categories, echo=FALSE, output=FALSE}
 
 df.grouped.long <- df %>%
+  select(-Clinic, -Manager) %>%
   pivot_longer(
-    cols = -c(Clinic, Date), 
+    cols = -c(Site, Date), 
     names_to = "variable", 
     values_to = "value"
   ) %>%
   merge(POE, by = "variable") %>%
-  group_by(Clinic, Date, category) %>%
+  group_by(Site, Date, category) %>%
   summarise(Value = mean(value, na.rm = TRUE), .groups = "drop")
   
 df.grouped <- df.grouped.long %>% 
@@ -133,13 +139,14 @@ df.grouped <- df.grouped.long %>%
 
 ##  THEMES DF
 df.themes.long <- df %>%
+  select(-Clinic, -Manager) %>%
   pivot_longer(
-    cols = -c(Clinic, Date), 
+    cols = -c(Site, Date), 
     names_to = "variable", 
     values_to = "value"
   ) %>%
   merge(POE, by = "variable") %>%
-  group_by(Clinic, Date, theme) %>%
+  group_by(Site, Date, theme) %>%
   summarise(Value = mean(value, na.rm = TRUE), .groups = "drop")
   
 df.themes <- df.themes.long %>% 
@@ -158,31 +165,21 @@ Snapshot of only the most recent data to see current fulfillment
 ```{r snapshot, echo=FALSE, output=FALSE}
 ##  DETAILED RECENT SNAPSHOT
 df.recent <- df %>%
-  group_by(Clinic) %>%
+  group_by(Site) %>%
   slice(which.max(Date)) %>%
-  select(-c("Date")) %>%
-  list(clinic_map) %>% 
-  reduce(left_join, by = "Clinic") %>%
-  relocate(any_of(c("ID", "Manager")), .after = Clinic)
-
+  select(-c("Date"))
 
 ##  GROUPED RECENT SNAPSHOT
 df.recent.grouped <- df.grouped %>%
-  group_by(Clinic) %>%
+  group_by(Site) %>%
   slice(which.max(Date)) %>%
-  select(-c("Date")) %>%
-  list(clinic_map) %>% 
-  reduce(left_join, by = "Clinic") %>%
-  relocate(any_of(c("ID", "Manager")), .after = Clinic)
+  select(-c("Date"))
 
 ##  THEMED RECENT SNAPSHOT
 df.recent.themes <- df.themes %>%
-  group_by(Clinic) %>%
+  group_by(Site) %>%
   slice(which.max(Date)) %>%
-  select(-c("Date")) %>%
-  list(clinic_map) %>% 
-  reduce(left_join, by = "Clinic") %>%
-  relocate(any_of(c("ID", "Manager")), .after = Clinic)
+  select(-c("Date"))
 
 ### long form of themes for radar charts later
 df.recent.themes.long <- df.recent.themes %>%
@@ -192,12 +189,12 @@ df.recent.themes.long <- df.recent.themes %>%
 
 ```
 
-```{=html}
+
 <!--
 AGENCY-WIDE PREPROCESSING STOPS HERE -- BELOW ARE GENERATIONS
 -->
-```
-```{=html}
+
+
 <!--
 Generate dynamic text that: 
  - separates into themes
@@ -205,16 +202,16 @@ Generate dynamic text that:
  - determines fails based on 'fail'
  PRODUCT: "phase_text"
 -->
-```
+
 ```{r phasetext, echo=FALSE, output=FALSE}
 df.phase.clinic <- df.phase %>%
   # ungroup() %>%
   # mutate_if(is.numeric, ~./(ncol(.) - 2)) %>%
-  filter(Clinic == clinic_name)
+  filter(Site == clinic_id)
 
 phase_eval <- df.phase.clinic %>%
   filter(Date == max(df.phase.clinic$Date)) %>%
-  ungroup() %>% select(-c(Clinic, Date)) %>% 
+  ungroup() %>% select(-c(Site, Date)) %>% 
   gather(key = "phase", value = "metric") %>%
   mutate(phase = gsub("(phase)(\\d+)", "Phase \\2", phase),
          evaluation = if_else(metric > threshold,
@@ -222,20 +219,20 @@ phase_eval <- df.phase.clinic %>%
                               "not_fulfilled"))
 
 # create grouped phase strings
-phase_eval.strong <- paste(phase_eval %>% filter(evaluation == "fulfilled") %>% pull(phase), collapse = ", ")
-phase_eval.weak <- paste(phase_eval %>% filter(evaluation == "not_fulfilled") %>% pull(phase), collapse = ", ")
+phase_eval.strong <- phase_eval %>% filter(evaluation == "fulfilled") %>% mutate(colored_phase = paste0("<span style='color:", palette_cpal_main[stringr::str_remove(phase, "Phase ")],"'>", phase, "</span>")) %>% pull(colored_phase) %>% paste(collapse = ", ")
+phase_eval.weak <- phase_eval %>% filter(evaluation == "not_fulfilled") %>% mutate(colored_phase = paste0("<span style='color:", palette_cpal_main[stringr::str_remove(phase, "Phase ")],"'>", phase, "</span>")) %>% pull(colored_phase) %>% paste(collapse = ", ")
 
 # Use your oxford_comma function to make it look better
 phase_eval.strong <- oxford_comma(strsplit(phase_eval.strong, ", ")[[1]])
 phase_eval.weak <- oxford_comma(strsplit(phase_eval.weak, ", ")[[1]])
 
 phase_text <- paste(if (nchar(phase_eval.strong) > 0) 
-                             paste0("Nice job getting ", phase_eval.strong, " fulfillment above ", sprintf("%.f%%", threshold*100), "!"),
+                             paste0("Nice job getting ", phase_eval.strong, " fulfillment above ", "<span style='color:#2f2f2f'>", sprintf("%.f%%", threshold*100), "</span>", "!"),
                            if (nchar(phase_eval.weak) > 0) 
                              paste0("Work on getting ", phase_eval.weak, " targets up."))
 ```
 
-```{=html}
+
 <!--
 Generate dynamic text that:
  - counts how many POE fails there are by phase
@@ -243,23 +240,24 @@ Generate dynamic text that:
  - if there are more than 5, picks 5 at random to serve as monthly targets
  PRODUCT: "improvement_text"
 -->
-```
+
 ```{r improvement_targets, echo=FALSE, output=FALSE}
 df.recent.long <- df.recent %>%
-  pivot_longer(cols = -c(1:2,length(.)),
+  select(-Clinic, -Manager) %>%
+  pivot_longer(cols = -c(1),
                names_to = "variable",
                values_to = "Value") %>%
   merge(POE, by = "variable") %>%
-  select(Clinic, Value, improvement_phrase, phase)
+  select(Site, Value, improvement_phrase, phase)
 
 df.clinic_fails <- df.recent.long %>%
-  filter(Clinic == clinic_name, Value < fail)
+  filter(Site == clinic_id, Value < fail)
 
 fail_count <- df.clinic_fails %>%
   count(phase) %>%
   mutate(name = paste0("Phase ", phase),
-         color = palette_cpal_main[paste0("phase", phase)],
-         message = glue_col("{n} items in <b style='color:{color}'>{name}</b>")) %>%
+         color = palette_cpal_main[phase],
+         message = glue_col("{n} items in <span style='color:{color}'>{name}</span>")) %>%
   pull(message)
 
 fail_count_string <- paste(fail_count, collapse = ", ")
@@ -275,31 +273,29 @@ improves <- df.clinic_fails %>%
       .
   } %>% pull(improvement_phrase)
 
+improvements_string <- paste0("\n\n - ", paste(improves, collapse = "\n\n - "))
+
 improvement_text <- knitr::asis_output(glue(
   "{clinic_name} has {knitr::asis_output(fail_count_string)} that need improvement. 
-  
-  Here are some goals to focus on:
-  
-   - {improves[1]}
-   - {improves[2]}
-   - {improves[3]}
-   - {improves[4]}
-   - {improves[5]}
-  "
+  {if (length(improves) > 0) {
+    paste('Here are some goals to focus on:', improvements_string)
+  } else {
+    'Wonderful work! You are a WIC superstar!'
+  }}"
 ))
 
 ```
 
-```{=html}
+
 <!--
 Generate dynamic text that:
  - summarizes recent performance by theme
  - separates strengths and fails
  PRODUCT: "performance_text"
 -->
-```
+
 ```{r themes, echo=FALSE, output=FALSE}
-df.recent.themes.long.filtered <- df.recent.themes.long %>% filter(Clinic == clinic_name)
+df.recent.themes.long.filtered <- df.recent.themes.long %>% filter(Site == clinic_id)
 
 performance_text <- paste(
   if_else(length(strong_themes <- df.recent.themes.long.filtered %>% filter(Value > threshold) %>% pull(Theme) %>% tolower()) > 0,
@@ -321,20 +317,20 @@ Generate dynamic text that:
 -->
 ```
 ```{r vacancies, echo=FALSE, output=FALSE}
-summarize_role <- function(df, clinic_name, role) {
+summarize_role <- function(df, clinic_id, role) {
   df %>%
-    filter(Location == clinic_name, Role == role) %>%
+    filter(Site == clinic_id, Role == role) %>%
     summarize(
       Vacancies = sum(Vacant == "TRUE", na.rm = TRUE),
       Temps = sum(`In training` == "TRUE" | `Temp` == "TRUE" | `Part-time` == "TRUE" | `On leave` == "TRUE", na.rm = TRUE),
       `WCS trainees` = sum(`WCS trainee` == "TRUE", na.rm = TRUE),
-      Active = n() - Vacancies - Temps - `WCS trainees`,
+      Active = n() - Vacancies - Temps,
       Role = role
     )
 }
 
 roles <- c("clerk", "certifier", "supervisor")
-count_df <- purrr::map_dfr(roles, summarize_role, df = staff, clinic_name = clinic_name)
+count_df <- purrr::map_dfr(roles, summarize_role, df = staff, clinic_id = clinic_id)
 
 create_vacancy_sentence <- function(df) {
   if (!any(df$Vacancies > 0)) {
@@ -358,22 +354,21 @@ create_vacancy_sentence <- function(df) {
 vacancy_text <- create_vacancy_sentence(count_df)
 ```
 
-```{=html}
 <!--
 Generate dynamic text that:
  - qualtrics
  PRODUCT: "CSATtext"
 -->
-```
+
 ```{r CSATtext, echo=FALSE, output=FALSE}
 CSAT.integrated <- CSAT %>%
   drop_na() %>%
   bind_rows(CSAT.predict) %>%
-  arrange(Clinic, Date) %>%
+  arrange(Site, Date) %>%
   mutate(Date = floor_date(Date, "month"),
          `CSAT Points` = ifelse(is.na(`CSAT Points`), CSAT * `CSAT (n)`, `CSAT Points`)
          ) %>%
-  group_by(Clinic) %>%
+  group_by(Site) %>%
   do({
     firstP = first(.$`Running CSAT Points`)
     firstn = first(.$`Running CSAT n`)
@@ -388,7 +383,7 @@ CSAT.groups <- CSAT.integrated %>%
   summarize_at(vars(LA_CSAT = CSAT, LA_avg = `Running CSAT Average`), list(~ mean(., na.rm=TRUE)))
 
 CSAT.clinic <- CSAT %>%
-  filter(Clinic == clinic_name) %>%
+  filter(Site == clinic_id) %>%
   mutate(Date = floor_date(Date, "month"), 
          Average = lag(`Running CSAT Average`, n = 1)) %>%
   select(Date, CSAT, CSAT_n = `CSAT (n)`, Average) %>%
@@ -403,10 +398,10 @@ CSAT.clinic.recent <- CSAT.clinic %>%
   mutate(pred = FALSE)
 
 CSAT.clinic.predict <- CSAT.predict %>%
-  filter(Clinic == clinic_name) %>%
+  filter(Site == clinic_id) %>%
   mutate(Date = floor_date(Date, "month")) %>%
-  left_join(CSAT.integrated %>% select(Date, Clinic, Average = `Running CSAT Average`), by=c("Date", "Clinic")) %>%
-  select(-c(Clinic), CSAT_n = `CSAT (n)`) %>%
+  left_join(CSAT.integrated %>% select(Date, Site, Average = `Running CSAT Average`), by=c("Date", "Site")) %>%
+  select(-c(Site), CSAT_n = `CSAT (n)`) %>%
   mutate(delta = ifelse(CSAT_n > 0, CSAT - Average, 0)) %>%
   left_join(CSAT.groups, by="Date") %>%
   slice(1:2) %>%
@@ -427,7 +422,7 @@ CSAT.all.now <- CSAT %>%
 
 CSAT.average.now <- sum(CSAT.all.now$`CSAT Points`) / sum(CSAT.all.now$`CSAT (n)`)
 
-CSAT.text.agency <- paste0("Agency-wide, ", clinic_name, " brought the average for Dallas County clinics", ifelse(CSAT.clinic.recent$CSAT[1] > CSAT.average.now, " up. Nice!", " down. Keep working!"))
+CSAT.text.agency <- paste0("Agency-wide, the ", clinic_name, " clinic brought the average for Dallas County clinics", ifelse(CSAT.clinic.recent$CSAT[1] > CSAT.average.now, " up. Nice!", " down. Keep working!"))
 
 CSAT.text.trend <- paste0("Over the last 18 months, the score for ", clinic_name, " has ", ifelse(CSAT.clinic.recent$Average[1] > CSAT.clinic.recent$Average[18], " increased overall.", " decreased overall."), " Over the last 3 months, the score has ", ifelse(CSAT.clinic.recent$Average[1] > CSAT.clinic.recent$Average[3], " increased.", " decreased."))
 
@@ -528,7 +523,7 @@ POEarea <- POEarea %>%
     xend = max(df.phase.clinic$Date),
     y = 0.9,
     yend = 0.9,
-    line = list(dash = "dash", color = "red"),
+    line = list(dash = "dash", color = "#2f2f2f"),
     inherit = FALSE,
     showlegend = FALSE
   ) %>%
@@ -538,7 +533,7 @@ POEarea <- POEarea %>%
     text = "<i>Goal</i>",
     showarrow = FALSE,
     font = list(size = 12),
-    xanchor = 'right',
+    xanchor = 'left',
     yanchor = 'middle'
   ) %>% 
   config(displayModeBar = F)
@@ -568,11 +563,11 @@ staffchart <- plot_ly(count_df,
   add_trace(x = ~Temps,
             y = ~Role,
             name = "Temporary/inactive", 
-            marker=list(color=cpaltemplates::palette_cpal_teal[4])) %>%
+            marker=list(color=cpaltemplates::palette_cpal_teal[3])) %>%
   add_trace(x = ~Vacancies,
             y = ~Role,
             name = "Vacant", 
-            marker=list(color=cpaltemplates::palette_cpal_teal[2])) %>%
+            marker=list(color=cpaltemplates::palette_cpal_red[3])) %>%
   layout(plot_bgcolor = "rgba(0,0,0,0)",
          paper_bgcolor = "rgba(0,0,0,0)",
          yaxis = list(title = "",
@@ -580,7 +575,7 @@ staffchart <- plot_ly(count_df,
                       categoryarray = c("Clerk", "Certifier", "Supervisor"),
                       automargin = TRUE,
                       tickfont = list(size = 12),
-                      tickprefix = "   "), # add 3 spaces before y-label
+                      ticksuffix = "   "), # add 3 spaces after y-label
          xaxis = list(title = "",
                       gridwidth = 2,
                       dtick = 1), 
@@ -749,12 +744,10 @@ qualchart = NULL
 
 ```
 
-```{=html}
 <!--
 ################################################################################
 DASHBOARD LAYOUT TEMPLATE STARTS HERE
 -->
-```
 
 ```{=html}
 <div class="d-flex align-items-center">
