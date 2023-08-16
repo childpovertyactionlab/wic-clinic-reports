@@ -27,3 +27,4 @@ vignettes/*.pdf
 *.knit.md
 
 /.quarto/
+data/scriptData/ptcps.csv

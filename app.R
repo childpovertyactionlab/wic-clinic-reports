@@ -619,7 +619,7 @@ server <- function(input, output, session) {
                  tags$h3(style = "text-align: center; font-size: 20px;", "Demographics"),
                  hr(style = "border-top: 2px solid #333; margin: 5px 0;"),
                  selectInput("demographicSelector", "",
-                             choices = c("Client category", "Preferred language", "Years using WIC", "Years family using WIC", "Cert. status", "ZIP code")),
+                             choices = c("Certification status", "Client category", "Preferred language", "Years indiv. using WIC", "Years family using WIC", "ZIP code")),
                  plotlyOutput("demographics")
           )
         ),
@@ -723,7 +723,8 @@ server <- function(input, output, session) {
     }
 
     plot <- plot %>%
-      layout(plot_bgcolor = "rgba(0,0,0,0)",
+      layout(font = list(family = "Poppins"),
+             plot_bgcolor = "rgba(0,0,0,0)",
              paper_bgcolor = "rgba(0,0,0,0)",
              title = "",
              yaxis = list(range = c(0, max_ptcp), title = ""),
@@ -760,16 +761,11 @@ server <- function(input, output, session) {
                     ~ifelse((`Num. Participants` / total < 0.01), "other", .))
       }
 
+      if(name_col == "Years indiv. using WIC" || name_col == "Years family using WIC"){
 
-      if(name_col == "Years using WIC" || name_col == "Years family using WIC"){
-        df <- df %>%
-          mutate_at(vars(name_col),
-                    ~ case_when(
-                      . %in% c("5 years", "6 years", "7 years", "8 years", "9 years", "10 years") ~ "5 to 10 years",
-                      as.numeric(gsub(" years", "", .)) > 10 ~ "More than 10 years",
-                      TRUE ~ .
-                    ))
-        year_levels <- c("Less than 1 year", "1 year", "2 years", "3 years", "4 years", "5 to 10 years", "More than 10 years")
+        max_year <- max(as.numeric(gsub(" years?|Less than ", "", df[[name_col]])), na.rm = TRUE)
+
+        year_levels <- c("Less than 1 year", sapply(1:max_year, function(x) ifelse(x == 1, "1 year", paste0(x, " years"))))
 
         df[[name_col]] <- factor(df[[name_col]], levels = year_levels, ordered = TRUE)
       }
@@ -789,46 +785,86 @@ server <- function(input, output, session) {
     list(
       categories      = process_data(client_categories, "Client category"),
       languages       = process_data(client_languages, "Preferred language"),
-      duration        = process_data(client_duration, "Years using WIC"),
+      duration        = process_data(client_duration, "Years indiv. using WIC"),
       familyduration  = process_data(client_familyduration, "Years family using WIC"),
-      status          = process_data(client_status, "Cert. status"),
+      status          = process_data(client_status, "Certification status"),
       zip             = process_data(client_zip, "ZIP code")
     )
   })
 
   output$demographics <- renderPlotly({
     selected_data <- switch(input$demographicSelector,
+                            "Certification status" = selected_demographics()$status,
                             "Client category" = selected_demographics()$categories,
                             "Preferred language" = selected_demographics()$languages,
-                            "Years using WIC" = selected_demographics()$duration,
+                            "Years indiv. using WIC" = selected_demographics()$duration,
                             "Years family using WIC" = selected_demographics()$familyduration,
-                            "Cert. status" = selected_demographics()$status,
                             "ZIP code" = selected_demographics()$zip)
 
-    if (input$demographicSelector %in% c("Years using WIC", "Years family using WIC")) {
+    if (input$demographicSelector %in% c("Years indiv. using WIC", "Years family using WIC")) {
       unique_levels <- unique(selected_data[[input$demographicSelector]])
       color_palette <- time_gradient_palette(length(unique_levels))
       names(color_palette) <- unique_levels
-    } else {
-      color_palette <- palette_cpal_main
-    }
 
-    plot_ly(data = selected_data,
-            ids = ~Site,
-            labels = ~get(input$demographicSelector),
-            values = ~`Num. Participants`,
-            type = "pie",
-            marker = list(colors = color_palette[as.character(selected_data[[input$demographicSelector]])])) %>%
-      layout(title = "",
-             plot_bgcolor = "rgba(0,0,0,0)",
-             paper_bgcolor = "rgba(0,0,0,0)"
-      ) %>%
-      config(displaylogo = FALSE,
-             modeBarButtonsToRemove = c(
-               'sendDataToCloud', 'autoScale2d', 'resetScale2d', 'toggleSpikelines',
-               'hoverClosestCartesian', 'hoverCompareCartesian',
-               'zoom2d','pan2d','select2d','lasso2d','zoomIn2d','zoomOut2d'
-             ))
+      plot_ly(data = selected_data,
+              x = ~get(input$demographicSelector),
+              y = ~`Num. Participants`,
+              type = "bar",
+              marker = list(color = color_palette[as.character(selected_data[[input$demographicSelector]])])) %>%
+        layout(title = "",
+               font = list(family = "Poppins"),
+               plot_bgcolor = "rgba(0,0,0,0)",
+               paper_bgcolor = "rgba(0,0,0,0)",
+               uniformtext = list(minsize = 8, mode = 'hide'),
+               xaxis = list(title = "", range = c(-0.5, 10.5)),
+               yaxis = list(title = ""),
+               annotations = list(
+                 x = 0.5,
+                 y = 1.1,
+                 xref = 'paper',
+                 yref = 'paper',
+                 text = 'double-click to zoom in and out',
+                 font = list(size = 12, color = 'black', family = "Poppins", italic = TRUE),
+                 showarrow = FALSE
+               )
+        ) %>%
+        config(displaylogo = FALSE,
+               modeBarButtonsToRemove = c(
+                 'sendDataToCloud', 'autoScale2d', 'resetScale2d', 'toggleSpikelines',
+                 'hoverClosestCartesian', 'hoverCompareCartesian',
+                 'zoom2d','pan2d','select2d','lasso2d','zoomIn2d','zoomOut2d'
+               ))
+    } else {
+      if (input$demographicSelector == "Certification status") {
+        color_palette <- c(
+          "Active"                      = cpaltemplates::palette_cpal_teal[6],
+          "Provisional"                 = cpaltemplates::palette_cpal_teal[4],
+          "Certified"                   = cpaltemplates::palette_cpal_red[4],
+          "Not certified"               = cpaltemplates::palette_cpal_red[2],
+          "Certified - Pending Signature" = cpaltemplates::palette_cpal_orange[3]
+          )
+      } else {
+        color_palette <- palette_cpal_main
+      }
+      plot_ly(data = selected_data,
+              ids = ~Site,
+              labels = ~get(input$demographicSelector),
+              values = ~`Num. Participants`,
+              type = "pie",
+              marker = list(colors = color_palette[as.character(selected_data[[input$demographicSelector]])])) %>%
+        layout(title = "",
+               font = list(family = "Poppins"),
+               plot_bgcolor = "rgba(0,0,0,0)",
+               paper_bgcolor = "rgba(0,0,0,0)",
+               uniformtext=list(minsize=8, mode='hide')
+        ) %>%
+        config(displaylogo = FALSE,
+               modeBarButtonsToRemove = c(
+                 'sendDataToCloud', 'autoScale2d', 'resetScale2d', 'toggleSpikelines',
+                 'hoverClosestCartesian', 'hoverCompareCartesian',
+                 'zoom2d','pan2d','select2d','lasso2d','zoomIn2d','zoomOut2d'
+               ))
+    }
   })
 
   selected_POE_reactive <- reactive({
@@ -896,6 +932,7 @@ server <- function(input, output, session) {
 
       POEarea <- POEarea %>%
         layout(title = "",
+               font = list(family = "Poppins"),
                plot_bgcolor = "rgba(0,0,0,0)",
                paper_bgcolor = "rgba(0,0,0,0)",
                xaxis = list(title = "",
@@ -936,24 +973,28 @@ server <- function(input, output, session) {
                             hovertemplate = paste("Role: %{y}<br>",
                                                   "Active: %{x}"),
                             text = ~Active,
-                            textposition = 'auto') %>%
+                            textposition = 'auto',
+                            insidetextanchor="middle") %>%
         add_trace(x = ~Temps,
                   y = ~Role,
                   name = "Temporary/inactive",
-                  marker = list(color = cpaltemplates::palette_cpal_teal[4]),
+                  marker = list(color = cpaltemplates::palette_cpal_teal[3]),
                   hovertemplate = paste("Role: %{y}<br>",
                                         "Temporary/Inactive: %{x}"),
                   text = ~Temps,
-                  textposition = 'auto') %>%
+                  textposition = 'auto',
+                  insidetextanchor="middle") %>%
         add_trace(x = ~Vacancies,
                   y = ~Role,
                   name = "Vacant",
-                  marker = list(color = cpaltemplates::palette_cpal_teal[2]),
+                  marker = list(color = cpaltemplates::palette_cpal_red[3]),
                   hovertemplate = paste("Role: %{y}<br>",
                                         "Vacancies: %{x}"),
                   text = ~Vacancies,
-                  textposition = 'auto') %>%
-        layout(plot_bgcolor = "rgba(0,0,0,0)",
+                  textposition = 'auto',
+                  insidetextanchor="middle") %>%
+        layout(font = list(family = "Poppins"),
+               plot_bgcolor = "rgba(0,0,0,0)",
                paper_bgcolor = "rgba(0,0,0,0)",
                title = "",
                yaxis = list(title = "",

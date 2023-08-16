@@ -530,7 +530,7 @@ navbar_links <- ""
 
 
 for(clinic_name in clinic_map$Clinic){
-  output_name <- gsub("\\W", "_", clinic_name)  # replace any non-alphanumeric characters with underscore
+  output_name <- gsub("\\W", "_", clinic_name) # replace any non-alphanumeric characters with underscore
   navbar_links <- paste0(navbar_links, 
                          "    - text: \"", clinic_name, 
                          "\"\n      href: ", output_name, ".html\n")
@@ -541,16 +541,16 @@ for(clinic_name in clinic_map$Clinic){
   )
 }
 
-# for(manager_name in unique(clinic_map$Manager)){
-#   output_name <- gsub("\\W", "_manager", manager_name)  # replace any non-alphanumeric characters with underscore
-#   navbar_links <- paste0(navbar_links,
-#                          "    - text: \"", clinic_name,
-#                          "\"\n      href: ", output_name, ".html\n")
-#   quarto::quarto_render(
-#     input = "dashboardManagerTemplate.qmd",
-#     output_file = paste0(output_name, ".html"),
-#     execute_params = list(manager_name = manager_name)
-#   )
-# }
+for(manager_name in unique(clinic_map$Manager)){
+  output_name <- gsub("\\W", "", manager_name) # replace any non-alphanumeric characters with underscore
+  navbar_links <- paste0(navbar_links,
+                         "    - text: \"", clinic_name,
+                         "\"\n      href: ", output_name, "_clinics.html\n")
+  quarto::quarto_render(
+    input = "dashboardManagerTemplate.qmd",
+    output_file = paste0(output_name, "_clinics.html"),
+    execute_params = list(manager_name = manager_name)
+  )
+}
 
 ```

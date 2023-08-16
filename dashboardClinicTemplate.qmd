@@ -46,7 +46,13 @@ files <- list.files(path = "data/scriptData/", pattern = "\\.csv$")
 
 for (file in files) {
   file_name <- tools::file_path_sans_ext(file)
-  assign(gsub("__", "\\.", file_name), read_csv(file = paste0("data/scriptData/", file)))
+  if (file_name == "ptcp") {
+    assign(gsub("__", "\\.", file_name), read_csv(file = paste0("data/scriptData/", file)) %>%
+             rename(Date = colnames(.)[1]) %>%
+             mutate(Date = as.Date(Date)))
+  } else {
+    assign(gsub("__", "\\.", file_name), read_csv(file = paste0("data/scriptData/", file)))
+  }
 }
 
 clinic_id = clinic_map %>%
@@ -276,7 +282,7 @@ improves <- df.clinic_fails %>%
 improvements_string <- paste0("\n\n - ", paste(improves, collapse = "\n\n - "))
 
 improvement_text <- knitr::asis_output(glue(
-  "{clinic_name} has {knitr::asis_output(fail_count_string)} that need improvement. 
+  "The {clinic_name} clinic has {knitr::asis_output(fail_count_string)} that need improvement. 
   {if (length(improves) > 0) {
     paste('Here are some goals to focus on:', improvements_string)
   } else {
@@ -299,7 +305,7 @@ df.recent.themes.long.filtered <- df.recent.themes.long %>% filter(Site == clini
 
 performance_text <- paste(
   if_else(length(strong_themes <- df.recent.themes.long.filtered %>% filter(Value > threshold) %>% pull(Theme) %>% tolower()) > 0,
-    paste0(clinic_name, " is strong in ", oxford_comma(strong_themes), "."),
+    paste0("The ", clinic_name, " clinic is strong in ", oxford_comma(strong_themes), "."),
     ""),
   if_else(length(weak_themes <- df.recent.themes.long.filtered %>% filter(Value < fail) %>% pull(Theme) %>% tolower()) > 0,
     paste0("Focus on improving clinic ", oxford_comma(weak_themes), "."),
@@ -414,7 +420,7 @@ CSAT.charting <- CSAT.clinic.recent %>%
 
 bettermonth = CSAT.clinic.recent$CSAT[1] > CSAT.clinic.recent$Average[1]
 
-CSAT.text.clinic <- paste0("In ", CSAT.clinic.recent$Date[1], ", the customer satisfaction score was ", ifelse(bettermonth, " better", " worse"), " than ", clinic_name, "'s average.", ifelse(bettermonth, " Good work!", ""))
+CSAT.text.clinic <- paste0("In ", format(CSAT.clinic.recent$Date[1], "%B %Y"), ", the customer satisfaction score was ", ifelse(bettermonth, " better", " worse"), " than the", clinic_name, " clinic's average.", ifelse(bettermonth, " Good work!", ""))
 
 CSAT.all.now <- CSAT %>%
   drop_na() %>%
@@ -455,6 +461,7 @@ POEradar <- plot_ly(df.recent.themes.long.filtered,
                     fillcolor = "rgba(0,128,151,0.5)") %>%
   layout(
     title = "",
+    font = list(family = "Poppins"),
     plot_bgcolor = "rgba(0,0,0,0)",
     paper_bgcolor = "rgba(0,0,0,0)",
     polar = list(
@@ -512,6 +519,7 @@ for(i in seq_along(phase_cols)) {
 
 POEarea <- POEarea %>%
   layout(title = "",
+         font = list(family = "Poppins"),
          plot_bgcolor = "rgba(0,0,0,0)",
          paper_bgcolor = "rgba(0,0,0,0)",
          xaxis = list(title = ""),
@@ -541,14 +549,13 @@ POEarea <- POEarea %>%
 
 ```
 
-```{=html}
 <!--
 Generate stacked bar chart that:
  - shows staffing levels for each role
  - shows vacancies
  PRODUCT: "staffchart"
 -->
-```
+
 ```{r staffchart, echo=FALSE, output=FALSE}
 count_df$Role <- tools::toTitleCase(count_df$Role)
 
@@ -559,16 +566,26 @@ staffchart <- plot_ly(count_df,
                       marker=list(color=cpaltemplates::palette_cpal_teal[6]), 
                       type = 'bar', 
                       hoverinfo = "none", 
-                      orientation = 'h') %>%
+                      orientation = 'h',
+                      text = ~Active,
+                      textposition = 'auto',
+                      insidetextanchor="middle") %>%
   add_trace(x = ~Temps,
             y = ~Role,
             name = "Temporary/inactive", 
-            marker=list(color=cpaltemplates::palette_cpal_teal[3])) %>%
+            marker=list(color=cpaltemplates::palette_cpal_teal[3]),
+            text = ~Temps,
+            textposition = 'auto',
+            insidetextanchor="middle") %>%
   add_trace(x = ~Vacancies,
             y = ~Role,
             name = "Vacant", 
-            marker=list(color=cpaltemplates::palette_cpal_red[3])) %>%
-  layout(plot_bgcolor = "rgba(0,0,0,0)",
+            marker=list(color=cpaltemplates::palette_cpal_red[3]),
+            text = ~Vacancies,
+            textposition = 'auto',
+            insidetextanchor="middle") %>%
+  layout(font = list(family = "Poppins"),
+         plot_bgcolor = "rgba(0,0,0,0)",
          paper_bgcolor = "rgba(0,0,0,0)",
          yaxis = list(title = "",
                       categoryorder = "array",
@@ -582,18 +599,15 @@ staffchart <- plot_ly(count_df,
          barmode = 'stack') %>% 
   config(displayModeBar = F)
 
-
-
 ```
 
-```{=html}
 <!--
 ---CURRENTLY DEPRECATED---
 Generate line chart that:
  - qualtrics
  PRODUCT: "qual_chart"
 -->
-```
+
 ```{r qualchart,  echo=FALSE, output=FALSE}
 
 
@@ -758,7 +772,7 @@ DASHBOARD LAYOUT TEMPLATE STARTS HERE
         </div>
         
         <div style="font-size: 1em; font-style: italic; color: #2f2f2f; font-family: 'Poppins', sans-serif; padding-top: 10px;">
-            Number of participants: <b>`r staff.clinics %>% filter(Location == clinic_name) %>% pull(var=4) %>% format(big.mark = ",")`</b>
+            Number of `r format(ptcp %>% filter(Site == clinic_id, Date == max(Date)) %>% pull(Date), "%B %Y")` participants: <b>`r ptcp %>% filter(Site == clinic_id, Date == max(Date)) %>% pull(Participation) %>% format(big.mark = ",")`</b>
         </div>
     </div>
 </div>
