@@ -1,0 +1,8 @@
+"0","for (file in files) {
+  file_name <- tools::file_path_sans_ext(file)
+  assign(file_name, read.csv(file = paste0(""data/scriptData/"", file)))
+}
+"
+"2","Warning: cannot open file 'data/scriptData/client_categories.csv': No such file or directory"
+"2","Error in file(file, ""rt"") : cannot open the connection
+"

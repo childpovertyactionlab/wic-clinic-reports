@@ -1,0 +1,102 @@
+---
+title: "WIC Clinic Dashboard"
+title-block-banner: TRUE
+fig-width: 7
+fig-height: 5
+fig-dpi: 300
+warning: FALSE
+error: TRUE
+echo: FALSE
+message: FALSE
+params:
+  goal_category: "theme"
+format: 
+  html:
+    toc: false
+editor: source
+---
+
+
+<!--
+
+## DASHBOARD TEMPLATE ##
+
+This template for clinic dashboards is in the following order:
+ 1. Dynamic text generations
+ 2. Visualization generations
+ 3. Layout of dashboard using variables from generations
+ 
+-->
+
+```{r setup, echo=FALSE, output=FALSE}
+goal_category = params$goal_category
+
+data_dir <- "C:/Users/taylo/CPAL Dropbox/Benefits Delivery/04_Projects/WIC/WIC Dashboards/data/scriptData/"
+
+files <- list.files(path = data_dir, pattern = "\\.csv$")
+
+for (file in files) {
+  file_name <- tools::file_path_sans_ext(file)
+  assign(file_name, read.csv(file = paste0(data_dir, file)))
+}
+
+library(tidyverse)
+library(googlesheets4)
+library(tsutils)
+library(plotly)
+library(readxl)
+library(glue)
+library(stringr)
+library(waffle)
+library(forecast)
+library(tsibble)
+library(cpaltemplates)
+library(flexdashboard)
+library(shiny)
+library(DT)
+library(crosstalk)
+
+## make sure poppins is installed locally
+poppins_import()
+
+set_cpal_defaults()
+
+bold_color <- function(text, color) {
+  paste0("<b style='color:", color, "'>", text, "</b>")
+}
+```
+
+# Clinic `r params$goal_category`s
+
+<!--
+Print theme phrases
+-->
+
+```{r group, echo=FALSE, output=TRUE, results='asis'}
+grouped_POE <- POE %>% 
+  group_by(!!sym(goal_category)) %>% 
+  summarise(refined_phrases = list(refined_phrase))
+
+output_string <- ""
+
+for (i in 1:nrow(grouped_POE)) {
+  phrases <- grouped_POE$refined_phrases[[i]]
+  half <- ceiling(length(phrases) / 2)  # find middle index
+  column1 <- phrases[1:half]  # first half of phrases
+  column2 <- phrases[(half + 1):length(phrases)]  # second half of phrases
+  
+  output_string <- paste0(
+    output_string,
+    ifelse(berryFunctions::is.error(as.integer(grouped_POE[[1]][i])), "\n\n## Phase ", "\n\n## "),
+    grouped_POE[[1]][i],
+    "\n\n<!-- -->\n\n",
+    '<div style="columns: 2; -webkit-columns: 2; -moz-columns: 2;">',
+    '\n* ', paste(column1, collapse = "\n* "),  # column 1 as bullet points
+    '\n* ', paste(column2, collapse = "\n* "),  # column 2 as bullet points
+    '\n</div>',
+    "\n\n<!-- -->\n\n"
+  )
+}
+
+knitr::asis_output(output_string)
+```

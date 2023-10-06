@@ -1,0 +1,14 @@
+{
+  "hash": "37597d6e82357a9c78d926779cca716d",
+  "result": {
+    "markdown": "---\ntitle: \"WIC Clinic Dashboard\"\ntitle-block-banner: TRUE\nfig-width: 7\nfig-height: 5\nfig-dpi: 300\nwarning: FALSE\nerror: TRUE\necho: FALSE\nmessage: FALSE\nparams:\n  goal_category: \"theme\"\nformat: \n  html:\n    toc: false\neditor: source\n---\n\n```{=html}\n<!--\n\n## DASHBOARD TEMPLATE ##\n\nThis template for clinic dashboards is in the following order:\n 1. Dynamic text generations\n 2. Visualization generations\n 3. Layout of dashboard using variables from generations\n \n-->\n```\n\n::: {.cell}\n\n:::\n\n\n# Home\n\n\n```{=html}\n<!--\nPrint clinics under headers\n-->\n```\n\n::: {.cell .column-screen-inset-shaded layout-nrow=\"1\"}\n\n:::\n\n\n::: columns\n::: {.column width=\"33%\"}\n## <i class=\"bi bi-person-fill mr-2\"></i> [Ana](Ana_clinics.html)\n\n[Abrams Road](Abrams_Road.html)\n\n[John West/Buckner](John_West_Buckner.html)\n\n[West Garland](West_Garland.html)\n:::\n\n::: {.column width=\"33%\"}\n## <i class=\"bi bi-person-fill mr-2\"></i> [Chandra](Chandra_clinics.html)\n\n[Duncanville](Duncanville.html)\n\n[Ledbetter](Ledbetter.html)\n\n[Westmoreland](Westmoreland.html)\n:::\n\n::: {.column width=\"33%\"}\n## <i class=\"bi bi-person-fill mr-2\"></i> [Cheryl](Cheryl_clinics.html)\n\n[Grand Prairie](Grand_Prairie.html)\n\n[Irving](Irving.html)\n\n[Medical District (LC)](Medical_District.html)\n\n[Northwest Highway](Northwest_Highway.html)\n:::\n:::\n\n::: columns\n::: {.column width=\"33%\"}\n## <i class=\"bi bi-person-fill mr-2\"></i> [Heather](Heather_clinics.html)\n\n[Fruitdale](Fruitdale.html)\n\n[Highland Hills](Highland_Hills.html)\n\n[Lake June](Lake_June.html)\n\n[MLK Center](MLK_Center.html)\n:::\n\n::: {.column width=\"33%\"}\n## <i class=\"bi bi-person-fill mr-2\"></i> [Na'Cole](Na'Cole_clinics.html)\n\n[East Garland](.html)\n\n[North Dallas (Spring Valley)](North_Dallas.html)\n:::\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

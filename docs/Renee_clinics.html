@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>- WIC Clinic Dashboard</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../www/images/CPAL_favicon.ico" rel="icon">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "textbox",
+  "limit": 4,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="../site_libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+<script src="../site_libs/plotly-binding-4.10.2/plotly.js"></script>
+<script src="../site_libs/typedarray-0.1/typedarray.min.js"></script>
+<script src="../site_libs/jquery-3.5.1/jquery.min.js"></script>
+<link href="../site_libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="../site_libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="../site_libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="../site_libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../home.html" rel="" target=""><i class="bi bi-house-door-fill" role="img">
+</i> 
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-clinics" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+      <i class="bi bi-building-fill" role="img">
+</i> 
+ <span class="menu-text">Clinics</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-clinics">    
+        <li>
+    <a class="dropdown-item" href="../Abrams_Road.html" rel="" target="">
+ <span class="dropdown-text">Abrams Road</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Duncanville.html" rel="" target="">
+ <span class="dropdown-text">Duncanville</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../East_Garland.html" rel="" target="">
+ <span class="dropdown-text">East Garland</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Fruitdale.html" rel="" target="">
+ <span class="dropdown-text">Fruitdale</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Grand_Prairie.html" rel="" target="">
+ <span class="dropdown-text">Grand Prairie</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Highland_Hills.html" rel="" target="">
+ <span class="dropdown-text">Highland Hills</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Irving.html" rel="" target="">
+ <span class="dropdown-text">Irving</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../John_West_Buckner.html" rel="" target="">
+ <span class="dropdown-text">John West/Buckner</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Lake_June.html" rel="" target="">
+ <span class="dropdown-text">Lake June</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Ledbetter.html" rel="" target="">
+ <span class="dropdown-text">Ledbetter</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Medical_District.html" rel="" target="">
+ <span class="dropdown-text">Medical District (LC)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../MLK_Center.html" rel="" target="">
+ <span class="dropdown-text">MLK Center</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../North_Dallas.html" rel="" target="">
+ <span class="dropdown-text">North Dallas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Northwest_Highway.html" rel="" target="">
+ <span class="dropdown-text">Northwest Highway</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../West_Garland.html" rel="" target="">
+ <span class="dropdown-text">West Garland</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Westmoreland.html" rel="" target="">
+ <span class="dropdown-text">Westmoreland</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-managers" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+      <i class="bi bi-person-fill" role="img">
+</i> 
+ <span class="menu-text">Managers</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-managers">    
+        <li>
+    <a class="dropdown-item" href="../Ana_clinics.html" rel="" target="">
+ <span class="dropdown-text">Ana’s clinics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Chandra_clinics.html" rel="" target="">
+ <span class="dropdown-text">Chandra’s clinics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Cheryl_clinics.html" rel="" target="">
+ <span class="dropdown-text">Cheryl’s clinics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Heather_clinics.html" rel="" target="">
+ <span class="dropdown-text">Heather’s clinics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Na’Cole_clinics.html" rel="" target="">
+ <span class="dropdown-text">Na’Cole’s clinics</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://github.com/childpovertyactionlab/" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text">Github</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">WIC Clinic Dashboard</h1>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#clinic-environment" id="toc-clinic-environment" class="nav-link active" data-scroll-target="#clinic-environment">Clinic environment</a></li>
+  <li><a href="#staffing" id="toc-staffing" class="nav-link" data-scroll-target="#staffing">Staffing</a></li>
+  <li><a href="#customer-satisfaction" id="toc-customer-satisfaction" class="nav-link" data-scroll-target="#customer-satisfaction">Customer satisfaction</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<!--
+
+## DASHBOARD TEMPLATE ##
+
+This template for clinic dashboards is in the following order:
+ 1. Dynamic text generations
+ 2. Visualization generations
+ 3. Layout of dashboard using variables from generations
+ 
+-->
+<!--
+Set aside numbers of families waiting, specify phases
+-->
+<!--
+Summarize POE data from individual criteria into categories and even wider themes
+-->
+<!--
+Snapshot of only the most recent data to see current fulfillment
+-->
+<!--
+AGENCY-WIDE PREPROCESSING STOPS HERE -- BELOW ARE GENERATIONS
+-->
+<!--
+Generate dynamic text that: 
+ - separates into themes
+ - determines strengths based on 'threshold'
+ - determines fails based on 'fail'
+ PRODUCT: "phase_text"
+-->
+<!--
+Generate dynamic text that:
+ - counts how many POE fails there are by phase
+ - if there are 5 or fewer, lists them all
+ - if there are more than 5, picks 5 at random to serve as monthly targets
+ PRODUCT: "improvement_text"
+-->
+<!--
+Generate dynamic text that:
+ - summarizes recent performance by theme
+ - separates strengths and fails
+ PRODUCT: "performance_text"
+-->
+<!--
+Generate dynamic text that:
+ - calculates vacancies by role
+ - suggests staff hirings
+ PRODUCT: "vacancy_text"
+-->
+<!--
+Generate dynamic text that:
+ - qualtrics
+ PRODUCT: "CSATtext"
+-->
+<!--
+Generate radar chart that:
+ - compares POE themes by fulfillment
+ PRODUCT: "POEradar"
+-->
+<!--
+Generate area-under-the-line chart that:
+ - shows POE fulfillment by phase over time
+ PRODUCT: "POEarea"
+-->
+<!--
+Generate stacked bar chart that:
+ - shows staffing levels for each role
+ - shows vacancies
+ PRODUCT: "staffchart"
+-->
+<!--
+---CURRENTLY DEPRECATED---
+Generate line chart that:
+ - qualtrics
+ PRODUCT: "qual_chart"
+-->
+<!--
+################################################################################
+DASHBOARD LAYOUT TEMPLATE STARTS HERE
+-->
+<div class="d-flex align-items-center">
+    <div style="display: inline-block; border: 1px solid #2f2f2f; border-radius: 5px; padding: 10px; ">
+        
+        <div style="font-size: 2em; font-weight: bold; color: #2f2f2f; font-family: 'Poppins', sans-serif;">
+            <i class="bi bi-person-fill mr-2"></i>
+            Renee's clinics
+        </div>
+        
+        <div style="font-size: 1em; color: #2f2f2f; font-family: 'Poppins', sans-serif; padding-top: 10px;">
+            <a href="Medical_District.html">Medical District</a>
+        </div>
+        
+        <div style="font-size: 1em; font-style: italic; color: #2f2f2f; font-family: 'Poppins', sans-serif; padding-top: 10px;">
+            Number of October 2023 participants: <b>79</b>
+        </div>
+        
+    </div>
+</div>
+<section id="clinic-environment" class="level2">
+<h2 data-anchor-id="clinic-environment">Clinic environment</h2>
+<section id="renees-clinics-overall-have-7-items-in-phase-1-and-18-items-in-phase-2-that-need-improvement." class="level4">
+<h4 data-anchor-id="renees-clinics-overall-have-7-items-in-phase-1-and-18-items-in-phase-2-that-need-improvement.">Renee’s clinics overall have 7 items in <span style="color:#008097">Phase 1</span> and 18 items in <span style="color:#E98816">Phase 2</span> that need improvement.</h4>
+<p>Here are some goals to have your supervisors focus on:</p>
+<ul>
+<li><p>link the WIC material QR code to the WIC shopping guide</p></li>
+<li><p>utilize the television appropriately</p></li>
+<li><p>have a clinic manager or supervisor always on site</p></li>
+<li><p>make developmentally appropriate entertainment for children available in every room</p></li>
+<li><p>link the WIC material QR code to the WIC cookbook</p></li>
+<li><p>utilize a rolling cart for each certifier</p></li>
+<li><p>limit desk space in guest rooms to a maximum of 8 sq ft</p></li>
+<li><p>cover all electrical outlets in each guest room</p></li>
+<li><p>keep a small filing cabinet in each guest room</p></li>
+<li><p>display three or more wall hangings in each guest room</p></li>
+</ul>
+</section>
+<section id="work-on-getting-phase-1-and-phase-2-targets-up." class="level4">
+<h4 data-anchor-id="work-on-getting-phase-1-and-phase-2-targets-up.">Work on getting <span style="color:NA">Phase 1</span> and <span style="color:NA">Phase 2</span> targets up.</h4>
+<p></p><div class="plotly html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-74db2afa5095ca4de07e" style="width:100%;height:400px;"></div> <script type="application/json" data-for="htmlwidget-74db2afa5095ca4de07e">{"x":{"visdat":{"8d104aa95d96":["function () ","plotlyVisDat"]},"cur_data":"8d104aa95d96","attrs":{"8d104aa95d96":{"hoverinfo":"none","x":{},"y":{},"fill":"tozeroy","fillcolor":null,"mode":"none","name":"Phase 1","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"},"8d104aa95d96.1":{"hoverinfo":"none","x":{},"y":{},"fill":"tozeroy","fillcolor":null,"mode":"none","name":"Phase 2","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter","inherit":true},"8d104aa95d96.2":{"x":"2022-12-19","y":0.90000000000000002,"xend":"2023-10-05","yend":0.90000000000000002,"type":"scatter","mode":"lines","line":{"dash":"dash","color":"#2f2f2f"},"showlegend":false,"inherit":false}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"","font":{"family":"Poppins"},"plot_bgcolor":"rgba(0,0,0,0)","paper_bgcolor":"rgba(0,0,0,0)","xaxis":{"domain":[0,1],"automargin":true,"title":""},"yaxis":{"domain":[0,1],"automargin":true,"title":"","tickformat":"0%","range":[0,1]},"annotations":[{"text":"<i>Goal<\/i>","x":"2023-10-05","y":0.90000000000000002,"showarrow":false,"font":{"size":12},"xanchor":"left","yanchor":"middle"}],"hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"displayModeBar":false},"data":[{"fillcolor":[null,null,null,null,null,null],"hoverinfo":["none","none","none","none","none","none"],"x":["2022-12-19","2023-04-27","2023-05-01","2023-06-01","2023-06-12","2023-10-05"],"y":[0.63157894736842102,0.68421052631578949,0.68421052631578949,0.68421052631578949,0.68421052631578949,0.66666666666666663],"fill":"tozeroy","mode":"none","name":"Phase 1","type":"scatter","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":[null,null,null,null,null,null],"hoverinfo":["none","none","none","none","none","none"],"x":["2022-12-19","2023-04-27","2023-05-01","2023-06-01","2023-06-12","2023-10-05"],"y":[0,0.085568041026572519,0.15374985920839071,0.15374985920839071,0.15374985920839071,0.15374985920839071],"fill":"tozeroy","mode":"none","name":"Phase 2","type":"scatter","marker":{"color":"rgba(255,127,14,1)","line":{"color":"rgba(255,127,14,1)"}},"error_y":{"color":"rgba(255,127,14,1)"},"error_x":{"color":"rgba(255,127,14,1)"},"line":{"color":"rgba(255,127,14,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2022-12-19","2023-10-05"],"y":[0.90000000000000002,0.90000000000000002],"type":"scatter","mode":"lines","line":{"color":"#2f2f2f","dash":"dash"},"showlegend":false,"marker":{"color":"rgba(44,160,44,1)","line":{"color":"rgba(44,160,44,1)"}},"error_y":{"color":"rgba(44,160,44,1)"},"error_x":{"color":"rgba(44,160,44,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script><p></p>
+</section>
+<section id="focus-on-improving-clinic-efficiency-layout-and-safety." class="level4">
+<h4 data-anchor-id="focus-on-improving-clinic-efficiency-layout-and-safety.">Focus on improving clinic efficiency, layout and safety.</h4>
+<p></p><div class="plotly html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-d496eabbf43b78597fac" style="width:100%;height:400px;"></div> <script type="application/json" data-for="htmlwidget-d496eabbf43b78597fac">{"x":{"visdat":{"8d1075ac2d47":["function () ","plotlyVisDat"]},"cur_data":"8d1075ac2d47","attrs":{"8d1075ac2d47":{"r":{},"theta":{},"mode":"markers","fill":"toself","hoverinfo":"none","marker":{"color":"#008097"},"fillcolor":"rgba(0,128,151,0.5)","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatterpolar"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"","font":{"family":"Poppins"},"plot_bgcolor":"rgba(0,0,0,0)","paper_bgcolor":"rgba(0,0,0,0)","polar":{"radialaxis":{"visible":true,"showticklabels":false,"range":[0,1],"linecolor":"rgba(0,0,0,0)","tickcolor":"rgba(0,0,0,0)"},"angularaxis":{"showticklabels":true}},"showlegend":false,"hovermode":"closest"},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"displayModeBar":false},"data":[{"fillcolor":"rgba(0,128,151,0.5)","r":[0.7142857142857143,0.27777777777777779,0.6536107669538439,0.20833333333333334,0.14285714285714285],"theta":["Communication","Efficiency","Hospitality","Layout","Safety"],"mode":"markers","fill":"toself","hoverinfo":["none","none","none","none","none"],"marker":{"color":"#008097","line":{"color":"rgba(31,119,180,1)"}},"type":"scatterpolar","name":"rgba(0,128,151,0.5)","line":{"color":"rgba(31,119,180,1)"},"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script><p></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Phases and themes
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Read more about the goals that go into <a href="phases.html">phases</a> and <a href="themes.html">themes</a>.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="staffing" class="level2">
+<h2 data-anchor-id="staffing">Staffing</h2>
+<section id="there-are-no-vacancies-right-now.-nice-job" class="level4">
+<h4 data-anchor-id="there-are-no-vacancies-right-now.-nice-job">There are no vacancies right now. Nice job!</h4>
+<p></p><div class="plotly html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-d84ac9ff3a4e88bcdee8" style="width:100%;height:400px;"></div> <script type="application/json" data-for="htmlwidget-d84ac9ff3a4e88bcdee8">{"x":{"visdat":{"8d10234d7d32":["function () ","plotlyVisDat"]},"cur_data":"8d10234d7d32","attrs":{"8d10234d7d32":{"x":{},"y":{},"marker":{"color":"#00687A"},"hoverinfo":"none","orientation":"h","text":{},"textposition":"auto","insidetextanchor":"middle","name":"Active","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar"},"8d10234d7d32.1":{"x":{},"y":{},"marker":{"color":"#87C8D4"},"hoverinfo":"none","orientation":"h","text":{},"textposition":"auto","insidetextanchor":"middle","name":"Temporary/inactive","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar","inherit":true},"8d10234d7d32.2":{"x":{},"y":{},"marker":{"color":"#FF745C"},"hoverinfo":"none","orientation":"h","text":{},"textposition":"auto","insidetextanchor":"middle","name":"Vacant","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar","inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"font":{"family":"Poppins"},"plot_bgcolor":"rgba(0,0,0,0)","paper_bgcolor":"rgba(0,0,0,0)","yaxis":{"domain":[0,1],"automargin":true,"title":"","categoryorder":"array","categoryarray":["Clerk","Certifier","Supervisor"],"tickfont":{"size":12},"ticksuffix":"   ","type":"category"},"xaxis":{"domain":[0,1],"automargin":true,"title":"","gridwidth":2,"dtick":1},"barmode":"stack","hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"displayModeBar":false},"data":[{"x":[2,1,1],"y":["Clerk","Certifier","Supervisor"],"marker":{"color":"#00687A","line":{"color":"rgba(31,119,180,1)"}},"hoverinfo":["none","none","none"],"orientation":"h","text":[2,1,1],"textposition":["auto","auto","auto"],"insidetextanchor":"middle","name":"Active","type":"bar","error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[0,0,0],"y":["Clerk","Certifier","Supervisor"],"marker":{"color":"#87C8D4","line":{"color":"rgba(255,127,14,1)"}},"hoverinfo":["none","none","none"],"orientation":"h","text":[0,0,0],"textposition":["auto","auto","auto"],"insidetextanchor":"middle","name":"Temporary/inactive","type":"bar","error_y":{"color":"rgba(255,127,14,1)"},"error_x":{"color":"rgba(255,127,14,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[0,0,0],"y":["Clerk","Certifier","Supervisor"],"marker":{"color":"#FF745C","line":{"color":"rgba(44,160,44,1)"}},"hoverinfo":["none","none","none"],"orientation":"h","text":[0,0,0],"textposition":["auto","auto","auto"],"insidetextanchor":"middle","name":"Vacant","type":"bar","error_y":{"color":"rgba(44,160,44,1)"},"error_x":{"color":"rgba(44,160,44,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script><p></p>
+</section>
+</section>
+<section id="customer-satisfaction" class="level2">
+<h2 data-anchor-id="customer-satisfaction">Customer satisfaction</h2>
+<ul>
+<li><p>In September 2023, the customer satisfaction score was worse than average for Renee’s clinics.</p></li>
+<li><p>Agency-wide, Renee’s clinics brought the average for Dallas County clinics down. Keep working!</p></li>
+<li><p>Over the last 18 months, the scores for Renee’s clinics have increased overall. Over the last 3 months, the scores have increased on average. Based on past trends, the scores are predicted to increase next month, so work hard to make that come true!</p></li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">©2023 <b><a href="https://childpovertyactionlab.org/">The Child Poverty Action Lab</a>.</b></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>
