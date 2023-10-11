@@ -13,19 +13,11 @@ clinic_map <- readr::read_csv("C:/Users/taylo/CPAL Dropbox/Benefits Delivery/04_
 templates <- ""
 
 quarto::quarto_render(
-<<<<<<< HEAD
-  input = paste0(templates, "dashboardHome.qmd"),
-  output_file = "home.html"
-)
-
-for (goal_category in c("theme", "phase")) {
-=======
   input = paste0(templates, "dashboardIndex.qmd"),
   output_file = "index.html"
 )
 
 for(goal_category in c("theme", "phase")){
->>>>>>> test
   output_name <- gsub("\\W", "_", goal_category)
 
   quarto::quarto_render(

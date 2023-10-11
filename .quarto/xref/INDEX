@@ -57,15 +57,6 @@
     "Maria_clinics.html": "0b13140c",
     "Renee_clinics.html": "886b2da6"
   },
-<<<<<<< HEAD
-  "dashboardManagerTemplate.qmd": {
-    "Heather_clinics.html": "a8f9bcaa",
-    "Arria_clinics.html": "94307115",
-    "Cheryl_clinics.html": "4a57b1cd",
-    "Sandra_clinics.html": "0a4617e8",
-    "Maria_clinics.html": "7574be94",
-    "Renee_clinics.html": "5464d95a"
-=======
   "dashboardIndex.qmd": {
     "index.html": "946fed3a"
   },
@@ -76,6 +67,5 @@
     "Sandra_clinics.html": "62b832b0",
     "Maria_clinics.html": "9c4fff01",
     "Renee_clinics.html": "a5b99c28"
->>>>>>> test
   }
 }
