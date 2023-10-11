@@ -38,21 +38,38 @@ library(waffle)
 library(forecast)
 library(tsibble)
 library(cpaltemplates)
+<<<<<<< Updated upstream
 library(sparklines)
 
 manager_name = params$manager_name
 
 files <- list.files(path = "data/scriptData/", pattern = "\\.csv$") %>%
   setdiff("ptcps.csv") # ignore
+=======
+
+manager_name = params$manager_name
+
+data_dir <- "C:/Users/taylo/CPAL Dropbox/Benefits Delivery/04_Projects/WIC/WIC Dashboards/data/scriptData/"
+
+files <- list.files(path = data_dir, pattern = "\\.csv$")
+>>>>>>> Stashed changes
 
 for (file in files) {
   file_name <- tools::file_path_sans_ext(file)
   if (file_name == "ptcp") {
+<<<<<<< Updated upstream
     assign(gsub("__", "\\.", file_name), read_csv(file = paste0("data/scriptData/", file)) %>%
              rename(Date = colnames(.)[1]) %>%
              mutate(Date = as.Date(Date)))
   } else {
     assign(gsub("__", "\\.", file_name), read_csv(file = paste0("data/scriptData/", file)))
+=======
+    assign(gsub("__", "\\.", file_name), read_csv(file = paste0(data_dir, file)) %>%
+             rename(Date = colnames(.)[1]) %>%
+             mutate(Date = as.Date(Date)))
+  } else {
+    assign(gsub("__", "\\.", file_name), read_csv(file = paste0(data_dir, file)))
+>>>>>>> Stashed changes
   }
 }
 
@@ -475,11 +492,19 @@ CSAT.text.trend <- paste0("Over the last 18 months, the scores for ", manager_na
 
 CSAT.clinic.recent <- CSAT.clinic.recent %>% arrange(Date)
 
+<<<<<<< Updated upstream
 CSAT.sparkline <- sparkline(round(as.vector(CSAT.clinic.recent$Average), 4), "line", 
           list(lineColor = palette_cpal_teal[6],
                fillColor = palette_cpal_teal[2],
                width = "200px",
                height = "80px"))
+=======
+# CSAT.sparkline <- sparkline(round(as.vector(CSAT.clinic.recent$Average), 4), "line", 
+#           list(lineColor = palette_cpal_teal[6],
+#                fillColor = palette_cpal_teal[2],
+#                width = "200px",
+#                height = "80px"))
+>>>>>>> Stashed changes
 
 ```
 
@@ -815,7 +840,11 @@ DASHBOARD LAYOUT TEMPLATE STARTS HERE
         </div>
         
         <div style="font-size: 1em; font-style: italic; color: #2f2f2f; font-family: 'Poppins', sans-serif; padding-top: 10px;">
+<<<<<<< Updated upstream
             Number of `r format(ptcp %>% filter(Site %in% clinic_ids) %>% group_by(Date, Site) %>% summarize(Participation = mean(Participation, na.rm = TRUE)) %>% filter(Date == max(Date)) %>% pull(Date), "%B %Y")` participants: <b>`r ptcp %>% filter(Site %in% clinic_ids) %>% group_by(Date, Site) %>% summarize(Participation = mean(Participation, na.rm = TRUE)) %>% filter(Date == max(Date)) %>% pull(Participation) %>% format(big.mark = ",")`</b>
+=======
+            Number of `r ptcp %>% filter(Site %in% clinic_ids) %>% pull(Date) %>% max(na.rm = TRUE) %>% format("%B %Y")` participants: <b>`r ptcp %>% filter(Site %in% clinic_ids) %>% group_by(Date, Site) %>% summarize(Participation = mean(Participation, na.rm = TRUE), .groups = "drop") %>% filter(Date == ptcp %>% filter(Site %in% clinic_ids) %>% pull(Date) %>% max(na.rm = TRUE)) %>% pull(Participation) %>% sum() %>% format(big.mark = ",")`</b>
+>>>>>>> Stashed changes
         </div>
         
     </div>
@@ -854,5 +883,8 @@ Read more about the goals that go into [phases](phases.html) and [themes](themes
 - `r CSAT.text.agency`
 
 - `r CSAT.text.trend`
+<<<<<<< Updated upstream
 
 `r CSAT.sparkline`
+=======
+>>>>>>> Stashed changes

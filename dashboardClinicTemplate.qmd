@@ -38,20 +38,37 @@ library(waffle)
 library(forecast)
 library(tsibble)
 library(cpaltemplates)
+<<<<<<< Updated upstream
 library(sparklines)
 
 clinic_name = params$clinic_name
 
 files <- list.files(path = "data/scriptData/", pattern = "\\.csv$")
+=======
+
+clinic_name = params$clinic_name
+
+data_dir <- "C:/Users/taylo/CPAL Dropbox/Benefits Delivery/04_Projects/WIC/WIC Dashboards/data/scriptData/"
+
+files <- list.files(path = data_dir, pattern = "\\.csv$")
+>>>>>>> Stashed changes
 
 for (file in files) {
   file_name <- tools::file_path_sans_ext(file)
   if (file_name == "ptcp") {
+<<<<<<< Updated upstream
     assign(gsub("__", "\\.", file_name), read_csv(file = paste0("data/scriptData/", file)) %>%
              rename(Date = colnames(.)[1]) %>%
              mutate(Date = as.Date(Date)))
   } else {
     assign(gsub("__", "\\.", file_name), read_csv(file = paste0("data/scriptData/", file)))
+=======
+    assign(gsub("__", "\\.", file_name), read_csv(file = paste0(data_dir, file)) %>%
+             rename(Date = colnames(.)[1]) %>%
+             mutate(Date = as.Date(Date)))
+  } else {
+    assign(gsub("__", "\\.", file_name), read_csv(file = paste0(data_dir, file)))
+>>>>>>> Stashed changes
   }
 }
 
@@ -434,11 +451,19 @@ CSAT.text.trend <- paste0("Over the last 18 months, the score for ", clinic_name
 
 CSAT.clinic.recent <- CSAT.clinic.recent %>% arrange(Date)
 
+<<<<<<< Updated upstream
 CSAT.sparkline <- sparkline(round(as.vector(CSAT.clinic.recent$Average), 4), "line", 
           list(lineColor = palette_cpal_teal[6],
                fillColor = palette_cpal_teal[2],
                width = "200px",
                height = "80px"))
+=======
+# CSAT.sparkline <- sparkline(round(as.vector(CSAT.clinic.recent$Average), 4), "line", 
+#           list(lineColor = palette_cpal_teal[6],
+#                fillColor = palette_cpal_teal[2],
+#                width = "200px",
+#                height = "80px"))
+>>>>>>> Stashed changes
 
 ```
 
@@ -810,5 +835,8 @@ Read more about the goals that go into [phases](phases.html) and [themes](themes
 `r CSAT.text.agency`
 
 `r CSAT.text.trend`
+<<<<<<< Updated upstream
 
 `r CSAT.sparkline`
+=======
+>>>>>>> Stashed changes

@@ -1,0 +1,68 @@
+{
+  "dashboardHome.qmd": {
+    "home.html": "e0b9c86c"
+  },
+  "dashboardGoals.qmd": {
+    "themes.html": "51e74472",
+    "phases.html": "6ea5c07d"
+  },
+  "dashboardClinicTemplate.qmd": {
+    "MLK_Center.html": "7a11ae2c",
+    "Westmoreland.html": "8597f20c",
+    "Lake_June.html": "5512dae9",
+    "Grand_Prairie.html": "ec191b05",
+    "Irving.html": "99f8bef6",
+    "Highland_Hills.html": "307fe46d",
+    "East_Garland.html": "9c1de4da",
+    "Northwest_Highway.html": "0c80dfae",
+    "North_Dallas.html": "82793e55",
+    "Ledbetter.html": "534ef93f",
+    "John_West_Buckner.html": "ada30e60",
+    "Duncanville.html": "f1eba2f5",
+    "West_Garland.html": "12b0ba1e",
+    "Medical_District.html": "349a0efe",
+    "Abrams_Road.html": "d34b84dc",
+    "Fruitdale.html": "d3315478"
+  },
+  "templates/dashboardHome.qmd": {
+    "home.html": "53989c00"
+  },
+  "templates/dashboardGoals.qmd": {
+    "themes.html": "fef7cf39",
+    "phases.html": "dd1742f7"
+  },
+  "templates/dashboardClinicTemplate.qmd": {
+    "MLK_Center.html": "6936185c",
+    "Westmoreland.html": "b9a4f390",
+    "Lake_June.html": "135d30ce",
+    "Grand_Prairie.html": "df35db21",
+    "Irving.html": "6057d816",
+    "Highland_Hills.html": "ee90ac87",
+    "East_Garland.html": "51813a1f",
+    "Northwest_Highway.html": "612f28a4",
+    "North_Dallas.html": "45494c46",
+    "Ledbetter.html": "6fd23d69",
+    "John_West_Buckner.html": "2fe66afb",
+    "Duncanville.html": "dab3f8c1",
+    "West_Garland.html": "deda3e3b",
+    "Medical_District.html": "7a551fec",
+    "Abrams_Road.html": "9a293d4f",
+    "Fruitdale.html": "eadf3c38"
+  },
+  "templates/dashboardManagerTemplate.qmd": {
+    "Heather_clinics.html": "f7c0676e",
+    "Arria_clinics.html": "c5da7a49",
+    "Cheryl_clinics.html": "aef684be",
+    "Sandra_clinics.html": "5966060e",
+    "Maria_clinics.html": "0b13140c",
+    "Renee_clinics.html": "886b2da6"
+  },
+  "dashboardManagerTemplate.qmd": {
+    "Heather_clinics.html": "a8f9bcaa",
+    "Arria_clinics.html": "94307115",
+    "Cheryl_clinics.html": "4a57b1cd",
+    "Sandra_clinics.html": "0a4617e8",
+    "Maria_clinics.html": "7574be94",
+    "Renee_clinics.html": "5464d95a"
+  }
+}
