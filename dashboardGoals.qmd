@@ -31,12 +31,17 @@ This template for clinic dashboards is in the following order:
 ```{r setup, echo=FALSE, output=FALSE}
 goal_category = params$goal_category
 
+<<<<<<< HEAD
 <<<<<<< Updated upstream
+=======
+data_dir <- "C:/Users/taylo/CPAL Dropbox/Benefits Delivery/04_Projects/WIC/WIC Dashboards/data/scriptData/"
+>>>>>>> test
 
-files <- list.files(path = "data/scriptData/", pattern = "\\.csv$")
+files <- list.files(path = data_dir, pattern = "\\.csv$")
 
 for (file in files) {
   file_name <- tools::file_path_sans_ext(file)
+<<<<<<< HEAD
   assign(file_name, read.csv(file = paste0("data/scriptData/", file)))
 =======
 data_dir <- "C:/Users/taylo/CPAL Dropbox/Benefits Delivery/04_Projects/WIC/WIC Dashboards/data/scriptData/"
@@ -47,6 +52,9 @@ for (file in files) {
   file_name <- tools::file_path_sans_ext(file)
   assign(file_name, read.csv(file = paste0(data_dir, file)))
 >>>>>>> Stashed changes
+=======
+  assign(file_name, read.csv(file = paste0(data_dir, file)))
+>>>>>>> test
 }
 
 library(tidyverse)

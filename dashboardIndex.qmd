@@ -1,0 +1,109 @@
+---
+title: "WIC Clinic Dashboard"
+title-block-banner: TRUE
+fig-width: 7
+fig-height: 5
+fig-dpi: 300
+warning: FALSE
+error: TRUE
+echo: FALSE
+message: FALSE
+format: 
+  html:
+    toc: false
+editor: source
+---
+
+```{r setup, echo=FALSE, output=FALSE}
+library(tidyverse)
+
+clinic_map <- read_csv("C:/Users/taylo/CPAL Dropbox/Benefits Delivery/04_Projects/WIC/WIC Dashboards/data/scriptData/clinic_map.csv")
+
+```
+
+# Welcome to the WIC Dashboard
+
+---
+
+<!--
+Print clinics under headers
+-->
+
+```{=html}
+
+<style>
+/* Resetting some styles */
+body, div, h1, h2, p, a {
+    margin: 0;
+    padding: 0;
+}
+
+.column {
+    width: 33.33%; /* Make sure this is exact for 3 columns */
+    float: left;
+    box-sizing: border-box;
+    padding: 10px;
+    transition: background-color 0.3s;
+    margin-bottom: 10px;
+}
+
+.column:hover {
+    background-color: #f5f5f5;
+}
+
+.column h2 {
+    margin-bottom: 5px;
+}
+
+.column a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.column a:hover {
+    text-decoration: underline;
+    margin-bottom: 8px;
+}
+
+.bi-building-fill {
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+/* Clearing Floats */
+.columns::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+</style>
+
+```
+
+::: columns
+
+```{r home, results='asis'}
+grouped_clinics <- split(clinic_map$Clinic, clinic_map$Manager)
+
+for (manager in names(grouped_clinics)) {
+  cat("<div class='column'>\n")
+  cat("## <i class=\"bi bi-person-fill mr-2\"></i> [", manager, "](", manager, "_clinics.html)\n\n", sep = "")
+  
+  for (clinic in grouped_clinics[[manager]]) {
+    cat("<i class=\"bi bi-building-fill mr-2\"></i> [", clinic, "](", gsub(" ", "_", clinic), ".html)\n\n", sep = "")
+  }
+  cat("</div>\n")
+}
+
+
+```
+
+:::
+
+::: columns
+
+---
+
+Last updated: `r Sys.Date()`
+
+:::
