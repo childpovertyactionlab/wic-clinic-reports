@@ -56,5 +56,16 @@
     "Sandra_clinics.html": "5966060e",
     "Maria_clinics.html": "0b13140c",
     "Renee_clinics.html": "886b2da6"
+  },
+  "dashboardIndex.qmd": {
+    "index.html": "946fed3a"
+  },
+  "dashboardManagerTemplate.qmd": {
+    "Heather_clinics.html": "7df34fe5",
+    "Arria_clinics.html": "0b214723",
+    "Cheryl_clinics.html": "0f71df09",
+    "Sandra_clinics.html": "62b832b0",
+    "Maria_clinics.html": "9c4fff01",
+    "Renee_clinics.html": "a5b99c28"
   }
 }
